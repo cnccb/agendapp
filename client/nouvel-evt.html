@@ -1,0 +1,20 @@
+<template name='nouvelEvt'>
+    <h1>Ajouter un évènement</h1>
+    <form method='post' id='frmNouvelEvt'>
+        <h2>En bref</h2>
+        <fieldset>
+            <label>Quoi ?</label>
+            <input type="text" name="nom" id="nom" placeholder="nom de l'événement"/>
+            <label>Quand ?</label>
+            <input type="date" name="date" id="date" placeholder="date au format jj/mm/aaaa" />
+            <label>Où ?</label>
+            <input type="text" name="lieu" id="lieu" placeholder="ville et région ou département"/>
+            <label>Qui ? (un e-mail pour l'administration)</label>
+            <input type="email" name="admin" id="admin" />
+            <h2>En détails</h2>
+            <label>Horaires (votre mail)</label>
+            <input type="text" name="horaires" id="horaires" />
+        </fieldset>
+        <button id="submitevt" class="submit">C'est parti !</button>
+    </form>
+</template>
