@@ -3,15 +3,33 @@
 </head>
 
 <body>
-  {{> listeEvt}}
+    <div class="container">
+        <div class="row header">
+            <div class="span9">
+                <img src="logo.png" alt="logo angend'app">
+            </div>
+            <div class="span3 pull-right"><img src="cnccb.png" alt="logo cnccb"></div>
+        </div>
+        <div class="nav">
+            <ul class="nav nav-pills">
+                  <li class="active">
+                    <a id='nav-home' href="/">Accueil</a>
+                  </li>
+                  <li><a id='nav-evt' href="#nouvelEvt">Ajouter votre événement</a></li>
+                  <li><a id='nav-about' href="#">A propos</a></li>
+            </ul>
+            
+        </div>    
+        <div class="row" id='listeEvt'>
+            <div class="span12" >
+                {{> listeEvt}}
+            </div>
+        </div>
+        <div class="row" id='nouvelEvt'>
+            <a name="nouvelEvt"></a>
+            <div class="span12">
+                {{> nouvelEvt}}
+            </div>
+        </div>
+    </div>
 </body>
-
-<template name="listeEvt">
-  	<h1>Evènements canne de combat</h1>
-	<table class="table">
-		<tr><th>Date</th> <th>Nom</th> <th>Lieu</th> <th>Statut</th></tr>
-  	{{#each evenements}}
-		<tr><td>{{date}}</td><td>{{nom}}</td><td>{{lieu}}</td><td>{{statut}}</td>
-   	{{/each}}
-	</table>
-</template>
