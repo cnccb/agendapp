@@ -1,9 +1,9 @@
 if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to agendapp.";
+  Template.listeEvt.evenements = function () {
+    return Evenements.find();
   };
 
-  Template.hello.events({
+  Template.listeEvt.events({
     'click input' : function () {
       // template data, if any, is available in 'this'
       if (typeof console !== 'undefined')
@@ -12,8 +12,3 @@ if (Meteor.isClient) {
   });
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}

@@ -1,0 +1,17 @@
+<head>
+  <title>agend'app : votre évènement canne en deux clics !</title>
+</head>
+
+<body>
+  {{> listeEvt}}
+</body>
+
+<template name="listeEvt">
+  	<h1>Evènements canne de combat</h1>
+	<table class="table">
+		<tr><th>Date</th> <th>Nom</th> <th>Lieu</th> <th>Statut</th></tr>
+  	{{#each evenements}}
+		<tr><td>{{date}}</td><td>{{nom}}</td><td>{{lieu}}</td><td>{{statut}}</td>
+   	{{/each}}
+	</table>
+</template>
