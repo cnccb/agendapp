@@ -1,63 +1,92 @@
 <template name='nouvelEvt'>
     <h1>Ajouter un évènement</h1>
     <form method='post' id='frmNouvelEvt'>
-        <label>
-         <input type="radio" name="satut[]" value="projet" />
-         Projet
-        </label>
-        <label>
-         <input type="radio" name="satut[]" value="prevu" />
-         Prévu
-        </label>
-        <label>
-         <input type="radio" name="satut[]" value="encours" />
-         En cours
-        </label>
-        <h2>En bref</h2>
+        <label for="admin">Adresse e-mail de gestion</label>
+            <input type="email" name="admin" id="admin"  placeholder="e-mail pour la gestion de l'événement"/>
+            <div></div>    
+        <div class="btn-group" data-toggle="buttons-radio">
+            <button type="button" class="btn" data-value="enprojet">En projet</button>
+            <button type="button" class="btn btn-primary" data-value="confirme">Confirmé</button>
+            <button type="button" class="btn btn-danger" data-value="annule">Annulé</button>
+            <input type="hidden" name="statut" value=""  id="statut" />
+        </div>
+        
         <fieldset>
-            <label>Quoi ?</label>
+
+            <label for="nom">Événement</label>
             <input type="text" name="nom" id="nom" placeholder="nom de l'événement"/>
-            <label>Quand ?</label>
-            <input type="date" name="date" id="date" placeholder="date au format jj/mm/aaaa" />
-            <label>Où ?</label>
+            
+            <label>Contact pour informations</label>
+            <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur"/>            
+            <input type="email" name="contact" id="contact" placeholder="email" />   
+            <input type="tel" name="tel" id="tel" placeholder="téléphone" />   
+            
+            <label>Dates</label>
+            <span class="help-block">début</span><input type="date" name="datedeb" id="datedeb" placeholder="date de début au format jj/mm/aaaa" />            
+            <span class="help-block">fin</span> <input type="date" name="datefin" id="datefin" placeholder="date de fin au format jj/mm/aaaa" />           
+
+            <label>Lieu</label>
             <input type="text" name="lieu" id="lieu" placeholder="ville et région ou département"/>
-            <label>Qui ? (un e-mail pour l'administration)</label>
-            <input type="email" name="admin" id="admin" />
-            <h2>En détails</h2>
-            <label>Horaires (votre mail)</label>
+
+            <label>Echelle</label>
+            <div class="btn-group" data-toggle="buttons-radio">
+                <button type="button" class="btn btn-small" data-value="locale">locale</button>
+                <button type="button" class="btn btn-small" data-value="departementale">départementale</button>
+                <button type="button" class="btn btn-small" data-value="regionale">régionale</button>
+                <button type="button" class="btn btn-small" data-value="nationale">nationale</button>
+                <input type="hidden" name="echelle" value=""  id="echelle" />
+            </div>
+
+            <label>Horaires</label>
             <input type="text" name="horaires" id="horaires" />
+
             <label>Forclusion</label>
             <input type="date" name="forclusion" id="forclusion" />
-            <label>Echelle</label>
-            <select name="echelle" id="echelle">
-                <option value="locale">locale</option>
-                <option value="departementale">départementale</option>
-                <option value="regionale">régionale</option>
-                <option value="nationale">nationale</option>
-            </select>
-            <label>Cible</label>
-            <select name="cible" id="cible">
-                <option value="competiteurs">Competiteurs</option>
-                <option value="debutants">Débutants</option>
-                <option value="confirmés">Confirmés</option>
-                <option value="Jeunes">Jeunes</option>
-            </select>
+
+            <label>Cible (public attendu)</label>
+            <div class="btn-group" data-toggle="buttons-radio">
+                <button type="button" class="btn btn-small" data-value="competiteurs">Competiteurs</button>
+                <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
+                <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
+                <button type="button" class="btn btn-small" data-value="jeunes">Jeunes</button>
+                <input name="cible" id="cible" type="hidden" value="" />
+            </div>
+            
+            <label>Conditions de participation</label>
+            <input type="text" name="conditions" id="contiditions" />
+
             <label>Prix</label>
             <input type="text" name="prix" id="prix" />
-            <label>Organisateur</label>
-            <input type="text" name="orga" id="orga" />
-            <label>Contact (mail pour informations)</label>
-            <input type="mail" name="contact" id="contact" />
+            
+            <label>Site web</label>
+            <input type="url" name="url" id="url" />
+
             <label>Plan (lien vers une carte)</label>
             <input type="text" name="plan" id="plan" />
+            
+
             <label>Site web</label>
             <input type="text" name="web" id="web" />
+
             <label>Programme</label>
-            <textarea name="programme" id="programme" rows="30" cols="20"/>
-            <label>
-                <input type="checkbox" name="[options]">
-                Buvette
-            </label>
+            <textarea name="programme" id="programme" rows="15" cols="20"/>
+            
+            <label>Options</label>
+            <div class="btn-group" data-toggle="buttons-checkbox">
+                <button type="button" class="btn btn-small" data-value="buvette">Buvette</button>
+                <button type="button" class="btn btn-small" data-value="restauration">Restauration sur place</button>
+                <button type="button" class="btn btn-small" data-value="vestiaires">Vestiaires</button>
+                <input name="cible" id="cible" type="hidden" value="" />
+            </div>
+            
+            <label>Hébergements</label>
+            <textarea name="hebergement" id="hebergement" rows="15" cols="20"/>
+            
+            <label>Restauration</label>
+            <textarea name="restauration" id="restauration" rows="15" cols="20"/>
+            
+            <label>Visites</label>
+            <textarea name="visites" id="visites" rows="15" cols="15"/>
 
         </fieldset>
         <button id="submitevt" class="submit">C'est parti !</button>

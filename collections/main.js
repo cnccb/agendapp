@@ -46,7 +46,7 @@ if (Meteor.isServer) {
             contact:'webmaster@darkhan.net', //Contact (pour information)            
             lieu:'Gymnase de Reully, 75012 Paris', //Lieu / adresse
             plan:'http://goo.gl/maps/U6l2H', // Plan d’accès
-            web:'http://www.internationaux2015.com',
+            url:'http://www.internationaux2015.com',
             programme:'bla bla bla bla bla bla bla', // Programme
             options:['buvette','repas sur place'], //Options (buvette, offre de repas, etc.)
             conditions:'majeur et vacciné', //Conditions de participation
