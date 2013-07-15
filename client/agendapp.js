@@ -1,7 +1,30 @@
 //insert the new event
+function getMonthIndex(key)
+{
+    var d = new Date(key);
+    var nommois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+        'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+    return nommois[d.getMonth()] + " " + d.getFullYear();
+
+}
 
 Template.listeEvt.evenements = function() {
-    return Evenements.find();
+    var liste = Evenements.find().fetch();
+    var evenements = new Array();
+
+    var lastindex = null;
+    _.each(liste, function(value, key, list) {
+        var index = getMonthIndex(value.datedeb);
+        if (index !== lastindex)
+        {
+            evenements.push({"TitreIntermediaire": index});
+            lastindex = index;
+        }
+        evenements.push(value);
+    });
+    console.log(evenements);
+    return evenements;
+
 };
 
 Template.nouvelEvt.events({

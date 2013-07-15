@@ -1,9 +1,12 @@
 <template name="listeEvt">
-  	<h1>Evènements canne de combat</h1>
-	<table class="table">
-		<tr><th>Date</th> <th>Nom</th> <th>Lieu</th> <th>Statut</th></tr>
-  	{{#each evenements}}
-		<tr><td>{{date}}</td><td>{{nom}}</td><td>{{lieu}}</td><td>{{statut}}</td>
-   	{{/each}}
-	</table>
+    <h1>Evènements canne de combat</h1>
+    <table class="table">
+        {{#each evenements}}
+        {{#if TitreIntermediaire}}
+        <tr><th>{{TitreIntermediaire}}</th></tr>
+        {{else}}
+        <tr><td><em>{{datedeb}}</em></td><td><strong>{{nom}}</strong> - {{lieu}} - {{statut}}</td></tr>
+        {{/if}}
+        {{/each}}
+    </table>
 </template>
