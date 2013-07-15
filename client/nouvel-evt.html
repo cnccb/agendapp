@@ -22,11 +22,11 @@
             <input type="tel" name="tel" id="tel" placeholder="téléphone" />   
             
             <label>Dates</label>
-            <span class="help-block">début</span><input type="date" name="datedeb" id="datedeb" placeholder="date de début au format jj/mm/aaaa" />            
-            <span class="help-block">fin</span> <input type="date" name="datefin" id="datefin" placeholder="date de fin au format jj/mm/aaaa" />           
+            du <input type="date" name="datedeb" id="datedeb" placeholder="début (jj/mm/aaaa)" /> au
+            <input type="date" name="datefin" id="datefin" placeholder="fin (jj/mm/aaaa" />           
 
-            <label>Lieu</label>
-            <input type="text" name="lieu" id="lieu" placeholder="ville et région ou département"/>
+            <label>Adresse</label>
+            <input type="text" name="lieu" id="lieu" placeholder="adresse de l'événement"/>
 
             <label>Echelle</label>
             <div class="btn-group" data-toggle="buttons-radio">
@@ -53,7 +53,7 @@
             </div>
             
             <label>Conditions de participation</label>
-            <input type="text" name="conditions" id="contiditions" />
+            <input type="text" name="conditions" id="conditions" />
 
             <label>Prix</label>
             <input type="text" name="prix" id="prix" />
@@ -62,7 +62,7 @@
             <input type="url" name="url" id="url" />
 
             <label>Plan (lien vers une carte)</label>
-            <input type="text" name="plan" id="plan" />
+            <input type="url" name="plan" id="plan" />
             
 
             <label>Site web</label>
@@ -72,12 +72,7 @@
             <textarea name="programme" id="programme" rows="15" cols="20"/>
             
             <label>Options</label>
-            <div class="btn-group" data-toggle="buttons-checkbox">
-                <button type="button" class="btn btn-small" data-value="buvette">Buvette</button>
-                <button type="button" class="btn btn-small" data-value="restauration">Restauration sur place</button>
-                <button type="button" class="btn btn-small" data-value="vestiaires">Vestiaires</button>
-                <input name="cible" id="cible" type="hidden" value="" />
-            </div>
+            <textarea name="options" id="options" rows="15" cols="20"/>
             
             <label>Hébergements</label>
             <textarea name="hebergement" id="hebergement" rows="15" cols="20"/>
