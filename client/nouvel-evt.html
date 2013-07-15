@@ -1,6 +1,18 @@
 <template name='nouvelEvt'>
     <h1>Ajouter un évènement</h1>
     <form method='post' id='frmNouvelEvt'>
+        <label>
+         <input type="radio" name="satut[]" value="projet" />
+         Projet
+        </label>
+        <label>
+         <input type="radio" name="satut[]" value="prevu" />
+         Prévu
+        </label>
+        <label>
+         <input type="radio" name="satut[]" value="encours" />
+         En cours
+        </label>
         <h2>En bref</h2>
         <fieldset>
             <label>Quoi ?</label>
@@ -14,6 +26,39 @@
             <h2>En détails</h2>
             <label>Horaires (votre mail)</label>
             <input type="text" name="horaires" id="horaires" />
+            <label>Forclusion</label>
+            <input type="date" name="forclusion" id="forclusion" />
+            <label>Echelle</label>
+            <select name="echelle" id="echelle">
+                <option value="locale">locale</option>
+                <option value="departementale">départementale</option>
+                <option value="regionale">régionale</option>
+                <option value="nationale">nationale</option>
+            </select>
+            <label>Cible</label>
+            <select name="cible" id="cible">
+                <option value="competiteurs">Competiteurs</option>
+                <option value="debutants">Débutants</option>
+                <option value="confirmés">Confirmés</option>
+                <option value="Jeunes">Jeunes</option>
+            </select>
+            <label>Prix</label>
+            <input type="text" name="prix" id="prix" />
+            <label>Organisateur</label>
+            <input type="text" name="orga" id="orga" />
+            <label>Contact (mail pour informations)</label>
+            <input type="mail" name="contact" id="contact" />
+            <label>Plan (lien vers une carte)</label>
+            <input type="text" name="plan" id="plan" />
+            <label>Site web</label>
+            <input type="text" name="web" id="web" />
+            <label>Programme</label>
+            <textarea name="programme" id="programme" rows="30" cols="20"/>
+            <label>
+                <input type="checkbox" name="[options]">
+                Buvette
+            </label>
+
         </fieldset>
         <button id="submitevt" class="submit">C'est parti !</button>
     </form>
