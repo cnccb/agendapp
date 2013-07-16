@@ -1,15 +1,16 @@
 <template name="listeEvt">
-    <button id="newEvt" class="btn btn-primary pull-right"><i class="icon-plus icon-white"></i> Nouvel événement</button>
+    <button id="newEvt" class="btn pull-right btn-danger"><i class="icon-plus"></i> Nouvel événement</button>
     <h1>Evènements canne de combat </h1>
         
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-striped table-condensed">
         <tbody>
         {{#each evenements}}
         {{#if TitreIntermediaire}}
-        <tr class='lignetitre'><td colspan='2'>{{TitreIntermediaire}}</td></tr>
+        <tr class='monthline info'><td colspan='2' class="lead text--">{{TitreIntermediaire}}</td></tr> 
         {{else}}
-        <tr id='{{_id}}' class='clickToDetail' title='Voire les détails'>
-            <td><em>{{jourdeb}}</em></td>
+
+        <tr id='{{_id}}' class='clickToDetail' title='Voire les détails' >
+            <td class="muted">{{jourdeb}}</td>
             <td><strong>{{nom}}</strong> - {{lieu}} - {{statut}}</td>
         </tr>
         {{/if}}

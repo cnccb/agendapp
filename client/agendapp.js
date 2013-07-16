@@ -89,6 +89,7 @@ Template.nouvelEvt.events({
                     contact: contact.value, //Contact (pour information)            
                     tel: tel.value, //tel orga
                     lieu: lieu.value, //Lieu / adresse
+                    codepostal: codepostal.value, //Lieu / adresse
                     plan: plan.value, // Plan d’accès
                     url: url.value,
                     programme: programme.value, // Programme

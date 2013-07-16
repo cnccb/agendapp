@@ -35,7 +35,8 @@ if (Meteor.isServer) {
             permalink:'e4rYh',
             password:'test',
             nom: 'Internationaux de France 2013', //nom de l'évènement
-            date: '2013-12-13',// Date 
+            datedeb: '2013-12-13',// Date 
+            datefin: '2013-12-13',// Date 
             forclusion: '2013-11-10', //Date de forclusion
             horaires:'Samedi 10h00-19h00, Dimanche 10h00-17h00', //horaires (avec alternatives si pas bordé)
             echelle: 'Nationale', //Echelle (nationale, régionale, ...)
@@ -45,6 +46,7 @@ if (Meteor.isServer) {
             statut:'en cours', //Statut           
             contact:'webmaster@darkhan.net', //Contact (pour information)            
             lieu:'Gymnase de Reully, 75012 Paris', //Lieu / adresse
+            codepostal:'75012', //cp / adresse 
             plan:'http://goo.gl/maps/U6l2H', // Plan d’accès
             url:'http://www.internationaux2015.com',
             programme:'bla bla bla bla bla bla bla', // Programme
