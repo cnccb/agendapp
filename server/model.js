@@ -10,4 +10,9 @@ if (Meteor.isServer) {
     // Meteor.publish("evt-details", function(idEvt){
     // return Evenements.find({permalink:idEvt}); //un evt en particulier, par son permalink
     // });
+    Meteor.publish("getDetailEvt", function()
+    {
+        return Evenements.find({},{fields: {admin: 0}});
+    });
+    
 }

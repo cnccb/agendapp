@@ -1,4 +1,9 @@
 //insert the new event
+var localGetDetailEvt=null;
+Deps.autorun(function(){
+    Meteor.subscribe('getDetailEvt');
+});
+
 function getMonthIndex(d)
 {
     if (_.isNaN(d.getFullYear()))
@@ -31,8 +36,8 @@ Template.listeEvt.evenements = function() {
 };
 
 Template.detailEvt.evenement = function() {
-    var id_evt=Session.get('evtEnCours');
-    var res=Evenements.findOne(id_evt);
+    var res=Evenements.findOne(Session.get('evtEnCours'));
+    res = _.omit(res,['admin','_id']);
     return res;
 };
 
@@ -98,4 +103,16 @@ Template.nouvelEvt.events({
     }
 });
 
+Template.detailEvt.events({
+    'click #return': function(e) {
+        $('#detailEvt').fadeOut(100, function() {
+            $('#listeEvt').fadeIn(500);
+        });            
+    }
+});
 
+Handlebars.registerHelper('arrayify',function(obj){
+    result = [];
+    for (var key in obj) result.push({name:key,value:obj[key]});
+    return result;
+});

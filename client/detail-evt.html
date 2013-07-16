@@ -1,90 +1,61 @@
 <template name='detailEvt'>
-    <button id="return" class="btn pull-right">Annuler</button>
+    <button id="return" class="btn pull-right">Retour</button>
     <h1>{{evenement.nom}}</h1>
 
-    <label for="admin">Adresse e-mail de gestion</label>
-    <input type="email" name="admin" id="admin"  placeholder="e-mail pour la gestion de l'événement"/>
-    <div></div>    
-    <div class="btn-group" data-toggle="buttons-radio">
-        <button type="button" class="btn" data-value="enprojet">En projet</button>
-        <button type="button" class="btn btn-primary" data-value="confirme">Confirmé</button>
-        <button type="button" class="btn btn-danger" data-value="annule">Annulé</button>
-        <input type="hidden" name="statut" value=""  id="statut" />
-    </div>
+    <dl class="dl-horizontal">
+        {{#each arrayify evenement}}
+        {{#if value }}
+        <dt>{{name}}</dt>
+        <dd>{{value}}</dd>
+        {{/if}}
+        {{/each}}
+    </dl>
 
-    <fieldset>
+dsd
+    <dl class="dl-horizontal">
+        <dt>Statut</dt>
+        <dd>{{evenement.statut}}</dd>
 
-        <label for="nom">Événement</label>
-        <input type="text" name="nom" id="nom" placeholder="nom de l'événement"/>
+        <dt>Événement</dt><dd>{{evenement.nom}}</dd>
 
-        <label>Contact pour informations</label>
-        <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur"/>            
-        <input type="email" name="contact" id="contact" placeholder="email" />   
-        <input type="tel" name="tel" id="tel" placeholder="téléphone" />   
+        <dt>Contact pour informations</dt><dd>{{evenement.orga}}
+            {{evenement.contact}}
+            {{evenement.tel}}</dd>
 
-        <label>Dates</label>
-        du <input type="date" name="datedeb" id="datedeb" placeholder="début (jj/mm/aaaa)" /> au
-        <input type="date" name="datefin" id="datefin" placeholder="fin (jj/mm/aaaa" />           
+        <dt>Dates</dt><dd>
+            du <{{evenement.datedeb}}
+            au {{evenement.datefin}}</dd>
 
-        <label>Adresse</label>
-        <input type="text" name="lieu" id="lieu" placeholder="adresse de l'événement"/>
+        <dt>Adresse</dt><dd>.{{evenement.lieu}}</dd>
 
-        <label>Echelle</label>
-        <div class="btn-group" data-toggle="buttons-radio">
-            <button type="button" class="btn btn-small" data-value="locale">locale</button>
-            <button type="button" class="btn btn-small" data-value="departementale">départementale</button>
-            <button type="button" class="btn btn-small" data-value="regionale">régionale</button>
-            <button type="button" class="btn btn-small" data-value="nationale">nationale</button>
-            <input type="hidden" name="echelle" value=""  id="echelle" />
-        </div>
+        <dt>Echelle</dt><dd>.{{evenement.echelle}}</dd>
 
-        <label>Horaires</label>
-        <input type="text" name="horaires" id="horaires" />
+        <dt>Horaires</dt><dd>.{{evenement.horaires}}</dd>
 
-        <label>Forclusion</label>
-        <input type="date" name="forclusion" id="forclusion" />
+        <dt>Forclusion</dt><dd>.{{evenement.forclusion}}</dd>
 
-        <label>Cible (public attendu)</label>
-        <div class="btn-group" data-toggle="buttons-radio">
-            <button type="button" class="btn btn-small" data-value="competiteurs">Competiteurs</button>
-            <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
-            <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
-            <button type="button" class="btn btn-small" data-value="jeunes">Jeunes</button>
-            <input name="cible" id="cible" type="hidden" value="" />
-        </div>
+        <dt>Cible (public attendu)</dt><dd>.{{evenement.cible}}</dd>
 
-        <label>Conditions de participation</label>
-        <input type="text" name="conditions" id="conditions" />
+        <dt>Conditions de participation</dt><dd>{{evenement.conditions}}</dd>
 
-        <label>Prix</label>
-        <input type="text" name="prix" id="prix" />
+        <dt>Prix</dt><dd>{{evenement.prix}}</dd>
 
-        <label>Site web</label>
-        <input type="url" name="url" id="url" />
+        <dt>Site web</dt><dd>{{evenement.url}}</dd>
 
-        <label>Plan (lien vers une carte)</label>
-        <input type="url" name="plan" id="plan" />
+        <dt>Plan (lien vers une carte)</dt><dd>{{evenement.plan}}</dd>
 
 
-        <label>Site web</label>
-        <input type="text" name="web" id="web" />
+        <dt>Site web</dt><dd>{{evenement.web}}</dd>
 
-        <label>Programme</label>
-        <textarea name="programme" id="programme" rows="15" cols="20"/>
+        <dt>Programme</dt><dd>{{evenement.programme}}</dd>
 
-        <label>Options</label>
-        <textarea name="options" id="options" rows="15" cols="20"/>
+        <dt>Options</dt><dd>{{evenement.options}}</dd>
 
-        <label>Hébergements</label>
-        <textarea name="hebergement" id="hebergement" rows="15" cols="20"/>
+        <dt>Hébergements</dt><dd>{{evenement.hebergement}}</dd>
 
-        <label>Restauration</label>
-        <textarea name="restauration" id="restauration" rows="15" cols="20"/>
+        <dt>Restauration</dt><dd>{{evenement.restauration}}</dd>
 
-        <label>Visites</label>
-        <textarea name="visites" id="visites" rows="15" cols="15"/>
-
-    </fieldset>
-    <button id="submitevt" class="submit">C'est parti !</button>
+        <dt>Visites</dt><dd>{{evenement.visites}}</dd>
+    </dl>
 
 </template>

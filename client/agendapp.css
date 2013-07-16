@@ -1,3 +1,4 @@
 /* CSS declarations go here */
 #nouvelEvt{display:none;}
 #detailEvt{display:none;}
+tr.clickToDetail:hover{cursor: pointer;}

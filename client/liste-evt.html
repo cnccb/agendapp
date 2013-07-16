@@ -8,7 +8,10 @@
         {{#if TitreIntermediaire}}
         <tr class='lignetitre'><td colspan='2'>{{TitreIntermediaire}}</td></tr>
         {{else}}
-        <tr id='{{_id}}' class='clickToDetail'><td><em>{{jourdeb}}</em></td><td><strong>{{nom}}</strong> - {{lieu}} - {{statut}}</td></tr>
+        <tr id='{{_id}}' class='clickToDetail' title='Voire les détails'>
+            <td><em>{{jourdeb}}</em></td>
+            <td><strong>{{nom}}</strong> - {{lieu}} - {{statut}}</td>
+        </tr>
         {{/if}}
         {{/each}}
         </tbody>
