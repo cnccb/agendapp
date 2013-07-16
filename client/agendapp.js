@@ -1,15 +1,31 @@
 
-        
  Meteor.startup(function () {
         // code to run on server at startup
-        Meteor.call('sendConfirmationMail','Xs2PZuChzod6iKZE4');
-        console.log("calling sendConfirmationMail");
-      });
+        //insert the new event
+// var localGetDetailEvt=null;
+// Deps.autorun(function(){
+//     Meteor.subscribe('getDetailEvt');
 
-//insert the new event
-var localGetDetailEvt=null;
-Deps.autorun(function(){
-    Meteor.subscribe('getDetailEvt');
+    //vérification de la query
+    var query = window.location.href.split('#');
+    console.log(query);
+    //si la query contient des variables, on fait la vérif du code
+    if(query[1] && query[2]) 
+    {
+        Session.set('EnvenementCourantId', query[2]);
+        Meteor.call('verifCodeConfirm',query[2], query[1], function(error,result){
+            if(result)
+            {
+                alert("Votre mail est validé !"); //todo faire mieux que ça...
+                window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
+            }
+                
+            else
+                alert("erreur dans la validation !");
+        });
+        //myEvt = Evenements.findOne(query[2]);
+        //console.log(myEvt);
+    }
 });
 
 function getMonthIndex(d)
@@ -101,7 +117,9 @@ Template.nouvelEvt.events({
                 };
         console.log("nouvel evènement");
         console.log(newEvent);
-        Evenements.insert(newEvent);
+        var idNewEvt = Evenements.insert(newEvent);
+        Meteor.call('sendConfirmationMail',idNewEvt);
+        console.log("calling sendConfirmationMail");
         $('#nouvelEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
         });        
