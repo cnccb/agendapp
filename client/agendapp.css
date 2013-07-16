@@ -2,4 +2,5 @@
 #nouvelEvt{display:none;}
 #detailEvt{display:none;}
 tr.clickToDetail:hover{cursor: pointer;}
-.monthline td{font-weight: bold;text-align: center;}
+
+#detailEvt div h2{font-size: 110%}
