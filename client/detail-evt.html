@@ -2,60 +2,69 @@
     <button id="return" class="btn pull-right btn-primary">Retour</button>
     <h1>{{evenement.nom}}</h1>
 
-    <dl class="dl-horizontal">
-        {{#each arrayify evenement}}
-        {{#if value }}
-        <dt>{{name}}</dt>
-        <dd>{{value}}</dd>
+    <div class="row">
+        {{#if evenement.statut}}
+        <div class="span12">
+            <h2>Meta</h2>
+            <p>Statut :{{evenement.statut}}</p>
+            <p>Echelle :{{evenement.echelle}}</p>
+        </div>
         {{/if}}
-        {{/each}}
-    </dl>
+    </div>
 
-dsd
-    <dl class="dl-horizontal">
-        <dt>Statut</dt>
-        <dd>{{evenement.statut}}</dd>
+    <div class="row">
+        {{#if evenement.orga}}
+        <div class="span4" id='evt'> 
+            <h2>Organisateur</h2>
+            <address>
+                <strong>{{evenement.orga}}</strong>
+                {{#if evenement.tel}}<br>{{evenement.tel}}{{/if}}
+                {{#if evenement.contact}}<br><a href="mailto:#">{{evenement.contact}}</a>{{/if}}                
+                {{#if evenement.url}}<br><a href="#">{{evenement.url}}</a>{{/if}}                
+            </address>            
+        </div>
+        {{/if}}
 
-        <dt>Événement</dt><dd>{{evenement.nom}}</dd>
+        <div class="span4">
+            <h2>Dates</h2>
+            <p><strong>Du {{evenement.datedeb}} au {{evenement.datefin}}</strong></p>
+            <p>Horaires : {{evenement.horaires}}</p>
+            <p>Forclusion : {{evenement.forclusion}}</p>
 
-        <dt>Contact pour informations</dt><dd>{{evenement.orga}}
-            {{evenement.contact}}
-            {{evenement.tel}}</dd>
+        </div>
+        <div class="span4">
+            <h2>Adresse</h2>
+            <address>
+                <strong>{{evenement.lieu}}</strong>
+                {{#if evenement.plan}}<br><a href='#'>{{evenement.plan}}</a>{{/if}}
+            </address>            
+        </div>
+    </div>        
+    <div class="row">
+        {{#if evenement.programme}}    <div class="span8"><h2>Programme</h2><p>{{evenement.programme}}</p></div>{{/if}}
+        <div class="span4">
+            <h2>Divers</h2>
+            <p>Cible (public attendu) : {{evenement.cible}}</p>
+            <p>Conditions de participation : {{evenement.conditions}}</p>
+            <p>Prix : {{evenement.prix}}</p>
+            {{#if evenement.options}}<p>Options:{{evenement.options}}</p></div>{{/if}}
+        </div>
+    </div>        
 
-        <dt>Dates</dt><dd>
-            du <{{evenement.datedeb}}
-            au {{evenement.datefin}}</dd>
+    <div class="row">
+        {{#if evenement.hebergement}}  <div class="span4"><h2>Hébergement recommandées</h2><p>{{evenement.hebergement}}</p></div>{{/if}}
+        {{#if evenement.restauration}} <div class="span4"><h2>Restauration recommandées</h2><p>{{evenement.restauration}}</p></div>{{/if}}
+        {{#if evenement.visites}}      <div class="span4"><h2>Visites recommandées</h2><p>{{evenement.visites}}</p></div>{{/if}}
+    </div>        
 
-        <dt>Adresse</dt><dd>.{{evenement.lieu}}</dd>
-
-        <dt>Echelle</dt><dd>.{{evenement.echelle}}</dd>
-
-        <dt>Horaires</dt><dd>.{{evenement.horaires}}</dd>
-
-        <dt>Forclusion</dt><dd>.{{evenement.forclusion}}</dd>
-
-        <dt>Cible (public attendu)</dt><dd>.{{evenement.cible}}</dd>
-
-        <dt>Conditions de participation</dt><dd>{{evenement.conditions}}</dd>
-
-        <dt>Prix</dt><dd>{{evenement.prix}}</dd>
-
-        <dt>Site web</dt><dd>{{evenement.url}}</dd>
-
-        <dt>Plan (lien vers une carte)</dt><dd>{{evenement.plan}}</dd>
-
-
-        <dt>Site web</dt><dd>{{evenement.web}}</dd>
-
-        <dt>Programme</dt><dd>{{evenement.programme}}</dd>
-
-        <dt>Options</dt><dd>{{evenement.options}}</dd>
-
-        <dt>Hébergements</dt><dd>{{evenement.hebergement}}</dd>
-
-        <dt>Restauration</dt><dd>{{evenement.restauration}}</dd>
-
-        <dt>Visites</dt><dd>{{evenement.visites}}</dd>
-    </dl>
+    <h1>Récapitulatif</h2>
+        <dl class="dl-horizontal">
+            {{#each arrayify evenement}}
+            {{#if value }}
+            <dt>{{name}}</dt>
+            <dd>{{value}}</dd>
+            {{/if}}
+            {{/each}}
+        </dl>
 
 </template>
