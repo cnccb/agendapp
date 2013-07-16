@@ -1,91 +1,163 @@
 <template name='nouvelEvt'>
     <button id="cancel" class="btn pull-right btn-danger">Annuler</button>
     <h1>Ajouter un évènement</h1>
-    
-    <form method='post' id='frmNouvelEvt'>
-        <label for="admin">Adresse e-mail de gestion</label>
-            <input type="email" name="admin" id="admin"  placeholder="e-mail pour la gestion de l'événement"/>
-            <div></div>    
-        <div class="btn-group" data-toggle="buttons-radio">
-            <button type="button" class="btn" data-value="enprojet">En projet</button>
-            <button type="button" class="btn btn-primary" data-value="confirme">Confirmé</button>
-            <button type="button" class="btn btn-danger" data-value="annule">Annulé</button>
-            <input type="hidden" name="statut" value=""  id="statut" />
+
+    <form method='post' id='frmNouvelEvt' class="form-horizontal"> 
+
+        <div class="control-group">
+            <label class="control-label" for="nom">Titre</label>
+            <div class="controls">
+                <input type="text" name="nom" id="nom" placeholder="nom de l'événement" required class='span6'/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label"  for="admin">Adresse e-mail</label>
+            <div class="controls">
+                <input type="email" name="admin" id="admin"  placeholder="pour la gestion de l'événement" required />
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <label class="control-label"  for="admin">Statut</label>
+            <div class="controls">
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button type="button" class="btn btn-small" data-value="enprojet">En projet</button>
+                    <button type="button" class="btn btn-small btn-primary" data-value="confirme">Confirmé</button>
+                    <button type="button" class="btn btn-small btn-danger" data-value="annule">Annulé</button>
+                    <input type="hidden" name="statut" value=""  id="statut" />
+                </div>
+            </div>
         </div>
         
-        <fieldset>
-
-            <label for="nom">Événement</label>
-            <input type="text" name="nom" id="nom" placeholder="nom de l'événement"/>
-            
-            <label>Contact pour informations</label>
-            <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur"/>            
-            <input type="email" name="contact" id="contact" placeholder="email" />   
-            <input type="tel" name="tel" id="tel" placeholder="téléphone" />   
-            
-            <label>Dates</label>
-            du <input type="date" name="datedeb" id="datedeb" placeholder="début (jj/mm/aaaa)" /> au
-            <input type="date" name="datefin" id="datefin" placeholder="fin (jj/mm/aaaa" />           
-
-            <label>Adresse</label>
-            <input type="text" name="lieu" id="lieu" placeholder="adresse de l'événement"/>
-
-            <label>Echelle</label>
-            <div class="btn-group" data-toggle="buttons-radio">
-                <button type="button" class="btn btn-small" data-value="locale">locale</button>
-                <button type="button" class="btn btn-small" data-value="departementale">départementale</button>
-                <button type="button" class="btn btn-small" data-value="regionale">régionale</button>
-                <button type="button" class="btn btn-small" data-value="nationale">nationale</button>
-                <input type="hidden" name="echelle" value=""  id="echelle" />
+        <div class="control-group">
+            <label class="control-label">Portée</label>
+            <div class="controls">
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button type="button" class="btn btn-small" data-value="locale" checked >Locale</button>
+                    <button type="button" class="btn btn-small" data-value="departementale">Départementale</button>
+                    <button type="button" class="btn btn-small" data-value="regionale">Régionale</button>
+                    <button type="button" class="btn btn-small" data-value="nationale">Nationale</button>
+                    <input type="hidden" name="echelle" value=""  id="echelle" />
+                </div>
             </div>
+        </div>
 
-            <label>Horaires</label>
-            <input type="text" name="horaires" id="horaires" />
-
-            <label>Forclusion</label>
-            <input type="date" name="forclusion" id="forclusion" />
-
-            <label>Cible (public attendu)</label>
-            <div class="btn-group" data-toggle="buttons-radio">
-                <button type="button" class="btn btn-small" data-value="competiteurs">Competiteurs</button>
-                <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
-                <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
-                <button type="button" class="btn btn-small" data-value="jeunes">Jeunes</button>
-                <input name="cible" id="cible" type="hidden" value="" />
+        <div class="control-group">
+            <label class="control-label">Dates</label>
+            <div class="controls">
+                Du <input type="date" name="datedeb" id="datedeb" placeholder="début (jj/mm/aaaa)" /> au
+                <input type="date" name="datefin" id="datefin" placeholder="fin (jj/mm/aaaa)" />           
             </div>
-            
-            <label>Conditions de participation</label>
-            <input type="text" name="conditions" id="conditions" />
+        </div>
 
-            <label>Prix</label>
-            <input type="text" name="prix" id="prix" />
-            
-            <label>Site web</label>
-            <input type="url" name="url" id="url" />
+        <div class="control-group">
+            <label class="control-label">Adresse</label>
+            <div class="controls">
+                <input type="text" name="lieu" id="lieu" placeholder="adresse de l'événement"/>
+            </div>
+        </div>
 
-            <label>Plan (lien vers une carte)</label>
-            <input type="url" name="plan" id="plan" />
-            
+        <div class="control-group">
+            <label class="control-label">Contact</label>
+            <div class="controls">
+                <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur" />            
+                <input type="email" name="contact" id="contact" placeholder="email" />   
+                <input type="tel" name="tel" id="tel" placeholder="téléphone" />   
+            </div>
+        </div>
 
-            <label>Site web</label>
-            <input type="text" name="web" id="web" />
+        <div class="control-group">
+            <label class="control-label">Horaires</label>
+            <div class="controls">
+                <input type="text" name="horaires" id="horaires" />
+            </div>
+        </div>
 
-            <label>Programme</label>
-            <textarea name="programme" id="programme" rows="15" cols="20"/>
-            
-            <label>Options</label>
-            <textarea name="options" id="options" rows="15" cols="20"/>
-            
-            <label>Hébergements</label>
-            <textarea name="hebergement" id="hebergement" rows="15" cols="20"/>
-            
-            <label>Restauration</label>
-            <textarea name="restauration" id="restauration" rows="15" cols="20"/>
-            
-            <label>Visites</label>
-            <textarea name="visites" id="visites" rows="15" cols="15"/>
+        <div class="control-group evtParOption">
+            <label class="control-label">Forclusion</label>
+            <div class="controls">
+                <input type="date" name="forclusion" id="forclusion" />
+            </div>
+        </div>
 
-        </fieldset>
+        <div class="control-group evtParOption">
+            <label class="control-label">Cible (public attendu)</label>
+            <div class="controls">
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button type="button" class="btn btn-small" data-value="competiteurs">Competiteurs</button>
+                    <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
+                    <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
+                    <button type="button" class="btn btn-small" data-value="jeunes">Jeunes</button>
+                    <input name="cible" id="cible" type="hidden" value="" />
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Conditions de participation</label>
+            <div class="controls">
+                <input type="text" name="conditions" id="conditions" />
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Prix</label>
+            <div class="controls">
+                <input type="text" name="prix" id="prix" />
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Site web</label>
+            <div class="controls">
+                <input type="url" name="url" id="url" />
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Plan (lien vers une carte)</label>
+            <div class="controls">
+                <input type="url" name="plan" id="plan" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Programme</label>
+            <div class="controls">
+                <textarea name="programme" id="programme" rows="5" />
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Options</label>
+            <div class="controls">
+                <textarea name="options" id="options" rows="5" />
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Hébergements</label>
+            <div class="controls">
+                <textarea name="hebergement" id="hebergement" rows="5" />
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Restauration</label>
+            <div class="controls">
+                <textarea name="restauration" id="restauration" rows="5" />
+            </div>
+        </div>
+
+        <div class="control-group evtParOption">
+            <label class="control-label">Visites</label>
+            <div class="controls">
+                <textarea name="visites" id="visites" rows="5" />
+            </div>
+        </div>
+
         <button id="submitevt" class="submit">C'est parti !</button>
     </form>
 </template>
