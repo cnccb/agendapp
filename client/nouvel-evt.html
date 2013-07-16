@@ -24,7 +24,7 @@
         <fieldset id='evtParOblig'>
             <legend>Fiche événement</legend>
             <div class="control-group">
-                <label class="control-label"  for="admin">Statut / Portée</label>
+                <label class="control-label"  for="admin">Statut & Portée</label>
                 <div class="controls">
                     <div class="btn-group" data-toggle="buttons-radio">
                         <button type="button" class="btn btn-small" data-value="enprojet">En projet</button>
@@ -37,6 +37,7 @@
                         <button type="button" class="btn btn-small" data-value="departementale">Départementale</button>
                         <button type="button" class="btn btn-small" data-value="regionale">Régionale</button>
                         <button type="button" class="btn btn-small" data-value="nationale">Nationale</button>
+                        <button type="button" class="btn btn-small" data-value="internationale">Internationale</button>
                         <input type="hidden" name="echelle" value=""  id="echelle" />
                     </div>
                 </div>
@@ -54,22 +55,17 @@
                 <label class="control-label">Adresse</label>
                 <div class="controls">
                     <input type="text" name="lieu" id="lieu" placeholder="adresse de l'événement"/>
+                    <input type="text" name="codepostal" id="codepostal" pattern="[0-9]{5}" placeholder="code postal de l'événement"/>
                 </div>
             </div>
 
-            <div class="control-group">
-                <label class="control-label">Code Postal</label>
-                <div class="controls">
-                    <input type="text" name="codepostal" id="codepostal" placeholder="le code postal de l'événement"/>
-                </div>
-            </div>
 
             <div class="control-group">
                 <label class="control-label">Contact</label>
                 <div class="controls">
                     <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur" />            
                     <input type="email" name="contact" id="contact" placeholder="email" />   
-                    <input type="tel" name="tel" id="tel" placeholder="téléphone" />   
+                    <input type="tel" name="tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" id="tel" placeholder="téléphone" />   
                 </div>
             </div>
         </fieldset>
@@ -171,6 +167,6 @@
             </div>
         </fieldset>
 
-        <button id="submitevt" class="submit">C'est parti !</button>
+        <button id="submitevt" class="submit btn btn-success">Ajouter un événement au calendrier national</button>
     </form>
 </template>

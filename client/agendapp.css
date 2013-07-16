@@ -4,4 +4,4 @@
 tr.clickToDetail:hover{cursor: pointer;}
 
 #detailEvt div h2{font-size: 110%}
-#nouvelEvt .evtParOption{diplay:none;} 
+#nouvelEvt .evtParOption{/*display:none;*/} 

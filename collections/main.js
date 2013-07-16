@@ -46,6 +46,7 @@ if (Meteor.isServer) {
             statut:'en cours', //Statut           
             contact:'webmaster@darkhan.net', //Contact (pour information)            
             lieu:'Gymnase de Reully, 75012 Paris', //Lieu / adresse
+            codepostal:'75012', //cp / adresse 
             plan:'http://goo.gl/maps/U6l2H', // Plan d’accès
             url:'http://www.internationaux2015.com',
             programme:'bla bla bla bla bla bla bla', // Programme
