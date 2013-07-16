@@ -1,12 +1,16 @@
 <template name="listeEvt">
-    <h1>Evènements canne de combat</h1>
-    <table class="table">
+    <button id="newEvt" class="btn pull-right">Nouvel événement</button>
+    <h1>Evènements canne de combat </h1>
+        
+    <table class="table table-hover table-striped">
+        <tbody>
         {{#each evenements}}
         {{#if TitreIntermediaire}}
-        <tr><th>{{TitreIntermediaire}}</th></tr>
+        <tr class='lignetitre'><td colspan='2'>{{TitreIntermediaire}}</td></tr>
         {{else}}
-        <tr><td><em>{{datedeb}}</em></td><td><strong>{{nom}}</strong> - {{lieu}} - {{statut}}</td></tr>
+        <tr id='{{_id}}' class='clickToDetail'><td><em>{{jourdeb}}</em></td><td><strong>{{nom}}</strong> - {{lieu}} - {{statut}}</td></tr>
         {{/if}}
         {{/each}}
+        </tbody>
     </table>
 </template>

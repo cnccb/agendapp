@@ -1,7 +1,8 @@
 //insert the new event
-function getMonthIndex(key)
+function getMonthIndex(d)
 {
-    var d = new Date(key);
+    if (_.isNaN(d.getFullYear()))
+        return 'Inconnu';
     var nommois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
         'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
     return nommois[d.getMonth()] + " " + d.getFullYear();
@@ -9,17 +10,19 @@ function getMonthIndex(key)
 }
 
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find().fetch();
+    var liste = Evenements.find({}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
 
     var lastindex = null;
     _.each(liste, function(value, key, list) {
-        var index = getMonthIndex(value.datedeb);
+        var d = new Date(value.datedeb);
+        var index = getMonthIndex(d);
         if (index !== lastindex)
         {
             evenements.push({"TitreIntermediaire": index});
             lastindex = index;
         }
+        value.jourdeb = d.toLocaleDateString();
         evenements.push(value);
     });
     console.log(evenements);
@@ -27,16 +30,38 @@ Template.listeEvt.evenements = function() {
 
 };
 
+Template.detailEvt.evenement = function() {
+    var id_evt=Session.get('evtEnCours');
+    var res=Evenements.findOne(id_evt);
+    return res;
+};
+
+
+Template.listeEvt.events({
+    'click #newEvt': function(e) {
+        $('#listeEvt').fadeOut(100, function() {
+            $('#nouvelEvt').fadeIn(500);
+        });
+    },
+    'click .clickToDetail': function(e) {
+        Session.set('evtEnCours',$(e.currentTarget).attr('id'));
+        $('#listeEvt').fadeOut(100, function() {
+            $('#detailEvt').fadeIn(500);
+        });
+    }
+    
+});
 Template.nouvelEvt.events({
+    'click #cancel': function(e) {
+        $('#nouvelEvt').fadeOut(100, function() {
+            $('#listeEvt').fadeIn(500);
+        });            
+    },
     'click #submitevt': function(e) {
         e.preventDefault();
-        var newId = _.uniqueId();
-
-
         var newEvent =
                 {
                     admin: admin.value, //Mail pour l'administration
-                    permalink: newId,
                     // password:'test',
                     nom: nom.value, //nom de l'évènement
                     datedeb: datedeb.value, // Date 
@@ -63,10 +88,14 @@ Template.nouvelEvt.events({
         console.log("nouvel evènement");
         console.log(newEvent);
         Evenements.insert(newEvent);
-
+        $('#nouvelEvt').fadeOut(100, function() {
+            $('#listeEvt').fadeIn(500);
+        });        
     },
     'submit': function(e) {
         console.log('form submit');
         e.preventDefault();
     }
 });
+
+
