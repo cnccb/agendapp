@@ -1,3 +1,11 @@
+
+        
+ Meteor.startup(function () {
+        // code to run on server at startup
+        Meteor.call('sendConfirmationMail','Xs2PZuChzod6iKZE4');
+        console.log("calling sendConfirmationMail");
+      });
+
 //insert the new event
 var localGetDetailEvt=null;
 Deps.autorun(function(){
