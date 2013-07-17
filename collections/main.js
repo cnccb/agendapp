@@ -32,9 +32,8 @@ if (Meteor.isServer) {
     if(Evenements.find({}).count()<=3){
         testEvt.forEach(function(item){
             Evenements.insert(item);    
-        })
-        
-    }
+        });        
+    };
     // code to run on server at startup
   });
 }

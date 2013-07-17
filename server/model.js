@@ -29,7 +29,6 @@ if (Meteor.isServer) {
                 
             var evt = Evenements.findOne(evtId);
             var codeConfirm = Random.hexString(12);
-            Evenements.update(evtId, {$set: {codeConfirmMail: codeConfirm}});
             Email.send({
               to: evt.admin,
               from: "webmaster@cnccb.net",
@@ -37,6 +36,9 @@ if (Meteor.isServer) {
               text: "Veuillez cliquer ici pour confirmer votre email : http://localhost:3000/#"+codeConfirm+'#'+evtId
             });
             console.log("mail envoyé");
+            
+            Evenements.update(evtId, {$set: {codeConfirmMail: codeConfirm}});
+            return true;
         },
         verifCodeConfirm: function(evtId, codeConfirm)
         {
