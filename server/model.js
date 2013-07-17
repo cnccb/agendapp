@@ -2,8 +2,8 @@
 if (Meteor.isServer) {
     Meteor.startup(function () {
       //Evenements.update({codeConfirm:{$ne:"ok"}},{$set: {codeConfirmMail: "ok"}});
-     // process.env.MAIL_URL = 'smtp://smtp2.phpnet.org:25'; //serveur pour l'envoi du mail de confirmation
-      var SERVER_URL ="http://localhost:3000"; //adresse du serveur
+      process.env.MAIL_URL = 'smtp://smtp2.phpnet.org:25'; //serveur pour l'envoi du mail de confirmation
+      SERVER_URL ="http://localhost:3000"; //adresse du serveur
       });
 //todo finir quand on enlevera l'autopublish
     // Meteor.publish("evt-all", function () {
@@ -55,7 +55,8 @@ if (Meteor.isServer) {
         {
            var evt = Evenements.findOne(evtId);
            console.log("Vérification du code de confirmation"+codeConfirm); 
-           console.log("evt");
+           console.log("evt vérifié : ");
+           console.log(evt);
            if(evt.codeConfirmMail===codeConfirm)
            {
             //envoi email d'administration
@@ -64,7 +65,7 @@ if (Meteor.isServer) {
             var message = "Bonjour, \n\n Votre email a été confirmé pour l'événement "
               +"'"+evt.nom+"' sur l'application Agend'app. Nous avons besoin de confirmer votre e-mail pour poursuivre :\n\n"
               +"Veuillez trouver ci-dessous le lien pour administrer l'évenement : \n"
-              +urlConfirm+"\n"
+              +urlAdmin+"\n"
               +"Merci d'avoir utilisé Agend'app ! (ne répondez pas à ce message, il a été envoyé automatiquement. Pour tout contact, merci d'envoyer un mail à webmaster@cnccb.net"
               +"\n\n L'équipe Agend'App - CNCCB";
 
@@ -75,7 +76,7 @@ if (Meteor.isServer) {
               subject: "[Agend'app] Votre lien d'administration pour l'événement "+evt.nom+"",
               text: message
             });
-
+            console.log("mail envoyé");
             //update evt
             Evenements.update(evtId, {$set: {codeConfirmMail: "ok", permalink: urlAdmin}});
 
