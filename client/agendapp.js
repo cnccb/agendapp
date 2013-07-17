@@ -7,7 +7,7 @@
 //     Meteor.subscribe('getDetailEvt');
 
     //vérification de la query
-    
+
     var query = window.location.href.split('#');
     console.log(query);
     //si la query contient des variables, on fait la vérif du code
@@ -17,7 +17,7 @@
         Meteor.call('verifCodeConfirm',query[2], query[1], function(error,result){
             if(result)
             {
-                alert("Votre mail est validé !"); //todo faire mieux que ça...
+                alert("Votre mail est validé ! Vous allez recevoir le lien d'administration par email."); //todo faire mieux que ça...
                 window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
             }
                 
@@ -26,6 +26,13 @@
         });
         //myEvt = Evenements.findOne(query[2]);
         //console.log(myEvt);
+    }
+    else if(query[1])
+    {
+        Session.set('evtEnCours',query[1]);
+        $('#listeEvt').fadeOut(100, function() {
+            $('#detailEvt').fadeIn(500);
+        });
     }
 });
 
