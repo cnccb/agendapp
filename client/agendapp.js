@@ -7,6 +7,7 @@
 //     Meteor.subscribe('getDetailEvt');
 
     //vérification de la query
+    
     var query = window.location.href.split('#');
     console.log(query);
     //si la query contient des variables, on fait la vérif du code
@@ -39,7 +40,7 @@ function getMonthIndex(d)
 }
 
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find({}, {sort: {"datedeb": 1}}).fetch();
+    var liste = Evenements.find({codeConfirmMail:"ok"}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
 
     var lastindex = null;
@@ -117,7 +118,7 @@ Template.nouvelEvt.events({
                 };
         console.log("nouvel evènement");
         console.log(newEvent);
-        var idNewEvt = Evenements.insert(newEvent);
+        var idNewEvt = Evenements.insert(newEvent)
         Meteor.call('sendConfirmationMail',idNewEvt);
         console.log("calling sendConfirmationMail");
         $('#nouvelEvt').fadeOut(100, function() {

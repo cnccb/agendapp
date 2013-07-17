@@ -1,7 +1,8 @@
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
-      process.env.MAIL_URL = 'smtp://smtp2.phpnet.org:25';
+      //Evenements.update({codeConfirm:{$ne:"ok"}},{$set: {codeConfirmMail: "ok"}});
+      process.env.MAIL_URL = 'smtp://smtp2.phpnet.org:25'; //serveur pour l'envoi du mail de confirmation
       });
 //todo finir quand on enlevera l'autopublish
     // Meteor.publish("evt-all", function () {
@@ -28,7 +29,7 @@ if (Meteor.isServer) {
                 
             var evt = Evenements.findOne(evtId);
             var codeConfirm = Random.hexString(12);
-            Evenements.update(evtId, {$push: {codeConfirmMail: codeConfirm}});
+            Evenements.update(evtId, {$set: {codeConfirmMail: codeConfirm}});
             Email.send({
               to: evt.admin,
               from: "webmaster@cnccb.net",
@@ -42,7 +43,13 @@ if (Meteor.isServer) {
            var evt = Evenements.findOne(evtId);
            console.log("Vérification du code de confirmation"+codeConfirm); 
            console.log("evt");
-           return evt.codeConfirmMail===codeConfirm;
+           if(evt.codeConfirmMail===codeConfirm)
+           {
+            Evenements.update(evtId, {$set: {codeConfirmMail: "ok"}});
+            return true;
+           }
+           else return false;
+           
         }
     });
 
