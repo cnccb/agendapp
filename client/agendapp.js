@@ -62,6 +62,16 @@ Template.nouvelEvt.events({
             $('#listeEvt').fadeIn(500);
         });            
     },
+    'click #ouvrirreco': function(e) {
+        $('#evtReco .evtParOption').toggle();
+        $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');        
+        location.hash = "#evtReco";
+    },
+    'click #ouvrircomplement': function(e) {
+        $('#evtCompInfo .evtParOption').toggle();
+        $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');        
+        location.hash = "#evtCompInfo";
+    },
     'click #submitevt': function(e) {
         e.preventDefault();
         var newEvent =

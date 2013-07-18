@@ -2,6 +2,8 @@
 #nouvelEvt{display:none;}
 #detailEvt{display:none;}
 tr.clickToDetail:hover{cursor: pointer;}
+#ouvrircomplement:hover{cursor: pointer;}
+#ouvrirreco:hover{cursor: pointer;}
 
 #detailEvt div h2{font-size: 110%}
-#nouvelEvt .evtParOption{/*display:none;*/} 
+#nouvelEvt .evtParOption{display:none;} 
