@@ -1,7 +1,39 @@
-//insert the new event
-var localGetDetailEvt=null;
-Deps.autorun(function(){
-    Meteor.subscribe('getDetailEvt');
+
+ Meteor.startup(function () {
+        // code to run on server at startup
+        //insert the new event
+// var localGetDetailEvt=null;
+// Deps.autorun(function(){
+//     Meteor.subscribe('getDetailEvt');
+
+    //vérification de la query
+
+    var query = window.location.href.split('#');
+    console.log(query);
+    //si la query contient des variables, on fait la vérif du code
+    if(query[1] && query[2]) 
+    {
+        Session.set('EnvenementCourantId', query[2]);
+        Meteor.call('verifCodeConfirm',query[2], query[1], function(error,result){
+            if(result)
+            {
+                alert("Votre mail est validé ! Vous allez recevoir le lien d'administration par email."); //todo faire mieux que ça...
+                window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
+            }
+                
+            else
+                alert("erreur dans la validation !");
+        });
+        //myEvt = Evenements.findOne(query[2]);
+        //console.log(myEvt);
+    }
+    else if(query[1])
+    {
+        Session.set('evtEnCours',query[1]);
+        $('#listeEvt').fadeOut(100, function() {
+            $('#detailEvt').fadeIn(500);
+        });
+    }
 });
 
 function getMonthIndex(d)
@@ -15,7 +47,7 @@ function getMonthIndex(d)
 }
 
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find({}, {sort: {"datedeb": 1}}).fetch();
+    var liste = Evenements.find({codeConfirmMail:"ok"}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
 
     var lastindex = null;
@@ -103,7 +135,9 @@ Template.nouvelEvt.events({
                 };
         console.log("nouvel evènement");
         console.log(newEvent);
-        Evenements.insert(newEvent);
+        var idNewEvt = Evenements.insert(newEvent)
+        Meteor.call('sendConfirmationMail',idNewEvt);
+        console.log("calling sendConfirmationMail");
         $('#nouvelEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
         });        

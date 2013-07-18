@@ -29,34 +29,11 @@ structure :
 //init base
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    if(Evenements.find({}).count()===0){
-        Evenements.insert({
-            admin:'philippe@canniste.org', //Mail pour l'administration
-            permalink:'e4rYh',
-            password:'test',
-            nom: 'Internationaux de France 2013', //nom de l'évènement
-            datedeb: '2013-12-13',// Date 
-            datefin: '2013-12-13',// Date 
-            forclusion: '2013-11-10', //Date de forclusion
-            horaires:'Samedi 10h00-19h00, Dimanche 10h00-17h00', //horaires (avec alternatives si pas bordé)
-            echelle: 'Nationale', //Echelle (nationale, régionale, ...)
-            cible:'des cannistes !', //Public attendu (->cible)
-            prix:'30€', //Prix d'inscription
-            orga: 'Julien Falconnet', //Nom de l'organisateur, 
-            statut:'en cours', //Statut           
-            contact:'webmaster@darkhan.net', //Contact (pour information)            
-            lieu:'Gymnase de Reully, 75012 Paris', //Lieu / adresse
-            codepostal:'75012', //cp / adresse 
-            plan:'http://goo.gl/maps/U6l2H', // Plan d’accès
-            url:'http://www.internationaux2015.com',
-            programme:'bla bla bla bla bla bla bla', // Programme
-            options:['buvette','repas sur place'], //Options (buvette, offre de repas, etc.)
-            conditions:'majeur et vacciné', //Conditions de participation
-            hebergement:'non', //Recommandations d’hébergement
-            restauration:'non', //Recommandations restauration
-            visites:'bof' //Recommandations visites
-        });
-    }
+    if(Evenements.find({}).count()<=3){
+        testEvt.forEach(function(item){
+            Evenements.insert(item);    
+        });        
+    };
     // code to run on server at startup
   });
 }
