@@ -135,7 +135,11 @@ Template.nouvelEvt.events({
     'click #submitevt': function(e) {
         // vérifie la validité du formulaire en se reposant sur le navigateur
         e.preventDefault();
-        e.currentTarget.parent('form').checkValidity();
+        if(!(e.target.form.checkValidity()))
+        {
+            alert("Form invalid");
+            return false;
+        }
 
         // Filtre des valeurs du formulaire
         var newEvent =

@@ -1,6 +1,13 @@
 <template name='nouvelEvt'>
     <button id="cancel" class="btn pull-right btn-danger"><i class="icon-remove icon-white"></i> Annuler</button>
-    <h1>Ajouter un évènement</h1>
+
+    <h1>
+        {{#if evenement}}
+            {{evenement.nom}} <small>modification</small>           
+        {{else}}
+         Ajouter un évènement
+        {{/if}}
+    </h1>
 
     <form method='post' id='frmNouvelEvt' class="form-horizontal"> 
 
@@ -15,12 +22,9 @@
             </div>
             <div class="control-group">
                 <label class="control-label"  for="admin">Adresse e-mail</label>
-                <div class="controls">
-                    {{#if evenement.admin}}
-                        <strong>{{evenement.admin}}</strong>
-                    {{else}}
-                        <input type="email" name="admin" id="admin"  placeholder="pour la gestion de l'événement" required />
-                    {{/if}}
+                <div class="controls">                
+                        <input type="email" name="admin" id="admin"  placeholder="pour la gestion de l'événement" required {{#if evenement.admin}} disabled='disabled' value='{{evenement.admin}}'{{/if}} />
+                   
                 </div>
             </div>
         </fieldset>
@@ -171,7 +175,13 @@
                 </div>
             </div>
         </fieldset>
-
-        <button id="submitevt" class="submit btn btn-success">Ajouter un événement au calendrier national</button>
+        
+        <button id="submitevt" class="submit btn btn-success">
+            {{#if evenement}}
+                Enregistrer les modifications
+            {{else}}
+                Ajouter un événement au calendrier national
+            {{/if}}
+        </button>
     </form>
 </template>
