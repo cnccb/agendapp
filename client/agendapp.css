@@ -7,3 +7,5 @@ tr.clickToDetail:hover{cursor: pointer;}
 
 #detailEvt div h2{font-size: 110%}
 #nouvelEvt .evtParOption{display:none;} 
+
+input:invalid, textarea:invalid, select:invalid{border-color: #f00};
