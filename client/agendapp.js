@@ -83,18 +83,20 @@ Template.listeEvt.evenements = function() {
 
 Template.detailEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
-    res = _.omit(res, ['admin', '_id']);
+    res = _.omit(res, ['admin', '_id','codeedition']);
     return res;
 };
 Template.nouvelEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
-    //res = _.omit(res, []);
+    res = _.omit(res, ['codeedition']);
     return res;
 };
 
 
 Template.listeEvt.events({
     'click #newEvt': function(e) {
+        // pour ne pas préremplir si on a sélectionné un auparavant
+        Session.set('evtEnCours', null);
         $('#listeEvt').fadeOut(100, function() {
             $('#nouvelEvt').fadeIn(500);
         });
@@ -116,17 +118,18 @@ Template.nouvelEvt.events({
     'click #ouvrirreco': function(e) {
         $('#evtReco .evtParOption').toggle();
         $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');
+        //@todo: faire quelque chose pour ne pas changer l'url pose probleme pour les editions
         location.hash = "#evtReco";
         return false;
     },
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
         $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');
+        //@todo: faire quelque chose pour ne pas changer l'url pose probleme pour les editions
         location.hash = "#evtCompInfo";
         return false;
     },
     'click #submitevt': function(e) {
-        e.preventDefault();
         // Filtre des valeurs du formulaire
         var newEvent =
                 {
@@ -166,10 +169,7 @@ Template.nouvelEvt.events({
         $('#nouvelEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
         });
-    },
-    'submit': function(e) {
-        console.log('form submit');
-        e.preventDefault();
+        //return false;
     }
 });
 
