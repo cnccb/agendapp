@@ -21,7 +21,8 @@ if (Meteor.isServer) {
         addNewEvent: function(parameters)
         {
             var secretcode = Random.hexString(12);
-
+            //@todo: supprimer pour la mise en prod.
+            secretcode = "123";
             // admin calculus
             var newEvent =
                     {
@@ -53,7 +54,7 @@ if (Meteor.isServer) {
                         visites: parameters.visites //Recommandations visites
                     };
             var evtId = Evenements.insert(newEvent);
-
+            console.log("création de l'evenement : "+evtId );
             // Envoi du mail avec code d'edition
 
             var evt = Evenements.findOne(evtId);
