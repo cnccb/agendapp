@@ -1,7 +1,7 @@
 
- Meteor.startup(function () {
-        // code to run on server at startup
-        //insert the new event
+Meteor.startup(function() {
+    // code to run on server at startup
+    //insert the new event
 // var localGetDetailEvt=null;
 // Deps.autorun(function(){
 //     Meteor.subscribe('getDetailEvt');
@@ -11,34 +11,34 @@
     var query = window.location.href.split('#');
     console.log(query);
     //si la query contient des variables, on fait la vérif du code
-    if(query[1] && query[2]) 
+    if (query[1] && query[2])
     {
-        var evtCodeEditionContest=query[1];
-        var evtCourantId=query[2];
+        var evtCodeEditionContest = query[1];
+        var evtCourantId = query[2];
         var myEvt = Evenements.findOne(evtCourantId);
-        if(myEvt.valide===false)
+        if (myEvt.valide === false)
         {
-            Meteor.call('verifCodeConfirm',evtCourantId, evtCodeEditionContest, function(error,result){
-                if(result)
+            Meteor.call('verifCodeConfirm', evtCourantId, evtCodeEditionContest, function(error, result) {
+                if (result)
                 {
                     alert("Votre événement est validé !"); //todo faire mieux que ça...
                     window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
                 }
                 else
                     alert("Erreur dans la validation de l'événement !");
-            });            
+            });
         }
         //myEvt = Evenements.findOne(query[2]);
         //console.log(myEvt);
-        Session.set('evtEnCours',evtCourantId);
+        Session.set('evtEnCours', evtCourantId);
         $('#listeEvt').fadeOut(100, function() {
             $('#nouvelEvt').fadeIn(500);
         });
     }
-    
-    if(query[1])
+
+    if (query[1])
     {
-        Session.set('evtEnCours',query[1]);
+        Session.set('evtEnCours', query[1]);
         $('#listeEvt').fadeOut(100, function() {
             $('#detailEvt').fadeIn(500);
         });
@@ -56,7 +56,7 @@ function getMonthIndex(d)
 }
 
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find({valide:true}, {sort: {"datedeb": 1}}).fetch();
+    var liste = Evenements.find({valide: true}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
 
     var lastindex = null;
@@ -77,8 +77,8 @@ Template.listeEvt.evenements = function() {
 };
 
 Template.detailEvt.evenement = function() {
-    var res=Evenements.findOne(Session.get('evtEnCours'));
-    res = _.omit(res,['admin','_id']);
+    var res = Evenements.findOne(Session.get('evtEnCours'));
+    res = _.omit(res, ['admin', '_id']);
     return res;
 };
 
@@ -90,27 +90,27 @@ Template.listeEvt.events({
         });
     },
     'click .clickToDetail': function(e) {
-        Session.set('evtEnCours',$(e.currentTarget).attr('id'));
+        Session.set('evtEnCours', $(e.currentTarget).attr('id'));
         $('#listeEvt').fadeOut(100, function() {
             $('#detailEvt').fadeIn(500);
         });
     }
-    
+
 });
 Template.nouvelEvt.events({
     'click #cancel': function(e) {
         $('#nouvelEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
-        });            
+        });
     },
     'click #ouvrirreco': function(e) {
         $('#evtReco .evtParOption').toggle();
-        $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');        
+        $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');
         location.hash = "#evtReco";
     },
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
-        $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');        
+        $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');
         location.hash = "#evtCompInfo";
     },
     'click #submitevt': function(e) {
@@ -143,17 +143,17 @@ Template.nouvelEvt.events({
                     restauration: restauration.value, //Recommandations restauration
                     visites: visites.value //Recommandations visites
                 };
-                
+
         // envoi des informations au serveur pour creation 
         console.log("Nouvel evènement: envoi des données au serveur");
         console.log(newEvent);
-        Meteor.call('addNewEvent',newEvent); 
-        console.log("Evènement créé");        
-                
+        Meteor.call('addNewEvent', newEvent);
+        console.log("Evènement créé");
+
         // Retour à l'interface du calendrier
         $('#nouvelEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
-        });        
+        });
     },
     'submit': function(e) {
         console.log('form submit');
@@ -165,12 +165,13 @@ Template.detailEvt.events({
     'click #return': function(e) {
         $('#detailEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
-        });            
+        });
     }
 });
 
-Handlebars.registerHelper('arrayify',function(obj){
+Handlebars.registerHelper('arrayify', function(obj) {
     result = [];
-    for (var key in obj) result.push({name:key,value:obj[key]});
+    for (var key in obj)
+        result.push({name: key, value: obj[key]});
     return result;
 });
