@@ -47,7 +47,7 @@ function getMonthIndex(d)
 }
 
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find({codeConfirmMail:"ok"}, {sort: {"datedeb": 1}}).fetch();
+    var liste = Evenements.find({valide:true}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
 
     var lastindex = null;
@@ -62,7 +62,7 @@ Template.listeEvt.evenements = function() {
         value.jourdeb = d.toLocaleDateString();
         evenements.push(value);
     });
-    console.log(evenements);
+    //console.log(evenements);
     return evenements;
 
 };
@@ -106,6 +106,7 @@ Template.nouvelEvt.events({
     },
     'click #submitevt': function(e) {
         e.preventDefault();
+        // Filtre des valeurs du formulaire
         var newEvent =
                 {
                     admin: admin.value, //Mail pour l'administration
@@ -133,11 +134,14 @@ Template.nouvelEvt.events({
                     restauration: restauration.value, //Recommandations restauration
                     visites: visites.value //Recommandations visites
                 };
-        console.log("nouvel evènement");
+                
+        // envoi des informations au serveur pour creation 
+        console.log("Nouvel evènement: envoi des données au serveur");
         console.log(newEvent);
-        var idNewEvt = Evenements.insert(newEvent)
-        Meteor.call('sendConfirmationMail',idNewEvt);
-        console.log("calling sendConfirmationMail");
+        Meteor.call('addNewEvent',newEvent); 
+        console.log("Evènement créé");        
+                
+        // Retour à l'interface du calendrier
         $('#nouvelEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
         });        

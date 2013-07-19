@@ -1,6 +1,7 @@
 testEvt =[
 	{
-	    codeConfirmMail:"ok",
+            valide:true,
+            codeedition:"123",
 	    admin:'philippe@canniste.org', //Mail pour l'administration
 	    password:'test',
 	    nom: 'Internationaux de France 2013', //nom de l'évènement
@@ -26,7 +27,8 @@ testEvt =[
 	    visites:'bof' //Recommandations visites
 	},
 	{
-	    codeConfirmMail:"ok",
+            valide:true,
+            codeedition:"123",
 	    admin:'philippe@canniste.org', //Mail pour l'administration
 	    password:'test',
 	    nom: 'Championnaat de France 2013', //nom de l'évènement
@@ -52,7 +54,8 @@ testEvt =[
 	    visites:'bof' //Recommandations visites
 	},
 	{
-	    codeConfirmMail:"ok",
+            valide:true,
+            codeedition:"123",
 	    admin:'philippe@canniste.org', //Mail pour l'administration
 	    password:'test',
 	    nom: 'Internationaux de France 2013', //nom de l'évènement
@@ -78,7 +81,8 @@ testEvt =[
 	    visites:'bof' //Recommandations visites
 	},
 	{
-	    codeConfirmMail:"13654987",
+            valide:false,
+            codeedition:"123",
 	    admin:'philippe@canniste.org', //Mail pour l'administration
 	    password:'test',
 	    nom: 'Titis parisiens 2013', //nom de l'évènement
