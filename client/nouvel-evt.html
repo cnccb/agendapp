@@ -10,13 +10,17 @@
             <div class="control-group">
                 <label class="control-label" for="nom">Titre</label>
                 <div class="controls">
-                    <input type="text" name="nom" id="nom" placeholder="nom de l'événement" required class='span6'/>
+                    <input type="text" name="nom" id="nom" placeholder="nom de l'événement" required class='span6' value="{{evenement.nom}}"/>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label"  for="admin">Adresse e-mail</label>
                 <div class="controls">
-                    <input type="email" name="admin" id="admin"  placeholder="pour la gestion de l'événement" required />
+                    {{#if evenement.admin}}
+                        <strong>{{evenement.admin}}</strong>
+                    {{else}}
+                        <input type="email" name="admin" id="admin"  placeholder="pour la gestion de l'événement" required />
+                    {{/if}}
                 </div>
             </div>
         </fieldset>
@@ -40,22 +44,23 @@
                         <button type="button" class="btn btn-small" data-value="internationale">Internationale</button>
                         <input type="hidden" name="echelle" value=""  id="echelle" />
                     </div>
+                    //@todo: comment préselectionner?
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label">Dates</label>
                 <div class="controls">
-                    Du <input type="date" name="datedeb" id="datedeb" placeholder="début (jj/mm/aaaa)" /> au
-                    <input type="date" name="datefin" id="datefin" placeholder="fin (jj/mm/aaaa)" />           
+                    Du <input type="date" name="datedeb" id="datedeb" placeholder="début (jj/mm/aaaa)" value="{{evenement.datedeb}}"/> au
+                    <input type="date" name="datefin" id="datefin" placeholder="fin (jj/mm/aaaa)" value="{{evenement.datefin}}"/>           
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label">Adresse</label>
                 <div class="controls">
-                    <input type="text" name="lieu" id="lieu" placeholder="adresse de l'événement"/>
-                    <input type="text" name="codepostal" id="codepostal" pattern="[0-9]{5}" placeholder="code postal de l'événement"/>
+                    <input type="text" name="lieu" id="lieu" placeholder="adresse de l'événement" value="{{evenement.lieu}}"/>
+                    <input type="text" name="codepostal" id="codepostal" pattern="[0-9]{5}" placeholder="code postal de l'événement" value="{{evenement.codepostal}}"/>
                 </div>
             </div>
 
@@ -63,18 +68,17 @@
             <div class="control-group">
                 <label class="control-label">Contact</label>
                 <div class="controls">
-                    <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur" />            
-                    <input type="email" name="contact" id="contact" placeholder="email" />   
-                    <input type="tel" name="tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" id="tel" placeholder="téléphone" />   
+                    <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur" value="{{evenement.orga}}"/>            
+                    <input type="email" name="contact" id="contact" placeholder="email" value="{{evenement.contact}}"/>   
+                    <input type="tel" name="tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" id="tel" placeholder="téléphone" value="{{evenement.tel}}"/>   
                 </div>
             </div>
-        </fieldset>
 
-
+            
         <div class="control-group">
             <label class="control-label">Présentation / Programme</label>
             <div class="controls">
-                <textarea name="programme" id="programme" rows="5" />
+                <textarea name="programme" id="programme" rows="5">{{evenement.programme}}</textarea>
             </div>
         </div>
         </fieldset>
@@ -86,48 +90,48 @@
             <div class="control-group  evtParOption">
                 <label class="control-label">Horaires</label>
                 <div class="controls">
-                    <input type="text" name="horaires" id="horaires" />
+                    <input type="text" name="horaires" id="horaires" value="{{evenement.horaires}}"/>
                 </div>
             </div>
             <div class="control-group evtParOption">
                 <label class="control-label">Forclusion</label>
                 <div class="controls">
-                    <input type="date" name="forclusion" id="forclusion" placeholder="Date limite d'inscription" />
+                    <input type="date" name="forclusion" id="forclusion" placeholder="Date limite d'inscription" value="{{evenement.forclusion}}"/>
                 </div>
             </div>
 
             <div class="control-group evtParOption">
                 <label class="control-label">Pré-requis</label>
                 <div class="controls">
-                    <input type="text" name="conditions" id="conditions"  placeholder="Conditions de participation"/>
+                    <input type="text" name="conditions" id="conditions"  placeholder="Conditions de participation" value="{{evenement.conditions}}"/>
                 </div>
             </div>
 
             <div class="control-group evtParOption">
                 <label class="control-label">Prix</label>
                 <div class="controls">
-                    <input type="text" name="prix" id="prix" placeholder="Coût d'inscription"/>
+                    <input type="text" name="prix" id="prix" placeholder="Coût d'inscription" value="{{evenement.prix}}"/>
                 </div>
             </div>
 
             <div class="control-group evtParOption">
                 <label class="control-label">Site web</label>
                 <div class="controls">
-                    <input type="url" name="url" id="url" placeholder="Page d'information complémentaire"/>
+                    <input type="url" name="url" id="url" placeholder="Page d'information complémentaire" value="{{evenement.url}}"/>
                 </div>
             </div>
 
             <div class="control-group evtParOption">
                 <label class="control-label">Plan d'accès</label>
                 <div class="controls">
-                    <input type="url" name="plan" id="plan" placeholder="adresse d'une carte en ligne"/>
+                    <input type="url" name="plan" id="plan" placeholder="adresse d'une carte en ligne" value="{{evenement.plan}}"/>
                 </div>
             </div>
 
             <div class="control-group evtParOption">
                 <label class="control-label">Prestation complémentaires</label>
                 <div class="controls">
-                    <textarea name="options" id="options" rows="5" placeholder="disponibles lors de l'événement" />
+                    <textarea name="options" id="options" rows="5" placeholder="disponibles lors de l'événement" >{{evenement.options}}</textarea>
                 </div>
             </div>
             <div class="control-group evtParOption">
@@ -150,20 +154,20 @@
             <div class="control-group evtParOption">
                 <label class="control-label">Hébergements</label>
                 <div class="controls">
-                    <textarea name="hebergement" id="hebergement" rows="5" />
+                    <textarea name="hebergement" id="hebergement" rows="5">{{evenement.hebergement}}</textarea>
                 </div>
             </div>
             <div class="control-group evtParOption">
                 <label class="control-label">Restauration</label>
                 <div class="controls">
-                    <textarea name="restauration" id="restauration" rows="5" />
+                    <textarea name="restauration" id="restauration" rows="5">{{evenement.restauration}}</textarea>
                 </div>
             </div>
 
             <div class="control-group evtParOption">
                 <label class="control-label">Visites</label>
                 <div class="controls">
-                    <textarea name="visites" id="visites" rows="5" />
+                    <textarea name="visites" id="visites" rows="5">{{evenement.visites}}</textarea>
                 </div>
             </div>
         </fieldset>

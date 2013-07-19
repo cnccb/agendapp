@@ -86,6 +86,11 @@ Template.detailEvt.evenement = function() {
     res = _.omit(res, ['admin', '_id']);
     return res;
 };
+Template.nouvelEvt.evenement = function() {
+    var res = Evenements.findOne(Session.get('evtEnCours'));
+    //res = _.omit(res, []);
+    return res;
+};
 
 
 Template.listeEvt.events({
@@ -112,11 +117,13 @@ Template.nouvelEvt.events({
         $('#evtReco .evtParOption').toggle();
         $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');
         location.hash = "#evtReco";
+        return false;
     },
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
         $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');
         location.hash = "#evtCompInfo";
+        return false;
     },
     'click #submitevt': function(e) {
         e.preventDefault();
