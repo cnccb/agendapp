@@ -13,30 +13,35 @@ Meteor.startup(function() {
     //si la query contient des variables, on fait la vérif du code
     if (query[1] && query[2])
     {
+        // abstraction des parametres
         var evtCodeEditionContest = query[1];
         var evtCourantId = query[2];
-        var myEvt = Evenements.findOne(evtCourantId);
-        if (myEvt.valide === false)
-        {
-            Meteor.call('verifCodeConfirm', evtCourantId, evtCodeEditionContest, function(error, result) {
+
+
+        // test de validation (au cas où)
+        Meteor.call('verifCodeConfirm', evtCourantId, evtCodeEditionContest, function(error, result) {
+            if (error)
+            {
+                alert("Vous ne pouvez pas modifier cet événement!");
+            }
+            else
+            {
                 if (result)
                 {
                     alert("Votre événement est validé !"); //todo faire mieux que ça...
                     window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
+                } else {
+                    console.log('Evénement déjà valide');
                 }
-                else
-                    alert("Erreur dans la validation de l'événement !");
-            });
-        }
-        //myEvt = Evenements.findOne(query[2]);
-        //console.log(myEvt);
-        Session.set('evtEnCours', evtCourantId);
-        $('#listeEvt').fadeOut(100, function() {
-            $('#nouvelEvt').fadeIn(500);
+                Session.set('evtEnCours', evtCourantId);
+                $('#listeEvt').fadeOut(100, function() {
+                    $('#nouvelEvt').fadeIn(500);
+                });
+            }
         });
-    }
 
-    if (query[1])
+    }
+    else if (query[1])
     {
         Session.set('evtEnCours', query[1]);
         $('#listeEvt').fadeOut(100, function() {

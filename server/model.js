@@ -87,7 +87,9 @@ if (Meteor.isServer) {
             console.log("Vérification du code de confirmation" + codeConfirm);
             console.log("evt vérifié : ");
             console.log(evt);
-            if (evt.codeedition === codeConfirm)
+            if (evt.codeedition !== codeConfirm)
+                throw new Error('Code edition incorrect');
+            else if (evt.valide === false)
             {
                 //update evt
                 Evenements.update(evtId, {$set: {valide: true}});
