@@ -27,7 +27,7 @@ if (Meteor.isServer) {
             var newEvent =
                     {
                         codeedition: secretcode, // Pour le lien d'admin
-                        valide: true,
+                        valide: false,
                         admin: parameters.admin, //Mail pour l'administration
                         // password:'test',
                         nom: parameters.nom, //nom de l'évènement

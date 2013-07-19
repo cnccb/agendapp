@@ -61,7 +61,7 @@ function getMonthIndex(d)
 }
 
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find({valide: true}, {sort: {"datedeb": 1}}).fetch();
+    var liste = Evenements.find({$and: [{valide: true},{statut:{$ne: "annule"}}]}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
 
     var lastindex = null;
