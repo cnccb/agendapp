@@ -137,7 +137,8 @@ Template.nouvelEvt.events({
         e.preventDefault();
         if(!(e.target.form.checkValidity()))
         {
-            alert("Form invalid");
+            console.log("form invalid : exiting");
+            $("#formInvalid").fadeIn(100);
             return false;
         }
 
