@@ -13,21 +13,30 @@
     //si la query contient des variables, on fait la vérif du code
     if(query[1] && query[2]) 
     {
-        Session.set('EnvenementCourantId', query[2]);
-        Meteor.call('verifCodeConfirm',query[2], query[1], function(error,result){
-            if(result)
-            {
-                alert("Votre mail est validé ! Vous allez recevoir le lien d'administration par email."); //todo faire mieux que ça...
-                window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
-            }
-                
-            else
-                alert("erreur dans la validation !");
-        });
+        var evtCodeEditionContest=query[1];
+        var evtCourantId=query[2];
+        var myEvt = Evenements.findOne(evtCourantId);
+        if(myEvt.valide===false)
+        {
+            Meteor.call('verifCodeConfirm',evtCourantId, evtCodeEditionContest, function(error,result){
+                if(result)
+                {
+                    alert("Votre événement est validé !"); //todo faire mieux que ça...
+                    window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
+                }
+                else
+                    alert("Erreur dans la validation de l'événement !");
+            });            
+        }
         //myEvt = Evenements.findOne(query[2]);
         //console.log(myEvt);
+        Session.set('evtEnCours',evtCourantId);
+        $('#listeEvt').fadeOut(100, function() {
+            $('#nouvelEvt').fadeIn(500);
+        });
     }
-    else if(query[1])
+    
+    if(query[1])
     {
         Session.set('evtEnCours',query[1]);
         $('#listeEvt').fadeOut(100, function() {
