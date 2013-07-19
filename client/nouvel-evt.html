@@ -175,7 +175,14 @@
                 </div>
             </div>
         </fieldset>
-        
+        <div id="formInvalid" class="alert alert-block alert-warning fade in pull-right" style="display:none">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4 class="alert-heading">Attention, certains champs sont incorrects !</h4>
+            <p>
+                Merci de remplir correctement les champs du formulaire avant de le valider.
+                Nous avons en particulier besoin d'un e-mail valide et d'un titre au mimimum.
+            </p>
+        </div>
         <button id="submitevt" class="submit btn btn-success">
             {{#if evenement}}
                 Enregistrer les modifications
@@ -183,10 +190,6 @@
                 Ajouter un événement au calendrier national
             {{/if}}
         </button>
-        <div id="formInvalid" class="alert alert-block alert-error fade in" style="display:none">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <h4 class="alert-heading">Attention, vos données sont invalides !</h4>
-            <p>Merci de remplir correctement les champs du formulaire avant de le valider.</p>
-          </div>
+        
     </form>
 </template>
