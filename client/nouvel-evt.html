@@ -31,20 +31,21 @@
                 <label class="control-label"  for="admin">Statut & Portée</label>
                 <div class="controls">
                     <div class="btn-group" data-toggle="buttons-radio">
-                        <button type="button" class="btn btn-small" data-value="enprojet">En projet</button>
+                        <button type="button" class="btn btn-small{{#unless evenement.statut}} active{{/unless}}" data-value="enprojet">En projet</button>
                         <button type="button" class="btn btn-small btn-primary" data-value="confirme">Confirmé</button>
+                        {{#if evenement.statut}}
                         <button type="button" class="btn btn-small btn-danger" data-value="annule">Annulé</button>
-                        <input type="hidden" name="statut" value=""  id="statut" />
+                        {{/if}}
+                        <input type="hidden" name="statut" value="{{evenement.statut}}"  id="statut" />
                     </div>
                     <div class="btn-group" data-toggle="buttons-radio">
-                        <button type="button" class="btn btn-small" data-value="locale" checked >Locale</button>
+                        <button type="button" class="btn btn-small{{#unless evenement.echelle}} active{{/unless}}" data-value="locale" >Locale</button>
                         <button type="button" class="btn btn-small" data-value="departementale">Départementale</button>
                         <button type="button" class="btn btn-small" data-value="regionale">Régionale</button>
                         <button type="button" class="btn btn-small" data-value="nationale">Nationale</button>
                         <button type="button" class="btn btn-small" data-value="internationale">Internationale</button>
                         <input type="hidden" name="echelle" value=""  id="echelle" />
                     </div>
-                    //@todo: comment préselectionner?
                 </div>
             </div>
 
@@ -138,7 +139,7 @@
                 <label class="control-label">Cible (public attendu)</label>
                 <div class="controls">
                     <div class="btn-group" data-toggle="buttons-radio">
-                        <button type="button" class="btn btn-small" data-value="competiteurs">Competiteurs</button>
+                        <button type="button" class="btn btn-small {{#unless evenement.statut}} active{{/unless}}" data-value="competiteurs">Competiteurs</button>
                         <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
                         <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
                         <button type="button" class="btn btn-small" data-value="jeunes">Jeunes</button>

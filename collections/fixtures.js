@@ -4,7 +4,7 @@ testEvt = [
         codeedition: "123",
         admin: 'philippe@canniste.org', //Mail pour l'administration
         password: 'test',
-        nom: 'Internationaux de France 2013', //nom de l'évènement
+        nom: 'Internationaux de France 2015', //nom de l'évènement
         datedeb: '2013-12-13', // Date 
         datefin: '2013-12-13', // Date 
         forclusion: '2013-11-10', //Date de forclusion
@@ -13,7 +13,7 @@ testEvt = [
         cible: 'des cannistes !', //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
-        statut: 'en cours', //Statut           
+        statut: 'enprojet', //Statut           
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
         lieu: 'Gymnase de Reully, 75012 Paris', //Lieu / adresse
         codepostal: '75012', //cp / adresse 
