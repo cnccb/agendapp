@@ -130,6 +130,10 @@ Template.nouvelEvt.events({
         return false;
     },
     'click #submitevt': function(e) {
+        // vérifie la validité du formulaire en se reposant sur le navigateur
+        e.currentTarget.parent('form').checkValidity();
+        e.preventDefault();
+
         // Filtre des valeurs du formulaire
         var newEvent =
                 {

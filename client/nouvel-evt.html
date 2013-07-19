@@ -139,7 +139,7 @@
                 <label class="control-label">Cible (public attendu)</label>
                 <div class="controls">
                     <div class="btn-group" data-toggle="buttons-radio">
-                        <button type="button" class="btn btn-small {{#unless evenement.statut}} active{{/unless}}" data-value="competiteurs">Competiteurs</button>
+                        <button type="button" class="btn btn-small {{#unless evenement.cible}} active{{/unless}}" data-value="competiteurs">Competiteurs</button>
                         <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
                         <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
                         <button type="button" class="btn btn-small" data-value="jeunes">Jeunes</button>
@@ -147,7 +147,6 @@
                     </div>
                 </div>
             </div>
-
         </fieldset>
 
         <fieldset id='evtReco'>
