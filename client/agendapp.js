@@ -199,14 +199,14 @@ Template.nouvelEvt.events({
     },
     'change input': function(e)
     {
-        if ($(e.currentTarget).siblings('.errorbox').length > 0)
-        {
-            $(e.currentTarget).siblings('.errorbox').fadeOut(500);
-        }
     },
     'blur input': function(e)
     {
         $(e.currentTarget).addClass("interacted");
+        if ($(e.currentTarget).siblings('.errorbox').length > 0)
+        {
+            $(e.currentTarget).siblings('.errorbox').fadeOut(500);
+        }
     }
             
 });
