@@ -135,9 +135,6 @@ Template.nouvelEvt.events({
         $('#'+name).val($button.attr("data-value"));
         console.log(name);
     },
-            /**
-             * ESSAYER DE TROUVER LA DIFFE ENTRE LE CLICKE et le SUBM et en choisir un.
-             */
     'click #submitevt': function(e) {
         // vérifie la validité du formulaire en se reposant sur le navigateur
         e.preventDefault();
@@ -188,11 +185,6 @@ Template.nouvelEvt.events({
             $('#listeEvt').fadeIn(500);
         });
         //return false;
-    },
-    'submit': function(e) {
-        console.log('click');
-        e.preventDefault();
-        e.currentTarget.parent('form').checkValidity();
     }
 });
 
