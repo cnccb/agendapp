@@ -129,6 +129,12 @@ Template.nouvelEvt.events({
         location.hash = "#evtCompInfo";
         return false;
     },
+    'click [data-toggle="buttons-radio"] button': function(e){
+        $button=$(e.currentTarget);
+        var name = $button.parent().attr("data-toggle-name");
+        $('#'+name).val($button.attr("data-value"));
+        console.log(name);
+    },
             /**
              * ESSAYER DE TROUVER LA DIFFE ENTRE LE CLICKE et le SUBM et en choisir un.
              */

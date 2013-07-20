@@ -34,7 +34,7 @@
             <div class="control-group">
                 <label class="control-label"  for="admin">Statut & Portée</label>
                 <div class="controls">
-                    <div class="btn-group" data-toggle="buttons-radio">
+                    <div class="btn-group" data-toggle="buttons-radio" data-toggle-name='statut'>
                         <button type="button" class="btn btn-small{{#unless evenement.statut}} active{{/unless}}" data-value="enprojet">En projet</button>
                         <button type="button" class="btn btn-small btn-primary" data-value="confirme">Confirmé</button>
                         {{#if evenement.statut}}
@@ -42,7 +42,7 @@
                         {{/if}}
                         <input type="hidden" name="statut" value="{{evenement.statut}}"  id="statut" />
                     </div>
-                    <div class="btn-group" data-toggle="buttons-radio">
+                    <div class="btn-group" data-toggle="buttons-radio" data-toggle-name='echelle'>
                         <button type="button" class="btn btn-small{{#unless evenement.echelle}} active{{/unless}}" data-value="locale" >Locale</button>
                         <button type="button" class="btn btn-small" data-value="departementale">Départementale</button>
                         <button type="button" class="btn btn-small" data-value="regionale">Régionale</button>
@@ -142,7 +142,7 @@
             <div class="control-group evtParOption">
                 <label class="control-label">Cible (public attendu)</label>
                 <div class="controls">
-                    <div class="btn-group" data-toggle="buttons-radio">
+                    <div class="btn-group" data-toggle="buttons-radio" data-toggle-name='cible'>
                         <button type="button" class="btn btn-small {{#unless evenement.cible}} active{{/unless}}" data-value="competiteurs">Competiteurs</button>
                         <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
                         <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
