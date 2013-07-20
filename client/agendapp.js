@@ -203,7 +203,12 @@ Template.nouvelEvt.events({
         {
             $(e.currentTarget).siblings('.errorbox').fadeOut(500);
         }
+    },
+    'blur input': function(e)
+    {
+        $(e.currentTarget).addClass("interacted");
     }
+            
 });
 
 Template.detailEvt.events({

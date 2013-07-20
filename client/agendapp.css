@@ -8,4 +8,7 @@ tr.clickToDetail:hover{cursor: pointer;}
 #detailEvt div h2{font-size: 110%}
 #nouvelEvt .evtParOption{display:none;} 
 
-input:invalid, textarea:invalid, select:invalid{box-shadow: #f00};
+/* gestion de la validation des formulaires*/
+input:invalid, textarea:invalid, select:invalid{box-shadow: #f00}
+.interacted:invalid {background-color:#fee;}
+.interacted:valid {background-color:#efe;}
