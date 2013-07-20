@@ -192,7 +192,7 @@ Template.nouvelEvt.events({
     {
         if ($(e.currentTarget).siblings('.errorbox').length === 0)
         {
-            $(e.currentTarget).after('<div class="errorbox alert alert-block alert-error"><button type="button" class="close" data-dismiss="alert">×</button><p>***</p></div>');
+            $(e.currentTarget).after('<div class="errorbox alert alert-block alert-error"><button type="button" class="close" data-dismiss="alert">×</button><p></p></div>');
         }
         $(e.currentTarget).siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
         $(e.currentTarget).siblings('.errorbox').fadeIn(500);
