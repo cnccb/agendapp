@@ -137,11 +137,12 @@ Template.nouvelEvt.events({
     },
     'click #submitevt': function(e) {
         // vérifie la validité du formulaire en se reposant sur le navigateur
+        // Tout sur la validation browser et HTML5: http://www.html5rocks.com/en/tutorials/forms/constraintvalidation/
         e.preventDefault();
-        if(!(e.target.form.checkValidity()))
+        // NB checkValidity will fire "invalid" events
+        if (!(e.target.form.checkValidity()))
         {
             console.log("form invalid : exiting");
-            $("#formInvalid").fadeIn(100);
             return false;
         }
 
@@ -184,7 +185,24 @@ Template.nouvelEvt.events({
         $('#nouvelEvt').fadeOut(100, function() {
             $('#listeEvt').fadeIn(500);
         });
+        // message de validation??        
         //return false;
+    },
+    'invalid input': function(e)
+    {
+        if ($(e.currentTarget).siblings('.errorbox').length === 0)
+        {
+            $(e.currentTarget).after('<div class="errorbox alert alert-block alert-error"><button type="button" class="close" data-dismiss="alert">×</button><p>***</p></div>');
+        }
+        $(e.currentTarget).siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
+        $(e.currentTarget).siblings('.errorbox').fadeIn(500);
+    },
+    'change input': function(e)
+    {
+        if ($(e.currentTarget).siblings('.errorbox').length > 0)
+        {
+            $(e.currentTarget).siblings('.errorbox').fadeOut(500);
+        }
     }
 });
 
