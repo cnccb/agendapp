@@ -197,9 +197,6 @@ Template.nouvelEvt.events({
         $(e.currentTarget).siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
         $(e.currentTarget).siblings('.errorbox').fadeIn(500);
     },
-    'change input': function(e)
-    {
-    },
     'blur input': function(e)
     {
         $(e.currentTarget).addClass("interacted");
