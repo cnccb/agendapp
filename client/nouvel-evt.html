@@ -3,16 +3,17 @@
 
     <h1>
         {{#if evenement}}
-        {{evenement.nom}} <small>modification</small>           
+            {{evenement.nom}} <small>modification</small>           
         {{else}}
         Ajouter un évènement
         {{/if}}
     </h1>
 
     <form method='post' id='frmNouvelEvt' class="form-horizontal"> 
-        {{#if evenement}}
-        <input type="hidden" name="dejaexistant" id="dejaexistant" value="{{evenement._id}}"/>
-        {{/if}}
+        <input type="hidden" name="dejaexistant" id="dejaexistant" value="{{#if evenement}}{{evenement._id}}{{else}}null{{/if}}"/>
+
+        
+    
 
 
         <fieldset id='evtAdmin'>

@@ -13,7 +13,7 @@ Meteor.startup(function() {
 //     Meteor.subscribe('getDetailEvt');
 
     //vérification de la query
-
+    //flash("test flash", "info");
     var query = window.location.href.split('#');
     console.log(query);
     //si la query contient des variables, on fait la vérif du code
@@ -23,22 +23,17 @@ Meteor.startup(function() {
         var evtCodeEditionContest = query[1];
         var evtCourantId = query[2];
 
-
         // test de validation (au cas où)
         Meteor.call('verifCodeConfirm', evtCourantId, evtCodeEditionContest, function(error, result) {
             if (error)
             {
-                //@todo: trouver mieux que alert?
-                alert("Vous ne pouvez pas modifier cet événement!");
+                flash("Vous ne pouvez pas modifier cet événement!", 'warning');
             }
             else
             {
                 if (result)
                 {
-                    //@todo: trouver mieux que alert?
-                    alert("Votre événement est validé !"); 
-                    //@todo: encore nécessaire?
-                    window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
+                    flash("Votre événement est validé !", 'info'); 
                 } else {
                     console.log('Evénement déjà valide');
                 }
@@ -80,6 +75,16 @@ function getMonthIndex(d)
     return nommois[d.getMonth()] + " " + d.getFullYear();
 
 }
+
+/*
+* affiche un message sous form d'un div alert
+* className = info|warning|error
+*/
+function flash(message, className)
+{
+    if(_.isUndefined(className)) className = 'alert';
+    $('#flashMessage').html(Template.flash({message: message, className: className})).fadeIn(200);
+}
 /**
  * LISTEEVT
  */
@@ -106,7 +111,8 @@ Template.listeEvt.evenements = function() {
 Template.listeEvt.events({
     'click #newEvt': function(e) {
         // pour ne pas préremplir si on a sélectionné un auparavant
-        Session.set('evtEnCours', null);
+        Session.set('evtEnCours', undefined);
+
         $('#listeEvt').fadeOut(100, function() {
             $('#nouvelEvt').fadeIn(500);
         });
@@ -145,6 +151,9 @@ Template.nouvelEvt.rendered = function() {
     $('button.bspopover').popover({trigger: "hover", container: 'body'}); //initialize all popover in this template
 };
 Template.nouvelEvt.evenement = function() {
+    //pour eviter d'afficher un evenement vide
+    if(Session.get('evtEnCours')===undefined) return null;
+
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['codeedition']);
     return res;
@@ -178,7 +187,7 @@ Template.nouvelEvt.events({
     },
     'click #submitevt': function(e) {
         // vérifie la validité du formulaire en se reposant sur le navigateur
-        // Tout sur la validation browser et HTML5: http://www.html5rocks.com/en/tutorials/forms/constraintvalidation/
+        // Tout sur la validation browser et HTML5:     
         e.preventDefault();
         // NB checkValidity will fire "invalid" events
         if (!(e.target.form.checkValidity()))
@@ -220,8 +229,9 @@ Template.nouvelEvt.events({
             newEvent.statut = 'enprojet';
 
         // pour l'update
-        if (dejaexistant.value)
+        if (dejaexistant.value != 'null')
         {
+            console.log(dejaexistant.value)
             newEvent.dejaexistant = dejaexistant.value;
         }
 
@@ -231,12 +241,14 @@ Template.nouvelEvt.events({
         Meteor.call('addNewEvent', newEvent, function(error, result) {
             if (error !== undefined)
             {
-                //@todo: trouver mieux que alert?
-                alert("Probleme: " + error);
+                
+                flash("Probleme: " + error, 'error');
             } else
             {
-                //@todo: trouver mieux que alert?
-                alert(result);
+                
+                flash(result, 'info');
+                $('html').animate({ scrollTop: $('#flashMessage').offset().top }, 'slow');
+
                 console.log(newEvent);
             }
         });
