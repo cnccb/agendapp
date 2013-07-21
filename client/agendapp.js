@@ -180,13 +180,13 @@ Template.nouvelEvt.events({
     //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrirreco': function(e) {
         $('#evtReco .evtParOption').toggle();
-        $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');
+        $('#ouvrirreco').toggleClass('icon-chevron-right  icon-chevron-down');
         $('html').animate({ scrollTop: $("#ouvrirreco").offset().top }, 'slow');
         return false;
     },
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
-        $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');
+        $('#ouvrircomplement').toggleClass('icon-chevron-right  icon-chevron-down');
         $('html').animate({ scrollTop: $("#ouvrircomplement").offset().top }, 'slow');
         return false;
     },
