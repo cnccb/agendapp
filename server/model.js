@@ -53,8 +53,7 @@ if (Meteor.isServer) {
                         restauration: parameters.restauration, //Recommandations restauration
                         visites: parameters.visites //Recommandations visites
                     };
-            console.log(parameters.dejaexistant);
-            var evtId = "ADEFINIR";
+            // si edition
             if (parameters.dejaexistant)
             {
                 newEvent.valide= true,
@@ -88,9 +87,7 @@ if (Meteor.isServer) {
             {
                 console.log("impossible d'envoyer le mail");
             }
-
             return 'Evenement créé et mail envoyé.';
-            return true;
         },
         verifCodeConfirm: function(evtId, codeConfirm)
         {
