@@ -28,13 +28,16 @@ Meteor.startup(function() {
         Meteor.call('verifCodeConfirm', evtCourantId, evtCodeEditionContest, function(error, result) {
             if (error)
             {
+                //@todo: trouver mieux que alert?
                 alert("Vous ne pouvez pas modifier cet événement!");
             }
             else
             {
                 if (result)
                 {
-                    alert("Votre événement est validé !"); //todo faire mieux que ça...
+                    //@todo: trouver mieux que alert?
+                    alert("Votre événement est validé !"); 
+                    //@todo: encore nécessaire?
                     window.close(); //sinon la fenêtre qui contient le code de validation reste ouverte (donc deux fenêtres) //todo à améliorer
                 } else {
                     console.log('Evénement déjà valide');
@@ -155,17 +158,19 @@ Template.nouvelEvt.events({
     'click #ouvrirreco': function(e) {
         $('#evtReco .evtParOption').toggle();
         $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');
-        //@todo: faire quelque chose pour ne pas changer l'url pose probleme pour les editions
+        //@todo: faire quelque chose pour ne pas changer l'url; pose probleme pour les editions
         location.hash = "#evtReco";
         return false;
     },
+    //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
         $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');
-        //@todo: faire quelque chose pour ne pas changer l'url pose probleme pour les editions
+        //@todo: faire quelque chose pour ne pas changer; l'url pose probleme pour les editions
         location.hash = "#evtCompInfo";
         return false;
     },
+    //@todo: faire en sorte que ce soit correctement valué/initialisé/repopulé
     'click [data-toggle="buttons-radio"] button': function(e) {
         $button = $(e.currentTarget);
         var name = $button.parent().attr("data-toggle-name");
@@ -212,9 +217,9 @@ Template.nouvelEvt.events({
                     visites: visites.value //Recommandations visites
                 };
         //quelques défauts
-        if(!newEvent.statut)
-            newEvent.statut='enprojet';
-            
+        if (!newEvent.statut)
+            newEvent.statut = 'enprojet';
+
         // pour l'update
         if (dejaexistant.value)
         {
@@ -227,9 +232,11 @@ Template.nouvelEvt.events({
         Meteor.call('addNewEvent', newEvent, function(error, result) {
             if (error !== undefined)
             {
+                //@todo: trouver mieux que alert?
                 alert("Probleme: " + error);
             } else
             {
+                //@todo: trouver mieux que alert?
                 alert(result);
                 console.log(newEvent);
             }

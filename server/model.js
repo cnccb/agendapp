@@ -53,9 +53,11 @@ if (Meteor.isServer) {
                         restauration: parameters.restauration, //Recommandations restauration
                         visites: parameters.visites //Recommandations visites
                     };
+
             // si edition
             if (parameters.dejaexistant)
             {
+                //@todo: protéger contre le changement d'email (ou revalidation)
                 newEvent.valide= true,
                 Evenements.update(parameters.dejaexistant,newEvent);
                 return 'Evenement mis à jour';
