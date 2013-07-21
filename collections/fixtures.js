@@ -13,7 +13,7 @@ testEvt = [
         cible: 'des cannistes !', //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
-        statut: 'confirme', //Statut           
+        statut: 'definitif', //Statut           
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
         lieu: 'Gymnase de Reully, 75012 Paris', //Lieu / adresse
         codepostal: '75012', //cp / adresse 
@@ -40,7 +40,7 @@ testEvt = [
         cible: 'des cannistes !', //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
-        statut: 'confirme', //Statut           
+        statut: 'definitif', //Statut           
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
         lieu: 'Gymnase de Reully, 75012 Paris', //Lieu / adresse
         codepostal: '75012', //cp / adresse 

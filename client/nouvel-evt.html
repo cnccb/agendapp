@@ -10,6 +10,9 @@
     </h1>
 
     <form method='post' id='frmNouvelEvt' class="form-horizontal"> 
+        {{#if evenement}}
+        <input type="hidden" name="dejaexistant" id="dejaexistant" value="{{evenement._id}}"/>
+        {{/if}}
 
 
         <fieldset id='evtAdmin'>

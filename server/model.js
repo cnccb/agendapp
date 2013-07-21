@@ -53,8 +53,17 @@ if (Meteor.isServer) {
                         restauration: parameters.restauration, //Recommandations restauration
                         visites: parameters.visites //Recommandations visites
                     };
+            console.log(parameters.dejaexistant);
+            var evtId = "ADEFINIR";
+            if (parameters.dejaexistant)
+            {
+                newEvent.valide= true,
+                Evenements.update(parameters.dejaexistant,newEvent);
+                return 'Evenement mis à jour';
+            }
+
             var evtId = Evenements.insert(newEvent);
-            console.log("création de l'evenement : "+evtId );
+            console.log("création de l'evenement : " + evtId);
             // Envoi du mail avec code d'edition
 
             var evt = Evenements.findOne(evtId);
@@ -80,6 +89,7 @@ if (Meteor.isServer) {
                 console.log("impossible d'envoyer le mail");
             }
 
+            return 'Evenement créé et mail envoyé.';
             return true;
         },
         verifCodeConfirm: function(evtId, codeConfirm)

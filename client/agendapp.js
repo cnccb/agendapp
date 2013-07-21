@@ -80,7 +80,7 @@ function getMonthIndex(d)
  * LISTEEVT
  */
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find({$and: [{valide: true},{statut:{$ne: "annule"}}]}, {sort: {"datedeb": 1}}).fetch();
+    var liste = Evenements.find({$and: [{valide: true}, {statut: {$ne: "annule"}}]}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
 
     var lastindex = null;
@@ -122,7 +122,7 @@ Template.listeEvt.events({
 
 Template.detailEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
-    res = _.omit(res, ['admin', '_id','codeedition']);
+    res = _.omit(res, ['admin', '_id', 'codeedition']);
     return res;
 };
 Template.detailEvt.events({
@@ -138,7 +138,7 @@ Template.detailEvt.events({
  */
 
 Template.nouvelEvt.rendered = function() {
-   $('button.bspopover').popover({trigger:"hover",container: 'body'}); //initialize all popover in this template
+    $('button.bspopover').popover({trigger: "hover", container: 'body'}); //initialize all popover in this template
 };
 Template.nouvelEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
@@ -166,10 +166,10 @@ Template.nouvelEvt.events({
         location.hash = "#evtCompInfo";
         return false;
     },
-    'click [data-toggle="buttons-radio"] button': function(e){
-        $button=$(e.currentTarget);
+    'click [data-toggle="buttons-radio"] button': function(e) {
+        $button = $(e.currentTarget);
         var name = $button.parent().attr("data-toggle-name");
-        $('#'+name).val($button.attr("data-value"));
+        $('#' + name).val($button.attr("data-value"));
         console.log(name);
     },
     'click #submitevt': function(e) {
@@ -211,12 +211,30 @@ Template.nouvelEvt.events({
                     restauration: restauration.value, //Recommandations restauration
                     visites: visites.value //Recommandations visites
                 };
+        //quelques défauts
+        if(!newEvent.statut)
+            newEvent.statut='enprojet';
+            
+        // pour l'update
+        if (dejaexistant.value)
+        {
+            newEvent.dejaexistant = dejaexistant.value;
+        }
 
         // envoi des informations au serveur pour creation 
         console.log("Nouvel evènement: envoi des données au serveur");
         console.log(newEvent);
-        Meteor.call('addNewEvent', newEvent);
-        console.log("Evènement créé");
+        Meteor.call('addNewEvent', newEvent, function(error, result) {
+            if (error !== undefined)
+            {
+                alert("Probleme: " + error);
+            } else
+            {
+                alert(result);
+                console.log(newEvent);
+            }
+        });
+        console.log("Evènement créé/modifié");
 
         // Retour à l'interface du calendrier
         $('#nouvelEvt').fadeOut(100, function() {
@@ -242,6 +260,6 @@ Template.nouvelEvt.events({
             $(e.currentTarget).siblings('.errorbox').fadeOut(500);
         }
     }
-            
+
 });
 
