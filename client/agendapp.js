@@ -1,4 +1,10 @@
 
+/**
+ * 
+ * GLOBAL
+ * 
+ */
+
 Meteor.startup(function() {
     // code to run on server at startup
     //insert the new event
@@ -50,6 +56,17 @@ Meteor.startup(function() {
     }
 });
 
+Handlebars.registerHelper('arrayify', function(obj) {
+    result = [];
+    for (var key in obj)
+        result.push({name: key, value: obj[key]});
+    return result;
+});
+
+/**
+ * BIBLIOTHEQUE
+ * 
+ */
 function getMonthIndex(d)
 {
     if (_.isNaN(d.getFullYear()))
@@ -59,8 +76,9 @@ function getMonthIndex(d)
     return nommois[d.getMonth()] + " " + d.getFullYear();
 
 }
-
-
+/**
+ * LISTEEVT
+ */
 Template.listeEvt.evenements = function() {
     var liste = Evenements.find({$and: [{valide: true},{statut:{$ne: "annule"}}]}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
@@ -81,23 +99,6 @@ Template.listeEvt.evenements = function() {
     return evenements;
 
 };
-
-Template.detailEvt.evenement = function() {
-    var res = Evenements.findOne(Session.get('evtEnCours'));
-    res = _.omit(res, ['admin', '_id','codeedition']);
-    return res;
-};
-
-Template.nouvelEvt.rendered = function() {
-   $('button.bspopover').popover({trigger:"hover",container: 'body'}); //initialize all tooltips in this template
-};
-Template.nouvelEvt.evenement = function() {
-    var res = Evenements.findOne(Session.get('evtEnCours'));
-    res = _.omit(res, ['codeedition']);
-    return res;
-};
-
-
 Template.listeEvt.events({
     'click #newEvt': function(e) {
         // pour ne pas préremplir si on a sélectionné un auparavant
@@ -114,6 +115,37 @@ Template.listeEvt.events({
     }
 
 });
+
+/**
+ * DETAILEVT
+ */
+
+Template.detailEvt.evenement = function() {
+    var res = Evenements.findOne(Session.get('evtEnCours'));
+    res = _.omit(res, ['admin', '_id','codeedition']);
+    return res;
+};
+Template.detailEvt.events({
+    'click #return': function(e) {
+        $('#detailEvt').fadeOut(100, function() {
+            $('#listeEvt').fadeIn(500);
+        });
+    }
+});
+
+/**
+ * NOUVELEVT
+ */
+
+Template.nouvelEvt.rendered = function() {
+   $('button.bspopover').popover({trigger:"hover",container: 'body'}); //initialize all popover in this template
+};
+Template.nouvelEvt.evenement = function() {
+    var res = Evenements.findOne(Session.get('evtEnCours'));
+    res = _.omit(res, ['codeedition']);
+    return res;
+};
+
 Template.nouvelEvt.events({
     'click #cancel': function(e) {
         $('#nouvelEvt').fadeOut(100, function() {
@@ -213,17 +245,3 @@ Template.nouvelEvt.events({
             
 });
 
-Template.detailEvt.events({
-    'click #return': function(e) {
-        $('#detailEvt').fadeOut(100, function() {
-            $('#listeEvt').fadeIn(500);
-        });
-    }
-});
-
-Handlebars.registerHelper('arrayify', function(obj) {
-    result = [];
-    for (var key in obj)
-        result.push({name: key, value: obj[key]});
-    return result;
-});
