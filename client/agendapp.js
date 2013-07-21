@@ -52,6 +52,7 @@ Meteor.startup(function() {
     }
     else if (query[1])
     {
+        //@todo: faire en sorte de ne pas afficher les trucs qui n'existent pas
         Session.set('evtEnCours', query[1]);
         $('#listeEvt').fadeOut(100, function() {
             $('#detailEvt').fadeIn(500);
@@ -155,19 +156,17 @@ Template.nouvelEvt.events({
             $('#listeEvt').fadeIn(500);
         });
     },
+    //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrirreco': function(e) {
         $('#evtReco .evtParOption').toggle();
         $('#ouvrirreco').toggleClass('icon-eye-open icon-eye-close');
-        //@todo: faire quelque chose pour ne pas changer l'url; pose probleme pour les editions
-        location.hash = "#evtReco";
+        $('html').animate({ scrollTop: $("#ouvrirreco").offset().top }, 'slow');
         return false;
     },
-    //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
         $('#ouvrircomplement').toggleClass('icon-eye-open icon-eye-close');
-        //@todo: faire quelque chose pour ne pas changer; l'url pose probleme pour les editions
-        location.hash = "#evtCompInfo";
+        $('html').animate({ scrollTop: $("#ouvrircomplement").offset().top }, 'slow');
         return false;
     },
     //@todo: faire en sorte que ce soit correctement valué/initialisé/repopulé
