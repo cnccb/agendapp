@@ -9,9 +9,9 @@
         <tr class='monthline info'><td colspan='2' class="lead text--">{{TitreIntermediaire}}</td></tr> 
         {{else}}
 
-        <tr id='{{_id}}' class='clickToDetail' title='Voire les détails' >
+        <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voire les détails' >
             <td class="muted">{{jourdeb}}</td>
-            <td><strong>{{nom}}</strong> - {{lieu}} - {{statut}}</td>
+            <td><strong>{{nom}} ({{codepostal}})</strong> - {{lieu}} - {{echelle}}</td>
         </tr>
         {{/if}}
         {{/each}}

@@ -2,6 +2,13 @@
 #nouvelEvt{display:none;}
 #detailEvt{display:none;}
 tr.clickToDetail:hover{cursor: pointer;}
+tr.provisoire{color:#999;}
+tr.local td strong{font-size:80%;}
+tr.regional td strong{font-size:100%;}
+tr.national td strong{font-size:120%;}
+tr.international td strong{font-size:140%;}
+tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{font-size:100%;}
+
 #ouvrircomplement:hover{cursor: pointer;}
 #ouvrirreco:hover{cursor: pointer;}
 
@@ -9,6 +16,6 @@ tr.clickToDetail:hover{cursor: pointer;}
 #nouvelEvt .evtParOption{display:none;} 
 
 /* gestion de la validation des formulaires*/
-input:invalid, textarea:invalid, select:invalid{box-shadow: #f00}
+input:invalid, textarea:invalid, select:invalid{box-shadow:#f00;}
 .interacted:invalid {background-color:#fee;}
 .interacted:valid {background-color:#efe;}
