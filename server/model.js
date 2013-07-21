@@ -18,6 +18,10 @@ if (Meteor.isServer) {
     });
 
     Meteor.methods({
+        fetchOneEvt: function(idEvt)
+        {
+           return Evenements.findOne(idEvt);
+        },
         addNewEvent: function(parameters)
         {
             var secretcode = Random.hexString(12);

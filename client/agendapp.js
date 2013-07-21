@@ -47,11 +47,14 @@ Meteor.startup(function() {
     }
     else if (query[1])
     {
-        //@todo: faire en sorte de ne pas afficher les trucs qui n'existent pas
-        Session.set('evtEnCours', query[1]);
-        $('#listeEvt').fadeOut(100, function() {
-            $('#detailEvt').fadeIn(500);
-        });
+        if(Meteor.call('fetchOneEvt',query[1]))
+        {
+            Session.set('evtEnCours', query[1]);        
+            $('#listeEvt').fadeOut(100, function() {
+                $('#detailEvt').fadeIn(500);
+            });
+        }
+        
     }
 });
 
