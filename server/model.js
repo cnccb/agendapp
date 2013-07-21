@@ -2,7 +2,7 @@
 if (Meteor.isServer) {
     Meteor.startup(function() {
         process.env.MAIL_URL = 'smtp://smtp2.phpnet.org:25'; //serveur pour l'envoi du mail de confirmation
-        SERVER_URL = "http://localhost:3000"; //adresse du serveur
+        SERVER_URL = Meteor.absoluteUrl(); //adresse du serveur
     });
 //todo finir quand on enlevera l'autopublish
     // Meteor.publish("evt-all", function () {
@@ -72,7 +72,7 @@ if (Meteor.isServer) {
             // Envoi du mail avec code d'edition
 
             var evt = Evenements.findOne(evtId);
-            var urlConfirm = "" + SERVER_URL + "/#" + evt.codeedition + '#' + evt._id;
+            var urlConfirm = "" + SERVER_URL + "#" + evt.codeedition + '#' + evt._id;
             var message = "Bonjour, \n\n Vous avez ajouté l'événement "
                     + "'" + evt.nom + "' sur l'application Agend'app. Nous avons besoin de confirmer votre e-mail pour poursuivre :\n\n"
                     + "Veuillez cliquer sur le lien ci-dessous pour confirmer votre email : \n"
