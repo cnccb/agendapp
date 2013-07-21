@@ -151,7 +151,16 @@ Template.detailEvt.events({
  */
 
 Template.nouvelEvt.rendered = function() {
+    //infobulles d'aide
     $('button.bspopover').popover({trigger: "hover", container: 'body'}); //initialize all popover in this template
+    //etat des boutons radio
+    $('[data-toggle="buttons-radio"]').each(function(){
+        var valBouton = $(this).attr("data-value");
+        var $button = $('[data-value="'+valBouton+'"]');
+        //console.log($(this));
+        $button.button('toggle');
+        $button.trigger('click');
+    })
 };
 Template.nouvelEvt.evenement = function() {
     //pour eviter d'afficher un evenement vide
@@ -184,13 +193,14 @@ Template.nouvelEvt.events({
     //@todo: faire en sorte que ce soit correctement valué/initialisé/repopulé
     'click [data-toggle="buttons-radio"] button': function(e) {
         $button = $(e.currentTarget);
-        var name = $button.parent().attr("data-toggle-name");
-        $('#' + name).val($button.attr("data-value"));
-        console.log(name);
+        $buttonGroup =  $(e.currentTarget).parent();
+        //console.log($buttonGroup);
+        $buttonGroup.attr("data-value",$button.attr("data-value"));
+        //console.log($buttonGroup.attr('data-value'));
     },
     'click #submitevt': function(e) {
         // vérifie la validité du formulaire en se reposant sur le navigateur
-        // Tout sur la validation browser et HTML5:     
+        // Tout sur la validation browser et HTML5: http://www.html5rocks.com/en/tutorials/forms/constraintvalidation/#toc-declarative-error-messages
         e.preventDefault();
         // NB checkValidity will fire "invalid" events
         if (!(e.target.form.checkValidity()))
@@ -209,11 +219,11 @@ Template.nouvelEvt.events({
                     datefin: datefin.value, // Date 
                     forclusion: forclusion.value, //Date de forclusion
                     horaires: horaires.value, //horaires (avec alternatives si pas bordé)
-                    echelle: echelle.value, //Echelle (nationale, régionale, ...)
-                    cible: cible.value, //Public attendu (->cible)
+                    echelle: $(echelle).attr('data-value'), //Echelle (nationale, régionale, ...)
+                    cible: $(cible).attr('data-value'), //Public attendu (->cible)
                     prix: prix.value, //Prix d'inscription
                     orga: orga.value, //Nom de l'organisateur, 
-                    statut: statut.value, //Statut           
+                    statut: $(statut).attr('data-value'), //Statut           
                     contact: contact.value, //Contact (pour information)            
                     tel: tel.value, //tel orga
                     lieu: lieu.value, //Lieu / adresse
@@ -244,11 +254,9 @@ Template.nouvelEvt.events({
         Meteor.call('addNewEvent', newEvent, function(error, result) {
             if (error !== undefined)
             {
-                
                 flash("Probleme: " + error, 'error');
             } else
             {
-                
                 flash(result, 'info');
                 $('html').animate({ scrollTop: $('#flashMessage').offset().top }, 'slow');
 
