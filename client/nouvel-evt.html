@@ -3,9 +3,9 @@
 
     <h1>
         {{#if evenement}}
-            {{evenement.nom}} <small>modification</small>           
+        {{evenement.nom}} <small>modification</small>           
         {{else}}
-         Ajouter un évènement
+        Ajouter un évènement
         {{/if}}
     </h1>
 
@@ -17,14 +17,14 @@
             <div class="control-group">
                 <label class="control-label" for="nom">Titre</label>
                 <div class="controls">
-                    <input type="text" name="nom" id="nom" placeholder="nom de l'événement" required title='un putain de nom' class='span6' value="{{evenement.nom}}"/>
+                    <input type="text" name="nom" id="nom" placeholder="nom de l'événement" required class='span6' value="{{evenement.nom}}"/>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label"  for="admin">Adresse e-mail</label>
                 <div class="controls">                
-                        <input type="email" name="admin" id="admin"  placeholder="pour la gestion de l'événement" required {{#if evenement.admin}} disabled='disabled' value='{{evenement.admin}}'{{/if}} />
-                   
+                    <input type="email" name="admin" id="admin"  placeholder="pour la gestion de l'événement" required error{{#if evenement.admin}} disabled='disabled' value='{{evenement.admin}}'{{/if}} />
+
                 </div>
             </div>
         </fieldset>
@@ -32,22 +32,30 @@
         <fieldset id='evtParOblig'>
             <legend>Fiche événement</legend>
             <div class="control-group">
-                <label class="control-label"  for="admin">Statut & Portée</label>
+                <label class="control-label"  for="admin">Phase & Portée</label>
                 <div class="controls">
                     <div class="btn-group" data-toggle="buttons-radio" data-toggle-name='statut'>
-                        <button type="button" class="btn btn-small{{#unless evenement.statut}} active{{/unless}}" data-value="enprojet">En projet</button>
-                        <button type="button" class="btn btn-small btn-primary" data-value="confirme">Confirmé</button>
+                        <button type="button" class="bspopover btn btn-small{{#unless evenement.statut}} active{{/unless}}" data-value="projet" 
+                                data-placement="bottom" title="En phase de conception" data-content="Les informations fondamentales (date, lieu) sont en attente de validation. Il est trop tôt pour que les participants prennent leurs billets de train.">
+                            Provisoire
+                        </button>
+                        <button type="button" class="bspopover btn btn-small btn-primary" data-value="confirme"
+                                data-placement="top" title="Evénement confirmé" data-content="Les paramètres fondamentaux (date,lieu) sont fixés. Il peut y avoir des enrichissements mais les participants peuvent prendre leurs billets d'avion.">
+                            Définitif
+                        </button>
                         {{#if evenement.statut}}
-                        <button type="button" class="btn btn-small btn-danger" data-value="annule">Annulé</button>
+                        <button type="button" class="btn btn-small btn-danger" data-value="annule"
+                                rel="popover" data-placement="top" title="Supprimer cet événement" data-content="L'événement ne se fera finalement pas.">
+                            Annulé</button>
                         {{/if}}
                         <input type="hidden" name="statut" value="{{evenement.statut}}"  id="statut" />
-                    </div>
+                    </div>               
                     <div class="btn-group" data-toggle="buttons-radio" data-toggle-name='echelle'>
-                        <button type="button" class="btn btn-small{{#unless evenement.echelle}} active{{/unless}}" data-value="locale" >Locale</button>
-                        <button type="button" class="btn btn-small" data-value="departementale">Départementale</button>
-                        <button type="button" class="btn btn-small" data-value="regionale">Régionale</button>
-                        <button type="button" class="btn btn-small" data-value="nationale">Nationale</button>
-                        <button type="button" class="btn btn-small" data-value="internationale">Internationale</button>
+                        <button type="button" class="btn btn-small{{#unless evenement.echelle}} active{{/unless}}" data-value="local" >Locale</button>
+                        <button type="button" class="btn btn-small" data-value="departemental">Départementale</button>
+                        <button type="button" class="btn btn-small" data-value="regional">Régionale</button>
+                        <button type="button" class="btn btn-small" data-value="national">Nationale</button>
+                        <button type="button" class="btn btn-small" data-value="international">Internationale</button>
                         <input type="hidden" name="echelle" value=""  id="echelle" />
                     </div>
                 </div>
@@ -79,13 +87,13 @@
                 </div>
             </div>
 
-            
-        <div class="control-group">
-            <label class="control-label">Présentation / Programme</label>
-            <div class="controls">
-                <textarea name="programme" id="programme" rows="5">{{evenement.programme}}</textarea>
+
+            <div class="control-group">
+                <label class="control-label">Présentation / Programme</label>
+                <div class="controls">
+                    <textarea name="programme" id="programme" rows="5">{{evenement.programme}}</textarea>
+                </div>
             </div>
-        </div>
         </fieldset>
 
         <fieldset id='evtCompInfo'>
@@ -177,11 +185,11 @@
         </fieldset>
         <button id="submitevt" class="submit btn btn-success">
             {{#if evenement}}
-                Enregistrer les modifications
+            Enregistrer les modifications
             {{else}}
-                Ajouter un événement au calendrier national
+            Ajouter un événement au calendrier national
             {{/if}}
         </button>
-        
+
     </form>
 </template>

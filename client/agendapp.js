@@ -60,6 +60,7 @@ function getMonthIndex(d)
 
 }
 
+
 Template.listeEvt.evenements = function() {
     var liste = Evenements.find({$and: [{valide: true},{statut:{$ne: "annule"}}]}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
@@ -85,6 +86,10 @@ Template.detailEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['admin', '_id','codeedition']);
     return res;
+};
+
+Template.nouvelEvt.rendered = function() {
+   $('button.bspopover').popover({trigger:"hover",container: 'body'}); //initialize all tooltips in this template
 };
 Template.nouvelEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
