@@ -25,7 +25,7 @@
                 <address>
                     <strong>{{evenement.lieu}}</strong>
                     {{#if evenement.codepostal}}<br>{{evenement.codepostal}}{{/if}}
-                    {{#if evenement.plan}}<br><a href='#'>{{evenement.plan}}</a>{{/if}}
+                    {{#if evenement.plan}}<br><iframe id="plandaccces" src="{{evenement.plan}}&output=embed"></iframe>{{/if}}
                 </address>            
             </div>
         </div>
