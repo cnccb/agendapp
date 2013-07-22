@@ -38,9 +38,7 @@ Meteor.startup(function() {
                     console.log('Evénement déjà valide');
                 }
                 Session.set('evtEnCours', evtCourantId);
-                $('#listeEvt').fadeOut(100, function() {
-                    $('#nouvelEvt').fadeIn(500);
-                });
+                displayView('nouvelEvt');
             }
         });
 
@@ -50,14 +48,20 @@ Meteor.startup(function() {
         if (Meteor.call('fetchOneEvt', query[1]))
         {
             Session.set('evtEnCours', query[1]);
-            $('#listeEvt').fadeOut(100, function() {
-                $('#detailEvt').fadeIn(500);
-            });
+            displayView('detailEvt');
         }
 
     }
+    else {
+        displayView('listeEvt');
+        Session.set('currentView','listeEvt');
+    }
 });
 
+
+/**
+* Helpers
+*/
 Handlebars.registerHelper('arrayify', function(obj) {
     result = [];
     for (var key in obj)
@@ -99,20 +103,78 @@ function checkBoxesValues(id)
     return vals;
 }
 
+
+function displayView(viewId){
+    $view=$('#'+viewId);
+    $('.view').fadeOut(100);
+    $view.fadeIn(300);
+    Session.set('currentView', viewId);
+}
+
 /** *
  * ENTETE
  */
 
 Template.entete.events({
     'click #logotitre': function(e) {
-        $('#nouvelEvt').fadeOut(100, function() {
-            $('#detailEvt').fadeOut(100, function() {
-                $('#listeEvt').fadeIn(500);
-            });
-        });
+        displayView('listeEvt');
         location.hash = '';
     }
 });
+
+/**
+* fil d'ariane / navigation
+*/
+Template.ariane.links = function(){
+
+    //@todo un peu overkill, à simplifier
+    var currentView = Session.get('currentView');
+    var menus ={
+        accueil: {id:'accueil', label:'accueil', href:'/', active: true},
+        creation: {id:'creation', label:'création', active:false, disabled: true},
+        modification: {id:'modification', label:'modification', disabled: true},
+        detail: {id:'detail', label:'détail', disabled: true}
+    };
+    switch(currentView)
+    {
+    case 'listeEvt':
+        menus.accueil.active=true;
+      break;
+    case 'detailEvt':
+        menus.accueil.active=false;
+        menus.detail.active=true;
+        menus.detail.disabled=false;
+      break;
+    case 'nouvelEvt':
+        if(Session.get('evtEnCours')===undefined)
+        {
+            //creation
+            menus.creation.active=true;      
+            menus.creation.disabled=false;
+            menus.modification.active=false;
+            menus.modification.disabled=true;
+
+        }else
+        {
+            //modification
+            menus.creation.active=false;   
+            menus.creation.disabled=true;
+            menus.modification.active=true;
+            menus.modification.disabled=false;
+
+        }
+        menus.accueil.active=false;  
+      break;
+    default:
+    }
+    var links = new Array();
+    _.each(menus,function(value, key, list){
+        links.push(value);
+    })
+
+    //transformation de l'objet en tableau pour handlebar
+    return links;
+}
 
 /**
  * LISTEEVT
@@ -140,17 +202,13 @@ Template.listeEvt.evenements = function() {
 Template.listeEvt.events({
     'click #newEvt': function(e) {
         // pour ne pas préremplir si on a sélectionné un auparavant
-        Session.set('evtEnCours', undefined);
-
-        $('#listeEvt').fadeOut(100, function() {
-            $('#nouvelEvt').fadeIn(500);
-        });
+        Session.set('evtEnCours', undefined);        
+        displayView('nouvelEvt');
+        
     },
     'click .clickToDetail': function(e) {
         Session.set('evtEnCours', $(e.currentTarget).attr('id'));
-        $('#listeEvt').fadeOut(100, function() {
-            $('#detailEvt').fadeIn(500);
-        });
+        displayView('detailEvt');
     }
 
 });
@@ -174,9 +232,7 @@ Template.detailEvt.evenement = function() {
 };
 Template.detailEvt.events({
     'click #return': function(e) {
-        $('#detailEvt').fadeOut(100, function() {
-            $('#listeEvt').fadeIn(500);
-        });
+            displayView('listeEvt');
     }
 });
 
@@ -213,9 +269,7 @@ Template.nouvelEvt.evenement = function() {
 
 Template.nouvelEvt.events({
     'click #cancel': function(e) {
-        $('#nouvelEvt').fadeOut(100, function() {
-            $('#listeEvt').fadeIn(500);
-        });
+            displayView('listeEvt');
     },
     //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrirreco': function(e) {
@@ -306,9 +360,7 @@ Template.nouvelEvt.events({
         console.log("Evènement créé/modifié");
 
         // Retour à l'interface du calendrier
-        $('#nouvelEvt').fadeOut(100, function() {
-            $('#listeEvt').fadeIn(500);
-        });
+        displayView('listeEvt');
         // message de validation??        
         //return false;
     },

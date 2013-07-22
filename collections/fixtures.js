@@ -10,7 +10,7 @@ testEvt = [
         forclusion: '2013-11-10', //Date de forclusion
         horaires: 'Samedi 10h00-19h00, Dimanche 10h00-17h00', //horaires (avec alternatives si pas bordé)
         echelle: 'international', //Echelle (nationale, régionale, ...)
-        cible: 'des cannistes !', //Public attendu (->cible)
+        cible: ['des cannistes !'], //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
         statut: 'definitif', //Statut           
@@ -37,7 +37,7 @@ testEvt = [
         forclusion: '2013-11-10', //Date de forclusion
         horaires: 'Samedi 10h00-19h00, Dimanche 10h00-17h00', //horaires (avec alternatives si pas bordé)
         echelle: 'national', //Echelle (nationale, régionale, ...)
-        cible: 'des cannistes !', //Public attendu (->cible)
+        cible: ['debutants','confirmes'], //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
         statut: 'definitif', //Statut           
@@ -64,7 +64,7 @@ testEvt = [
         forclusion: '2013-11-10', //Date de forclusion
         horaires: 'Samedi 10h00-19h00, Dimanche 10h00-17h00', //horaires (avec alternatives si pas bordé)
         echelle: 'international', //Echelle (nationale, régionale, ...)
-        cible: 'des cannistes !', //Public attendu (->cible)
+        cible: ['debutants','confirmes'], //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
         statut: 'provisoire', //Statut           
@@ -91,7 +91,7 @@ testEvt = [
         forclusion: '2013-11-10', //Date de forclusion
         horaires: 'Samedi 10h00-19h00, Dimanche 10h00-17h00', //horaires (avec alternatives si pas bordé)
         echelle: 'national', //Echelle (nationale, régionale, ...)
-        cible: 'des cannistes !', //Public attendu (->cible)
+        cible: ['debutants','confirmes'], //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
         statut: 'annule', //Statut           
@@ -118,7 +118,7 @@ testEvt = [
         forclusion: '2013-11-10', //Date de forclusion
         horaires: 'Samedi 10h00-19h00, Dimanche 10h00-17h00', //horaires (avec alternatives si pas bordé)
         echelle: 'regional', //Echelle (nationale, régionale, ...)
-        cible: 'des cannistes !', //Public attendu (->cible)
+        cible: ['debutants','confirmes'], //Public attendu (->cible)
         prix: '30€', //Prix d'inscription
         orga: 'Julien Falconnet', //Nom de l'organisateur, 
         statut: 'provisoire', //Statut           
