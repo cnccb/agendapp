@@ -169,13 +169,19 @@
             </div>
             <div class="control-group evtParOption">
                 <label class="control-label">Cible (public attendu)</label>
-                <div class="controls">
-                    <div class="btn-group" name='cible' id='cible' data-toggle="buttons-radio" data-toggle-name='cible' data-value='{{evenement.cible}}'>
-                        <button type="button" class="btn btn-small {{#unless evenement.cible}} active{{/unless}}" data-value="competiteurs">Competiteurs</button>
-                        <button type="button" class="btn btn-small" data-value="debutants">Débutants</button>
-                        <button type="button" class="btn btn-small" data-value="confirmés">Confirmés</button>
-                        <button type="button" class="btn btn-small" data-value="jeunes">Jeunes</button>
-                    </div>
+                <div class="controls" id='cible'>
+                    <label class="checkbox inline">
+                      <input type="checkbox" name="cible" id="competiteurs" value="competiteurs"> Competiteurs
+                    </label>
+                    <label class="checkbox inline">
+                      <input type="checkbox" name="cible" id="debutants" value="debutants"> Débutants
+                    </label>
+                    <label class="checkbox inline">
+                      <input type="checkbox" name="cible" id="confirmes" value="confirmes"> Confirmés
+                    </label>
+                    <label class="checkbox inline">
+                      <input type="checkbox" name="cible" id="jeunes" value="jeunes"> Jeunes
+                    </label>
                 </div>
             </div>
         </fieldset>

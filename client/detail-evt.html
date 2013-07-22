@@ -69,8 +69,14 @@
         <div class="span4">
             <div class="well">
                 <h2>Divers</h2>
-                <ul>
-                {{#if evenement.cible}}<li>Cible (public attendu) : {{evenement.cible}}</li>{{/if}}
+                <ul class="unstyled">
+                {{#if evenement.cible}}
+                    <li>
+
+                    Cible (public attendu) :
+                        {{#each evenement.cible}}<span class='label'>{{this}}</span>{{/each}}
+                    </li>
+                {{/if}}
                 {{#if evenement.conditions}}<li>Conditions de participation : {{evenement.conditions}}</li>{{/if}}
                 {{#if evenement.prix}}<li>Prix : {{evenement.prix}}</li>{{/if}}
                 {{#if evenement.options}}<li>Options:{{evenement.options}}</li>{{/if}}
