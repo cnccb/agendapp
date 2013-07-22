@@ -19,7 +19,7 @@ tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{
 #flashMessage{margin: 20px; display: none}
 
 /* gestion de la validation des formulaires*/
-input:invalid, textarea:invalid, select:invalid{box-shadow:#f00; border-color: #f00}
+input:invalid, textarea:invalid, select:invalid{box-shadow:#f00;}
 .interacted:invalid {background-color:#fee;}
 .interacted:valid {background-color:#efe;}
 
