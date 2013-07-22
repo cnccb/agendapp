@@ -38,8 +38,8 @@
                 <address>
                     <strong>{{evenement.orga}}</strong>
                     {{#if evenement.tel}}<br>{{evenement.tel}}{{/if}}
-                    {{#if evenement.contact}}<br><a href="mailto:#">{{evenement.contact}}</a>{{/if}}                
-                    {{#if evenement.url}}<br><a href="#">{{evenement.url}}</a>{{/if}}                
+                    {{#if evenement.contact}}<br><a href="mailto:{{evenement.orga}}<{{evenement.contact}}>?subject=[{{evenement.nom}}]">{{evenement.contact}}</a>{{/if}}  
+                    {{#if evenement.url}}<br><a href="{{evenement.url}}">{{evenement.url}}</a>{{/if}}                
                 </address>            
             </div>
         </div>

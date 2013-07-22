@@ -85,7 +85,7 @@ if (Meteor.isServer) {
                 Email.send({
                     to: evt.admin,
                     from: "webmaster@cnccb.net",
-                    subject: "[Agend'app] Merci de confirmer votre email pour l'événement " + evt.nom + "",
+                    subject: "[Agend'app] Administration de : " + evt.nom + "",
                     text: message
                 });
                 console.log("mail envoyé");
