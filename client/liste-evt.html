@@ -11,7 +11,8 @@
 
         <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voire les détails' >
             <td class="muted">{{jourdeb}}</td>
-            <td><strong>{{nom}} ({{codepostal}})</strong> - {{lieu}} - {{echelle}}</td>
+            <td>{{iconify statut}} {{iconify echelle}}
+                <strong>{{nom}} ({{codepostal}})</strong> - {{lieu}} - {{echelle}}</td>
         </tr>
         {{/if}}
         {{/each}}

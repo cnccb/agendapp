@@ -3,7 +3,7 @@
 
     <h1>
         {{#if evenement}}
-            {{evenement.nom}} <small>modification</small>           
+        {{evenement.nom}} <small>modification</small>           
         {{else}}
         Ajouter un évènement
         {{/if}}
@@ -36,18 +36,18 @@
                     <div class="btn-group" data-toggle="buttons-radio" name='statut' id='statut' data-toggle-name='statut' data-value='{{evenement.statut}}'>
                         <button type="button" class="bspopover btn btn-small{{#unless evenement.statut}} active{{/unless}}" data-value="provisoire" 
                                 data-placement="bottom" title="En phase de conception" data-content="Les informations fondamentales (date, lieu) sont en attente de validation. Il est trop tôt pour que les participants prennent leurs billets de train.">
-                                <i class='icon-question-sign'></i>
+                            {{iconify "provisoire"}}
                             Provisoire
                         </button>
                         <button type="button" class="bspopover btn btn-small" data-value="definitif"
                                 data-placement="top" title="Evénement confirmé" data-content="Les paramètres fondamentaux (date,lieu) sont fixés. Il peut y avoir des enrichissements mais les participants peuvent prendre leurs billets d'avion.">
-                                <i class='icon-ok'></i>
+                            {{iconify "definitif"}}
                             Définitif
                         </button>
                         {{#if evenement.statut}}
                         <button type="button" class="btn btn-small" data-value="annule"
                                 rel="popover" data-placement="top" title="Supprimer cet événement" data-content="L'événement ne se fera finalement pas.">
-                                <i class='icon-remove'></i>
+                            {{iconify "annule"}}
                             Annulé</button>
                         {{/if}}
                     </div>  
@@ -57,11 +57,26 @@
                 <label class="control-label">Portée</label>
                 <div class="controls">             
                     <div class="btn-group" data-toggle="buttons-radio" name='echelle' id='echelle' data-toggle-name='echelle' data-value='{{evenement.echelle}}'>
-                        <button type="button" class="btn btn-small{{#unless evenement.echelle}} active{{/unless}}" data-value="local" >Locale</button>
-                        <button type="button" class="btn btn-small" data-value="departemental">Départementale</button>
-                        <button type="button" class="btn btn-small" data-value="regional">Régionale</button>
-                        <button type="button" class="btn btn-small" data-value="national">Nationale</button>
-                        <button type="button" class="btn btn-small" data-value="international">Internationale</button>
+                        <button type="button" class="btn btn-small{{#unless evenement.echelle}} active{{/unless}}" data-value="local" >
+                            {{iconify "local"}}
+                            Locale
+                        </button>
+                        <button type="button" class="btn btn-small" data-value="departemental">
+                            {{iconify "departemental"}}
+                            Départementale
+                        </button>
+                        <button type="button" class="btn btn-small" data-value="regional">
+                            {{iconify "regional"}}
+                            Régionale
+                        </button>
+                        <button type="button" class="btn btn-small" data-value="national">
+                            {{iconify "national"}}
+                            Nationale
+                        </button>
+                        <button type="button" class="btn btn-small" data-value="international">
+                            {{iconify "international"}}
+                            Internationale
+                        </button>
                     </div>
                 </div>
             </div>

@@ -64,6 +64,22 @@ Handlebars.registerHelper('arrayify', function(obj) {
         result.push({name: key, value: obj[key]});
     return result;
 });
+Handlebars.registerHelper('iconify', function(text) {
+    var inconificationTable={
+        'provisoire':   "<i class='icon-question-sign' title='Evénement provisoire qui peut encore changer de date, de lieu.'></i>",
+        'definitif':    "<i class='icon-ok' title='Evénement confirmé, la date et le lieu ne changeront plus.'></i>",
+        'annule':       "<i class='icon-remove' title='Evénement qui n\'aura pas lieu.></i>",
+        'local':        "<i class='icon-home' title='Organisation locale'></i>",
+        'departemental':"<i class='icon-star' title='Evénement de portée départementale'></i>",
+        'regional':     "<i class='icon-map-marker' title='Evénement de portée régionale'></i>",
+        'national':     "<i class='icon-road' title='Evénement de portée nationale'></i>",
+        'international':"<i class='icon-plane' title='Evénement de portée internationale'></i>",
+    };
+    if(inconificationTable[text])
+        return new Handlebars.SafeString(inconificationTable[text]);
+    else
+        return text;
+});
 
 /**
  * BIBLIOTHEQUE
