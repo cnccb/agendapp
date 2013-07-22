@@ -167,7 +167,7 @@ Template.detailEvt.events({
  */
 
 Template.nouvelEvt.rendered = function() {
-    //infobulles d'aide
+      //infobulles d'aide
     $('button.bspopover').popover({trigger: "hover", container: 'body'}); //initialize all popover in this template
     //etat des boutons radio
     $('[data-toggle="buttons-radio"]').each(function(){
@@ -176,7 +176,12 @@ Template.nouvelEvt.rendered = function() {
         //console.log($(this));
         $button.button('toggle');
         $button.trigger('click');
-    })
+    });
+
+    //définition des validateur des champs dates
+    $('#frmNouvelEvt input[type="date"]').attr('pattern','(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d');
+    $('#frmNouvelEvt input[type="date"]').attr('min','2000-01-01');
+    $('#frmNouvelEvt input[type="date"]').attr('max','2099-12-31');
 };
 Template.nouvelEvt.evenement = function() {
     //pour eviter d'afficher un evenement vide
@@ -290,12 +295,15 @@ Template.nouvelEvt.events({
     },
     'invalid input': function(e)
     {
-        if ($(e.currentTarget).siblings('.errorbox').length === 0)
+        var $input = $(e.currentTarget);
+        if ($input.siblings('.errorbox').length === 0)
         {
-            $(e.currentTarget).after('<div class="errorbox alert alert-block alert-error"><button type="button" class="close" data-dismiss="alert">×</button><p></p></div>');
+            $input.after('<div class="errorbox alert alert-block alert-error"><button type="button" class="close" data-dismiss="alert">×</button><p></p></div>');
         }
-        $(e.currentTarget).siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
-        $(e.currentTarget).siblings('.errorbox').fadeIn(500);
+        $input.siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
+        $input.siblings('.errorbox').fadeIn(500);
+        $('html').animate({ scrollTop: $input.offset().top }, 'slow');
+
     },
     'blur input': function(e)
     {
