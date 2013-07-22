@@ -74,9 +74,9 @@ if (Meteor.isServer) {
             var evt = Evenements.findOne(evtId);
             var urlConfirm = "" + SERVER_URL + "#" + evt.codeedition + '#' + evt._id;
             var message = "Bonjour, \n\n Vous avez ajouté l'événement "
-                    + "'" + evt.nom + "' sur l'application Agend'app. Nous avons besoin de confirmer votre e-mail pour poursuivre :\n\n"
-                    + "Veuillez cliquer sur le lien ci-dessous pour confirmer votre email : \n"
-                    + urlConfirm + "\n"
+                    + "'" + evt.nom + "' sur l'application Agend'app. Voici le lien qui vous permettra de le modifier par la suite :\n"
+                    + urlConfirm + "\n\n"
+                    + "NB:Il est nécessaire de cliquer au moins une fois pour valider l'événement."
                     + "Merci d'avoir utilisé Agend'app ! (ne répondez pas à ce message, il a été envoyé automatiquement. Pour tout contact, merci d'envoyer un mail à webmaster@cnccb.net"
                     + "\n\n L'équipe Agend'App - CNCCB";
 
