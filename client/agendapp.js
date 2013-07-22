@@ -77,7 +77,7 @@ function getMonthIndex(d)
         'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
     return nommois[d.getMonth()] + " " + d.getFullYear();
 
-}
+};
 
 /*
 * affiche un message sous form d'un div alert
@@ -87,6 +87,15 @@ function flash(message, className)
 {
     if(_.isUndefined(className)) className = 'alert';
     $('#flashMessage').html(Template.flash({message: message, className: className})).fadeIn(200);
+};
+
+function checkBoxesValues(id)
+{
+    var vals=new Array();
+    $('#'+id+' :checkbox:checked').each(function(i){
+        vals.push($(this).val());
+    });
+    return vals;
 }
 /**
  * LISTEEVT
@@ -225,7 +234,7 @@ Template.nouvelEvt.events({
                     forclusion: forclusion.value, //Date de forclusion
                     horaires: horaires.value, //horaires (avec alternatives si pas bordé)
                     echelle: $(echelle).attr('data-value'), //Echelle (nationale, régionale, ...)
-                    cible: $(cible).attr('data-value'), //Public attendu (->cible)
+                    cible: checkBoxesValues('cible'), //Public attendu (->cible)
                     prix: prix.value, //Prix d'inscription
                     orga: orga.value, //Nom de l'organisateur, 
                     statut: $(statut).attr('data-value'), //Statut           
