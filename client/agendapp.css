@@ -22,3 +22,6 @@ tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{
 input:invalid, textarea:invalid, select:invalid{box-shadow:#f00; border-color: #f00}
 .interacted:invalid {background-color:#fee;}
 .interacted:valid {background-color:#efe;}
+
+
+#plandaccces{border:none;width:100%;height:250px;}
