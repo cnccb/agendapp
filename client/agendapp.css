@@ -1,13 +1,13 @@
 /* CSS declarations go here */
 #nouvelEvt{display:none;}
 #detailEvt{display:none;}
-tr.clickToDetail:hover{cursor: pointer;}
+tr.clickToDetail:hover,#logotitre:hover{cursor: pointer;}
 tr.provisoire{color:#999;}
-tr.local td strong{font-size:80%;}
-tr.regional td strong{font-size:100%;}
-tr.national td strong{font-size:120%;}
-tr.international td strong{font-size:140%;}
-tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{font-size:100%;}
+tr.local td strong{}
+tr.regional td strong{}
+tr.national td strong{}
+tr.international td strong{}
+tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{}
 
 #ouvrircomplement:hover{cursor: pointer;}
 #ouvrirreco:hover{cursor: pointer;}
@@ -22,5 +22,8 @@ tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{
 input:invalid, textarea:invalid, select:invalid{box-shadow:#f00; border-color: #f00}
 .interacted:invalid {background-color:#fee;}
 .interacted:valid {background-color:#efe;}
+
+
 /*affichage détail evt*/
 span.label{margin-right: 5px;}
+#plandaccces{border:none;width:100%;height:250px;}

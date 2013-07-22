@@ -33,7 +33,7 @@ Meteor.startup(function() {
             {
                 if (result)
                 {
-                    flash("Votre événement est validé !", 'info'); 
+                    flash("Votre événement est validé !", 'info');
                 } else {
                     console.log('Evénement déjà valide');
                 }
@@ -47,14 +47,14 @@ Meteor.startup(function() {
     }
     else if (query[1])
     {
-        if(Meteor.call('fetchOneEvt',query[1]))
+        if (Meteor.call('fetchOneEvt', query[1]))
         {
-            Session.set('evtEnCours', query[1]);        
+            Session.set('evtEnCours', query[1]);
             $('#listeEvt').fadeOut(100, function() {
                 $('#detailEvt').fadeIn(500);
             });
         }
-        
+
     }
 });
 
@@ -80,12 +80,13 @@ function getMonthIndex(d)
 };
 
 /*
-* affiche un message sous form d'un div alert
-* className = info|warning|error
-*/
+ * affiche un message sous form d'un div alert
+ * className = info|warning|error
+ */
 function flash(message, className)
 {
-    if(_.isUndefined(className)) className = 'alert';
+    if (_.isUndefined(className))
+        className = 'alert';
     $('#flashMessage').html(Template.flash({message: message, className: className})).fadeIn(200);
 };
 
@@ -97,6 +98,22 @@ function checkBoxesValues(id)
     });
     return vals;
 }
+
+/** *
+ * ENTETE
+ */
+
+Template.entete.events({
+    'click #logotitre': function(e) {
+        $('#nouvelEvt').fadeOut(100, function() {
+            $('#detailEvt').fadeOut(100, function() {
+                $('#listeEvt').fadeIn(500);
+            });
+        });
+        location.hash = '';
+    }
+});
+
 /**
  * LISTEEVT
  */
@@ -145,6 +162,14 @@ Template.listeEvt.events({
 Template.detailEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['admin', '_id', 'codeedition']);
+
+    //evenement.planiframable 
+    if (res.plan 
+            && res.plan.indexOf("maps.google") !== -1)
+    {
+        res.planiframable=res.plan+"&output=embed";
+    }
+
     return res;
 };
 Template.detailEvt.events({
@@ -160,25 +185,26 @@ Template.detailEvt.events({
  */
 
 Template.nouvelEvt.rendered = function() {
-      //infobulles d'aide
+    //infobulles d'aide
     $('button.bspopover').popover({trigger: "hover", container: 'body'}); //initialize all popover in this template
     //etat des boutons radio
-    $('[data-toggle="buttons-radio"]').each(function(){
+    $('[data-toggle="buttons-radio"]').each(function() {
         var valBouton = $(this).attr("data-value");
-        var $button = $('[data-value="'+valBouton+'"]');
+        var $button = $('[data-value="' + valBouton + '"]');
         //console.log($(this));
         $button.button('toggle');
         $button.trigger('click');
     });
 
     //définition des validateur des champs dates
-    $('#frmNouvelEvt input[type="date"]').attr('pattern','(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d');
-    $('#frmNouvelEvt input[type="date"]').attr('min','2000-01-01');
-    $('#frmNouvelEvt input[type="date"]').attr('max','2099-12-31');
+    $('#frmNouvelEvt input[type="date"]').attr('pattern', '(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d');
+    $('#frmNouvelEvt input[type="date"]').attr('min', '2000-01-01');
+    $('#frmNouvelEvt input[type="date"]').attr('max', '2099-12-31');
 };
 Template.nouvelEvt.evenement = function() {
     //pour eviter d'afficher un evenement vide
-    if(Session.get('evtEnCours')===undefined) return null;
+    if (Session.get('evtEnCours') === undefined)
+        return null;
 
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['codeedition']);
@@ -195,21 +221,21 @@ Template.nouvelEvt.events({
     'click #ouvrirreco': function(e) {
         $('#evtReco .evtParOption').toggle();
         $('#ouvrirreco i').toggleClass('icon-chevron-right  icon-chevron-down');
-        $('html').animate({ scrollTop: $("#ouvrirreco").offset().top }, 'slow');
+        $('html').animate({scrollTop: $("#ouvrirreco").offset().top}, 'slow');
         return false;
     },
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
         $('#ouvrircomplement i').toggleClass('icon-chevron-right  icon-chevron-down');
-        $('html').animate({ scrollTop: $("#ouvrircomplement").offset().top }, 'slow');
+        $('html').animate({scrollTop: $("#ouvrircomplement").offset().top}, 'slow');
         return false;
     },
     //@todo: faire en sorte que ce soit correctement valué/initialisé/repopulé
     'click [data-toggle="buttons-radio"] button': function(e) {
         $button = $(e.currentTarget);
-        $buttonGroup =  $(e.currentTarget).parent();
+        $buttonGroup = $(e.currentTarget).parent();
         //console.log($buttonGroup);
-        $buttonGroup.attr("data-value",$button.attr("data-value"));
+        $buttonGroup.attr("data-value", $button.attr("data-value"));
         //console.log($buttonGroup.attr('data-value'));
     },
     'click #submitevt': function(e) {
@@ -272,7 +298,7 @@ Template.nouvelEvt.events({
             } else
             {
                 flash(result, 'info');
-                $('html').animate({ scrollTop: $('#flashMessage').offset().top }, 'slow');
+                $('html').animate({scrollTop: $('#flashMessage').offset().top}, 'slow');
 
                 console.log(newEvent);
             }
@@ -295,7 +321,7 @@ Template.nouvelEvt.events({
         }
         $input.siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
         $input.siblings('.errorbox').fadeIn(500);
-        $('html').animate({ scrollTop: $input.offset().top }, 'slow');
+        $('html').animate({scrollTop: $input.offset().top}, 'slow');
 
     },
     'blur input': function(e)
