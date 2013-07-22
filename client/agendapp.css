@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 #nouvelEvt{display:none;}
 #detailEvt{display:none;}
-tr.clickToDetail:hover{cursor: pointer;}
+tr.clickToDetail:hover,#logotitre:hover{cursor: pointer;}
 tr.provisoire{color:#999;}
 tr.local td strong{font-size:80%;}
 tr.regional td strong{font-size:100%;}

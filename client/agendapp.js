@@ -88,6 +88,22 @@ function flash(message, className)
     if(_.isUndefined(className)) className = 'alert';
     $('#flashMessage').html(Template.flash({message: message, className: className})).fadeIn(200);
 }
+
+/** *
+ * ENTETE
+ */
+
+Template.entete.events({
+    'click #logotitre': function(e) {
+        $('#nouvelEvt').fadeOut(100, function() {
+            $('#detailEvt').fadeOut(100, function() {
+                $('#listeEvt').fadeIn(500);
+            });
+        });
+        location.hash = '';
+    }
+});
+
 /**
  * LISTEEVT
  */
