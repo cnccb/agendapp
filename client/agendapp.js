@@ -267,6 +267,15 @@ Template.nouvelEvt.rendered = function() {
         $button.button('toggle');
         $button.trigger('click');
     });
+    $('[data-type="checkbox"]').each(function() {
+        var valChecked = $(this).attr("data-value").split(',');
+        //console.log(valChecked);
+        _.each(valChecked, function(item,key,list){
+            $('[value="' + item + '"]').attr('checked',true);
+        })
+        
+    });
+
 
     //définition des validateur des champs dates
     $('#frmNouvelEvt input[type="date"]').attr('pattern', '(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d');
