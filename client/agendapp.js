@@ -127,6 +127,22 @@ function displayView(viewId){
     Session.set('currentView', viewId);
 }
 
+/**
+* repère les templates générés plusieurs fois : à appeler après la génération des templates
+*/
+function logRenders () {
+    _.each(Template, function (template, name) {
+      var oldRender = template.rendered;
+      var counter = 0;
+ 
+      template.rendered = function () {
+        console.log(name, "render count: ", ++counter);
+        oldRender && oldRender.apply(this, arguments);
+      };
+    });
+  }
+
+
 /** *
  * ENTETE
  */
@@ -191,6 +207,12 @@ Template.ariane.links = function(){
     //transformation de l'objet en tableau pour handlebar
     return links;
 }
+
+Template.ariane.events({
+    'click li.disabled a' : function(e){
+        e.preventDefault();
+    }
+})
 
 /**
  * LISTEEVT
@@ -412,4 +434,6 @@ Template.nouvelEvt.events({
     }
 
 });
+
+    logRenders();    
 
