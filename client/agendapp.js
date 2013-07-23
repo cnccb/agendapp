@@ -295,7 +295,7 @@ Template.nouvelEvt.events({
                 };
         //quelques défauts
         if (!newEvent.statut)
-            newEvent.statut = 'enprojet';
+            newEvent.statut = 'temporaire';
 
         // pour l'update
         if (dejaexistant.value != 'null')
