@@ -213,6 +213,7 @@ Template.nouvelEvt.rendered = function() {
     });
 
     //définition des validateur des champs dates
+    //@todo: expliquer à julien pourquoi l'avoir mis là plutot que dans les balises html?
     $('#frmNouvelEvt input[type="date"]').attr('pattern', '(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d');
     $('#frmNouvelEvt input[type="date"]').attr('min', '2000-01-01');
     $('#frmNouvelEvt input[type="date"]').attr('max', '2099-12-31');
