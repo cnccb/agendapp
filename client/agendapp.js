@@ -267,6 +267,15 @@ Template.nouvelEvt.rendered = function() {
         $button.button('toggle');
         $button.trigger('click');
     });
+    $('[data-type="checkbox"]').each(function() {
+        var valChecked = $(this).attr("data-value").split(',');
+        //console.log(valChecked);
+        _.each(valChecked, function(item,key,list){
+            $('[value="' + item + '"]').attr('checked',true);
+        })
+        
+    });
+
 
     //définition des validateur des champs dates
     //@todo: expliquer à julien pourquoi l'avoir mis là plutot que dans les balises html?
