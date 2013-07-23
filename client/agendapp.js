@@ -70,17 +70,17 @@ Handlebars.registerHelper('arrayify', function(obj) {
 });
 Handlebars.registerHelper('iconify', function(text) {
     var inconificationTable={
-        'provisoire':   "<i class='icon-question-sign' title='Evénement provisoire qui peut encore changer de date, de lieu.'></i>",
-        'definitif':    "<i class='icon-ok' title='Evénement confirmé, la date et le lieu ne changeront plus.'></i>",
-        'annule':       "<i class='icon-remove' title='Evénement qui n\'aura pas lieu.></i>",
-        'local':        "<i class='icon-home' title='Organisation locale'></i>",
-        'departemental':"<i class='icon-star' title='Evénement de portée départementale'></i>",
-        'regional':     "<i class='icon-map-marker' title='Evénement de portée régionale'></i>",
-        'national':     "<i class='icon-road' title='Evénement de portée nationale'></i>",
-        'international':"<i class='icon-plane' title='Evénement de portée internationale'></i>",
+        'provisoire':   new Handlebars.SafeString("<i class='icon-question-sign' title='Evénement provisoire qui peut encore changer de date, de lieu.'></i>"),
+        'definitif':    new Handlebars.SafeString("<i class='icon-ok' title='Evénement confirmé, la date et le lieu ne changeront plus.'></i>"),
+        'annule':       new Handlebars.SafeString("<i class='icon-remove' title='Evénement qui n\'aura pas lieu.></i>"),
+        'local':        new Handlebars.SafeString("<i class='icon-home' title='Organisation locale'></i>"),
+        'departemental':new Handlebars.SafeString("<i class='icon-map-marker' title='Evénement de portée départementale'></i>"),
+        'regional':     new Handlebars.SafeString("<i class='icon-road' title='Evénement de portée régionale'></i>"),
+        'national':     new Handlebars.SafeString("<i class='icon-flag' title='Evénement de portée nationale'></i>"),
+        'international':new Handlebars.SafeString("<i class='icon-plane' title='Evénement de portée internationale'></i>"),
     };
     if(inconificationTable[text])
-        return new Handlebars.SafeString(inconificationTable[text]);
+        return inconificationTable[text];
     else
         return text;
 });
@@ -238,7 +238,7 @@ Template.detailEvt.evenement = function() {
     res = _.omit(res, ['admin', '_id', 'codeedition']);
 
     //evenement.planiframable 
-    if (res.plan 
+    if (res.plan
             && res.plan.indexOf("maps.google") !== -1)
     {
         res.planiframable=res.plan+"&output=embed";
@@ -278,6 +278,7 @@ Template.nouvelEvt.rendered = function() {
 
 
     //définition des validateur des champs dates
+    //@todo: expliquer à julien pourquoi l'avoir mis là plutot que dans les balises html?
     $('#frmNouvelEvt input[type="date"]').attr('pattern', '(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d');
     $('#frmNouvelEvt input[type="date"]').attr('min', '2000-01-01');
     $('#frmNouvelEvt input[type="date"]').attr('max', '2099-12-31');
@@ -358,7 +359,7 @@ Template.nouvelEvt.events({
                 };
         //quelques défauts
         if (!newEvent.statut)
-            newEvent.statut = 'enprojet';
+            newEvent.statut = 'temporaire';
 
         // pour l'update
         if (dejaexistant.value != 'null')

@@ -2,8 +2,8 @@
     <button id="return" class="btn pull-right btn-primary"><i class="icon-chevron-left icon-white"></i> Retour</button>
     <h1>{{evenement.nom}}</h1>
     <ul  class="inline">
-        {{#if evenement.statut}}<li>Statut : {{evenement.statut}}</li>{{/if}}
-        {{#if evenement.echelle}}<li>Echelle : {{evenement.echelle}}</li>{{/if}}
+        {{#if evenement.statut}}<li>Statut : {{evenement.statut}} ({{iconify evenement.statut}})</li>{{/if}}
+        {{#if evenement.echelle}}<li>Echelle : {{evenement.echelle}} ({{iconify evenement.echelle}})</li>{{/if}}
     </ul>
 
     <div class="row">
