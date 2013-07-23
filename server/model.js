@@ -20,7 +20,7 @@ if (Meteor.isServer) {
     Meteor.methods({
         fetchOneEvt: function(idEvt)
         {
-           return Evenements.findOne(idEvt);
+           return Evenements.findOne({_id: idEvt}, {fields:{_id: 1}});
         },
         addNewEvent: function(parameters)
         {

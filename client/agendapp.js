@@ -1,4 +1,3 @@
-
 /**
  * 
  * GLOBAL
@@ -15,6 +14,7 @@ Meteor.startup(function() {
     //vérification de la query
     //flash("test flash", "info");
     var query = window.location.href.split('#');
+    console.log('query -> ');
     console.log(query);
     //si la query contient des variables, on fait la vérif du code
     if (query[1] && query[2])
@@ -45,12 +45,13 @@ Meteor.startup(function() {
     }
     else if (query[1])
     {
-        if (Meteor.call('fetchOneEvt', query[1]))
-        {
-            Session.set('evtEnCours', query[1]);
-            displayView('detailEvt');
-        }
-
+        Meteor.call('fetchOneEvt', query[1], function (error, result){
+            if(result){
+                Session.set('evtEnCours', query[1]);
+                console.log("displaying evt"+query[1]);
+                displayView('detailEvt');    
+            };
+        });
     }
     else {
         displayView('listeEvt');
