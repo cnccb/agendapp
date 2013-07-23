@@ -8,7 +8,7 @@ tr.regional td strong{}
 tr.national td strong{}
 tr.international td strong{}
 tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{}
-
+.header .span3 img{float:right; margin-right: -25px;}
 #ouvrircomplement:hover{cursor: pointer;}
 #ouvrirreco:hover{cursor: pointer;}
 
@@ -27,3 +27,15 @@ input:invalid, textarea:invalid, select:invalid{box-shadow:#f00;}
 /*affichage détail evt*/
 span.label{margin-right: 5px;}
 #plandaccces{border:none;width:100%;height:250px;}
+
+/*footer*/
+#footer{
+    width: 100%; 
+    font-size: 12px;
+    font-family: arial, sans-serif;
+    color: #333;
+    padding: 70px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+    background-color: whiteSmoke;
+}
