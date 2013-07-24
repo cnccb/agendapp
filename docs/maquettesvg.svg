@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="542.91515"
-     inkscape:cy="2603.8631"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="537.51611"
+     inkscape:cy="2890.5607"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -40,7 +40,16 @@
      inkscape:window-height="744"
      inkscape:window-x="0"
      inkscape:window-y="24"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1">
+    <sodipodi:guide
+       orientation="0,1"
+       position="656.59915,2818.3256"
+       id="guide3574" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="897.01545,2977.9297"
+       id="guide3597" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -72,10 +81,10 @@
     <rect
        style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect3393"
-       width="440.3653"
+       width="520"
        height="130"
        x="26.223356"
-       y="-1931.7705"
+       y="-1925.6276"
        rx="0"
        inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
        inkscape:export-xdpi="90"
@@ -91,9 +100,9 @@
        ry="3.1180789" />
     <text
        xml:space="preserve"
-       style="font-size:56.52296066px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006cb7;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-       x="101.57523"
-       y="-1851.6732"
+       style="font-size:23.85733795px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#6f8a91;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+       x="94.694809"
+       y="-1829.7806"
        id="text2985"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
@@ -101,8 +110,8 @@
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan2987"
-         x="101.57523"
-         y="-1851.6732">agend'app</tspan></text>
+         x="94.694809"
+         y="-1829.7806">canne de combat &amp; bâton</tspan></text>
     <image
        y="-1896.999"
        x="998.62018"
@@ -114,29 +123,15 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <image
-       y="-1887.4258"
-       x="28.864723"
+       y="-1889.3879"
+       x="27.059456"
        id="image3373"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAZCAYAAADaILXQAAAABHNCSVQICAgIfAhkiAAAAaBJREFU SIntlbGOqkAYhQ8MgzKB/DEEYmIMhSH6CDb0NjzDfRhfhPs2PoIJtY3GYhKDyhT/LVhYd7fg6rLd nmSKEzhf4Pz5M2BmtMf3/WIymbDv+4UQAv8jIcSH3CPPYubuxdVqxUQErTUOh4N1uVx64b7vYzab dbn9fm+1z5wgCIrRaPSHiDCfz0FE8DwPxhj2PK8XHgQBptNpl1ssFqy1xv1+/2stl0sOwxCe50Ep BSkljDGoqgp1XffCXdf9krterzifz3DCMEQcx7BtuwtIKUFEveDPanNBEAAAbCHEB/AQsm0bQghY /DjRgWUlScJKqcHBVVXBIaKX+u2T1rqBR1E0OBwAhp3kZ2VZxnme86M2m823fJ7nnGUZO0BTPgAr jmO8zYDTNLW01k/5sizxxmMAcAB0m3g6nQA0y6C1ftq3ankO0KxwmqYcRRGICEopEBEDeMq3f54k Ceq6bgYqpURZljgejyjLEkqpb3kp5fuXG2MG7dwY89v5b+dPdm5tt1ve7Xa43W6o6xqu63b34at+ PB5jvV4DzFzwz6j4B4oFOcU43phnAAAAAElFTkSuQmCC "
-       height="63.198421"
-       width="58.142536"
+       height="62.464527"
+       width="57.467354"
        inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
-    <text
-       xml:space="preserve"
-       style="font-size:20.75534058px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#6f8a91;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-       x="101.0069"
-       y="-1822.1918"
-       id="text3376"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         id="tspan3378"
-         x="101.0069"
-         y="-1822.1918">votre évènement canne en deux clics !</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
@@ -613,7 +608,7 @@
          y="-449.00049">Public attendu</tspan></text>
     <g
        id="g4795"
-       transform="translate(0,-16)">
+       transform="translate(0,12)">
       <g
          transform="translate(514.16764,-173.74624)"
          id="g4756">
@@ -1036,5 +1031,35 @@
          id="tspan4227-6-2-4-1-23-3-6-5-2"
          x="25.838381"
          y="345.69977">Visites</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:53.4107666px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006cb7;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+       x="91.210182"
+       y="-1853.6027"
+       id="text2985-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan2987-5"
+         x="91.210182"
+         y="-1853.6027">calendrier national</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:23.85733795px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffcc00;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+       x="546.30408"
+       y="-1820.2914"
+       id="text2985-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="matrix(0.99961618,-0.02770367,0.02770367,0.99961618,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan2987-4"
+         x="546.30408"
+         y="-1820.2914"
+         style="font-weight:500;-inkscape-font-specification:Ubuntu Medium">beta</tspan></text>
   </g>
 </svg>
