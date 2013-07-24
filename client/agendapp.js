@@ -369,7 +369,8 @@ Template.nouvelEvt.events({
         // NB checkValidity will fire "invalid" events
         if (!(e.target.form.checkValidity()))
         {
-            $('html').animate({scrollTop: $('input:invalid').offset().top}, 'slow');
+            $('html').animate({scrollTop: $('input:invalid').first().offset().top}, 'slow');
+            console.log($('input:invalid').first());
             console.log("form invalid : exiting");
             return false;
         }
