@@ -296,8 +296,8 @@ Template.listeEvt.events({
     'click .clicktosearch': function(e) {
         e.preventDefault();
         var thesource = $(e.currentTarget);
-        var newvalue=thesource.attr('href');
-        thesource.siblings('input').attr("value",newvalue);
+        var newvalue = thesource.attr('href');
+        thesource.siblings('input').attr("value", newvalue);
         thesource.siblings('input').keyup();
         Session.set("search_keywords", newvalue.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
     }
