@@ -315,10 +315,12 @@ Template.detailEvt.evenement = function() {
 
     Session.set('titreEncours', res.nom);
     //evenement.planiframable 
-    if (res.plan
-            && res.plan.indexOf("maps.google") !== -1)
+    if (res.plan)
     {
-        res.planiframable = res.plan + "&output=embed";
+        if (res.plan.indexOf("maps.google") !== -1)
+            res.planiframable = res.plan + "&output=embed";
+        else if(res.plan.indexOf("goo.gl") !== -1)
+            res.planiframable = res.plan + "&output=embed";
     }
 
     return res;
