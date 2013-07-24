@@ -224,9 +224,14 @@ Template.ariane.events({
         Session.set('evtEnCours', $(e.currentTarget).attr('href'));
         console.log($(e.currentTarget).attr('href'));
         displayView('detailEvt');
+    },
+    'click #accueil': function(e) {
+        e.preventDefault();
+        displayView('listeEvt');
     }
 
 });
+
 
 /**
  * LISTEEVT
@@ -318,11 +323,6 @@ Template.detailEvt.evenement = function() {
 
     return res;
 };
-Template.detailEvt.events({
-    'click #return': function(e) {
-        displayView('listeEvt');
-    }
-});
 
 /**
  * NOUVELEVT
@@ -372,6 +372,7 @@ Template.nouvelEvt.evenement = function() {
 
 Template.nouvelEvt.events({
     'click #cancel': function(e) {
+        e.preventDefault();
         displayView('listeEvt');
     },
     //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels

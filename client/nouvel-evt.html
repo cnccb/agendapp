@@ -1,6 +1,4 @@
 <template name='nouvelEvt'>
-    <button id="cancel" class="btn pull-right btn-danger"><i class="icon-remove icon-white"></i> Annuler</button>
-
     <h1>
         {{#if evenement}}
         {{evenement.nom}} <small>modification</small>           
@@ -216,6 +214,9 @@
                     {{else}}
                     Ajouter un événement au calendrier national
                     {{/if}}
+                </button>
+                <button id="cancel" class="btn pull-right btn-danger">
+                    <i class="icon-remove icon-white"></i> Annuler
                 </button>
 
             </form>
