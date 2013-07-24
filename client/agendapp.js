@@ -214,7 +214,6 @@ Template.ariane.links = function() {
                     label: 'modification',
                     last: true
                 });
-
     }
     return breadcrumb;
 };
@@ -233,7 +232,25 @@ Template.ariane.events({
  * LISTEEVT
  */
 Template.listeEvt.evenements = function() {
-    var liste = Evenements.find({$and: [{valide: true}, {statut: {$ne: "annule"}}]}, {sort: {"datedeb": 1}}).fetch();
+    var keywords = new RegExp(Session.get("search_keywords"), "i");
+    var conditions = {
+        $and: [
+            {valide: true},
+            {statut: {$ne: "annule"}},
+            {$or: [
+                    {nom: keywords},
+                    {codepostal: keywords},
+                    {lieu: keywords},
+                    {echelle: keywords},
+                    {statut: keywords},
+                    {admin: keywords},
+                    {orga: keywords},
+                ]
+            }
+        ]
+    };
+
+    var liste = Evenements.find(conditions, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
     Session.set('titreEncours', '');
 
@@ -263,7 +280,15 @@ Template.listeEvt.events({
     'click .clickToDetail': function(e) {
         Session.set('evtEnCours', $(e.currentTarget).attr('id'));
         displayView('detailEvt');
+    },
+    'submit #search': function(e) {
+        e.preventDefault();
+
+    },
+    'keyup [name=searchString]': function(e, context) {
+        Session.set("search_keywords", e.currentTarget.value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
     }
+
 
 });
 
