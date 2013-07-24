@@ -1,21 +1,40 @@
 <template name="listeEvt">
     <button id="newEvt" class="btn pull-right btn-success"><i class="icon-plus icon-white"></i> Nouvel événement</button>
     <h1>Evènements canne de combat <small>[version beta]</small></h1>
-        
-    <table class="table table-hover table-striped table-condensed">
-        <tbody>
-        {{#each evenements}}
-        {{#if TitreIntermediaire}}
-        <tr class='monthline info'><td colspan='2' class="lead text--">{{TitreIntermediaire}}</td></tr> 
-        {{else}}
 
-        <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voir les détails' >
-            <td class="muted">{{jourdeb}}</td>
-            <td>{{iconify statut}} {{iconify echelle}}
-                <strong>{{nom}} ({{codepostal}})</strong> - {{lieu}} </td>
-        </tr>
-        {{/if}}
-        {{/each}}
-        </tbody>
-    </table>
+    <div class="row" >
+        <div class="span8" >
+            <table class="table table-hover table-striped table-condensed">
+                <tbody>
+                    {{#each evenements}}
+                    {{#if TitreIntermediaire}}
+                    <tr class='monthline info'><td colspan='2' class="lead text--">{{TitreIntermediaire}}</td></tr> 
+                    {{else}}
+
+                    <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voir les détails' >
+                        <td class="muted">{{jourdeb}}</td>
+                        <td>{{iconify statut}} {{iconify echelle}}
+                            <strong>{{nom}} ({{codepostal}})</strong> - {{lieu}} </td>
+                    </tr>
+                    {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="span4" >
+            <aside class="well">
+                <h3>Le saviez vous?</h3>
+                <dl>
+                    <dt>Pour <strong>créer</strong> votre événement</dt>
+                    <dd>Il suffit de cliquer sur le bouton ci-dessus.</dd>
+                    <dt>Pour <strong>avoir plus de détails</strong> sur un événement</dt>
+                    <dd>Cliquez sur la ligne concernée, ci-contre</dd>
+                    <dt>Pour <strong>modifier</strong> votre événement</dt>
+                    <dd>Il faut utiliser le lien que vous avez reçu par mail lors de la création de l'événement.</dd>
+                    <dt>Si vous êtes perdu</dt>
+                    <dd>Cliquez sur le logo en haut à gauche.</dd>
+                </dl>
+            </aside>
+        </div>
+    </div>
 </template>

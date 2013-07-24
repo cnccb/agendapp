@@ -156,64 +156,75 @@ Template.entete.events({
 });
 
 /**
-* fil d'ariane / navigation
-*/
-Template.ariane.links = function(){
-
-    //@todo un peu overkill, à simplifier
+ * fil d'ariane / navigation
+ */
+Template.ariane.links = function() {
     var currentView = Session.get('currentView');
-    var menus ={
-        accueil: {id:'accueil', label:'accueil', href:'/', active: true},
-        creation: {id:'creation', label:'création', active:false, disabled: true},
-        modification: {id:'modification', label:'modification', disabled: true},
-        detail: {id:'detail', label:'détail', disabled: true}
-    };
-    switch(currentView)
+    var currentTitle = Session.get('titreEncours');
+    var breadcrumb = new Array();
+
+    // Toujours l'accueil
+    breadcrumb.push(
+            {
+                id: 'accueil',
+                label: 'accueil',
+                href: '/'}
+    );
+    // Accueil
+    if (currentView === 'listeEvt')
     {
-    case 'listeEvt':
-        menus.accueil.active=true;
-      break;
-    case 'detailEvt':
-        menus.accueil.active=false;
-        menus.detail.active=true;
-        menus.detail.disabled=false;
-      break;
-    case 'nouvelEvt':
-        if(Session.get('evtEnCours')===undefined)
-        {
-            //creation
-            menus.creation.active=true;      
-            menus.creation.disabled=false;
-            menus.modification.active=false;
-            menus.modification.disabled=true;
-
-        }else
-        {
-            //modification
-            menus.creation.active=false;   
-            menus.creation.disabled=true;
-            menus.modification.active=true;
-            menus.modification.disabled=false;
-
-        }
-        menus.accueil.active=false;  
-      break;
-    default:
+        // rien de plus
     }
-    var links = new Array();
-    _.each(menus,function(value, key, list){
-        links.push(value);
-    })
+    // Détails
+    else if (currentView === 'detailEvt')
+    {
+        breadcrumb.push(
+                {
+                    id: 'detail',
+                    label: currentTitle,
+                    last: true
+                });
+    }
+    // Creation
+    else if (currentView === 'nouvelEvt' && Session.get('evtEnCours') === undefined)
+    {
+        breadcrumb.push(
+                {
+                    id: 'creation',
+                    label: 'création d\'un nouvel événement',
+                    last: true
+                });
 
-    //transformation de l'objet en tableau pour handlebar
-    return links;
-}
+    }
+    // Modification
+    else if (currentView === 'nouvelEvt')
+    {
+        breadcrumb.push(
+                {
+                    id: 'detaillink',
+                    label: currentTitle,
+                    href:  Session.get('evtEnCours')
+                });
+        breadcrumb.push(
+                {
+                    id: 'modification',
+                    label: 'modification',
+                    last: true
+                });
+
+    }
+    return breadcrumb;
+};
 
 Template.ariane.events({
-    'click li.disabled a' : function(e){
+    'click #detaillink a' : function(e){
         e.preventDefault();
+        Session.set('evtEnCours', $(e.currentTarget).attr('href'));
+        console.log($(e.currentTarget).attr('href'));
+        displayView('detailEvt');
     }
-})
+
+});
 
 /**
  * LISTEEVT
@@ -221,6 +232,7 @@ Template.ariane.events({
 Template.listeEvt.evenements = function() {
     var liste = Evenements.find({$and: [{valide: true}, {statut: {$ne: "annule"}}]}, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
+    Session.set('titreEncours', '');
 
     var lastindex = null;
     _.each(liste, function(value, key, list) {
@@ -243,7 +255,7 @@ Template.listeEvt.events({
         // pour ne pas préremplir si on a sélectionné un auparavant
         Session.set('evtEnCours', undefined);        
         displayView('nouvelEvt');
-        
+
     },
     'click .clickToDetail': function(e) {
         Session.set('evtEnCours', $(e.currentTarget).attr('id'));
@@ -260,6 +272,7 @@ Template.detailEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['admin', '_id', 'codeedition']);
 
+    Session.set('titreEncours', res.nom);
     //evenement.planiframable 
     if (res.plan
             && res.plan.indexOf("maps.google") !== -1)
@@ -296,7 +309,7 @@ Template.nouvelEvt.rendered = function() {
         _.each(valChecked, function(item,key,list){
             $('[value="' + item + '"]').attr('checked',true);
         })
-        
+
     });
 
 
@@ -309,16 +322,21 @@ Template.nouvelEvt.rendered = function() {
 Template.nouvelEvt.evenement = function() {
     //pour eviter d'afficher un evenement vide
     if (Session.get('evtEnCours') === undefined)
+    {
+        Session.set('titreEncours', '');
         return null;
+    }
 
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['codeedition']);
+    Session.set('titreEncours', res.nom);
+
     return res;
 };
 
 Template.nouvelEvt.events({
     'click #cancel': function(e) {
-            displayView('listeEvt');
+        displayView('listeEvt');
     },
     //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrirreco': function(e) {
@@ -436,5 +454,5 @@ Template.nouvelEvt.events({
 
 });
 
-    logRenders();    
+logRenders();
 

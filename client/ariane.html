@@ -1,9 +1,16 @@
 <template name="ariane">
-    <ul class="nav nav-pills">
-      {{#each links}}
-      <li class=" {{#if active}} active {{/if}} {{#if disabled}} disabled {{/if}}" id="{{id}}">
-          <a {{#if href}} href="{{href}}" {{/if}} >{{label}}</a>
-      </li>
-      {{/each}}
+    <ul class="breadcrumb">
+        {{#each links}}
+        <li id="{{id}}">
+            {{#if href}} 
+            <a href="{{href}}"  >{{label}}</a>
+            {{else}} 
+            {{label}}
+            {{/if}}
+            {{#unless last}}
+            <span class="divider">/</span>
+            {{/unless}}
+        </li>
+        {{/each}}
     </ul>
 </template>
