@@ -101,6 +101,44 @@ function getMonthIndex(d)
 
 }
 ;
+function getDateFromInput(inputtext)
+{
+    var patronFrancais = /[0-9]{2}[./-][0-9]{2}[./-][0-9]{4}/g;
+    var patronUniversl = /[0-9]{4}[./-][0-9]{2}[./-][0-9]{2}/g;
+    if (patronFrancais.test(inputtext))
+    {
+        console.log('Francais:'+inputtext);
+        var split=inputtext.split(/[./-]/g);
+        return new Date(split[2],split[1]-1,split[0]);
+    }
+    else if (patronUniversl.test(inputtext))
+    {
+        console.log('Universel:'+inputtext);
+        var split=inputtext.split(/[./-]/g);
+        return new Date(split[0],split[1]-1,split[2]);
+    }
+    else
+    {
+        console.log('pas trouvé:'+inputtext);
+        return null;
+    }
+}
+function getStringFromDate(date, universal)
+{
+    universal = typeof universal !== 'undefined' ? universal:true;
+    console.log(date);
+    var year=date.getFullYear();
+    var month=(date.getMonth()+1);
+    var day=date.getDate();
+    if(month<10)
+        month='0'+month;
+    if(day<10)
+        day='0'+day;
+    if(universal)
+        return ""+year+'-'+month+'-'+day;
+    else
+        return ""+day+'/'+month+'/'+year;
+}
 
 /*
  * affiche un message sous form d'un div alert
@@ -315,10 +353,12 @@ Template.detailEvt.evenement = function() {
 
     Session.set('titreEncours', res.nom);
     //evenement.planiframable 
-    if (res.plan
-            && res.plan.indexOf("maps.google") !== -1)
+    if (res.plan)
     {
-        res.planiframable = res.plan + "&output=embed";
+        if (res.plan.indexOf("maps.google") !== -1)
+            res.planiframable = res.plan + "&output=embed";
+        else if (res.plan.indexOf("goo.gl") !== -1)
+            res.planiframable = res.plan + "&output=embed";
     }
 
     return res;
