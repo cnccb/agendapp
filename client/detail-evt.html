@@ -12,8 +12,8 @@
             <div class="well">
                 <h2>Dates</h2>
                 <p><strong>Du {{evenement.datedeb}} au {{evenement.datefin}}</strong>
-                {{#if evenement.horaires}}<br>Horaires : {{evenement.horaires}}{{/if}}
-                {{#if evenement.forclusion}}<br>Forclusion : {{evenement.forclusion}}{{/if}}
+                    {{#if evenement.horaires}}<br>Horaires : {{evenement.horaires}}{{/if}}
+                    {{#if evenement.forclusion}}<br>Forclusion : {{evenement.forclusion}}{{/if}}
                 </p>
             </div>
         </div>
@@ -26,9 +26,9 @@
                     <strong>{{evenement.lieu}}</strong>
                     {{#if evenement.codepostal}}<br>{{evenement.codepostal}}{{/if}}
                     {{#if evenement.planiframable}}
-                        <br><iframe id="plandaccces" src="{{evenement.planiframable}}"></iframe>
+                    <br><iframe id="plandaccces" src="{{evenement.planiframable}}"></iframe>
                     {{else}}
-                        {{#if evenement.plan}}<br><a href="{{evenement.plan}}">{{evenement.plan}}</a>{{/if}}
+                    {{#if evenement.plan}}<br><a href="{{evenement.plan}}">{{evenement.plan}}</a>{{/if}}
                     {{/if}}
                 </address>            
             </div>
@@ -52,8 +52,8 @@
     </div>
 
     <div class="row">
-        
-        
+
+
         <div class="span8">
             <div class='well'>
                 <h2>Programme</h2>
@@ -64,22 +64,22 @@
                 {{/if}}
             </div>
         </div>
-        
+
 
         <div class="span4">
             <div class="well">
                 <h2>Divers</h2>
                 <ul class="unstyled">
-                {{#if evenement.cible}}
+                    {{#if evenement.cible}}
                     <li>
 
-                    Cible (public attendu) :
+                        Cible (public attendu) :
                         {{#each evenement.cible}}<span class='label'>{{this}}</span>{{/each}}
                     </li>
-                {{/if}}
-                {{#if evenement.conditions}}<li>Conditions de participation : {{evenement.conditions}}</li>{{/if}}
-                {{#if evenement.prix}}<li>Prix : {{evenement.prix}}</li>{{/if}}
-                {{#if evenement.options}}<li>Options:{{evenement.options}}</li>{{/if}}
+                    {{/if}}
+                    {{#if evenement.conditions}}<li>Conditions de participation : {{evenement.conditions}}</li>{{/if}}
+                    {{#if evenement.prix}}<li>Prix : {{evenement.prix}}</li>{{/if}}
+                    {{#if evenement.options}}<li>Options:{{evenement.options}}</li>{{/if}}
                 </ul>
             </div>
         </div>

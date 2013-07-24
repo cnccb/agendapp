@@ -45,24 +45,25 @@ Meteor.startup(function() {
     }
     else if (query[1])
     {
-        Meteor.call('fetchOneEvt', query[1], function (error, result){
-            if(result){
+        Meteor.call('fetchOneEvt', query[1], function(error, result) {
+            if (result) {
                 Session.set('evtEnCours', query[1]);
-                console.log("displaying evt"+query[1]);
-                displayView('detailEvt');    
-            };
+                console.log("displaying evt" + query[1]);
+                displayView('detailEvt');
+            }
+            ;
         });
     }
     else {
         displayView('listeEvt');
-        Session.set('currentView','listeEvt');
+        Session.set('currentView', 'listeEvt');
     }
 });
 
 
 /**
-* Helpers
-*/
+ * Helpers
+ */
 Handlebars.registerHelper('arrayify', function(obj) {
     result = [];
     for (var key in obj)
@@ -70,17 +71,17 @@ Handlebars.registerHelper('arrayify', function(obj) {
     return result;
 });
 Handlebars.registerHelper('iconify', function(text) {
-    var inconificationTable={
-        'provisoire':   new Handlebars.SafeString("<i class='icon-question-sign' title='Evénement provisoire qui peut encore changer de date, de lieu.'></i>"),
-        'definitif':    new Handlebars.SafeString("<i class='icon-ok' title='Evénement confirmé, la date et le lieu ne changeront plus.'></i>"),
-        'annule':       new Handlebars.SafeString("<i class='icon-remove' title='Evénement qui n\'aura pas lieu.></i>"),
-        'local':        new Handlebars.SafeString("<i class='icon-home' title='Organisation locale'></i>"),
-        'departemental':new Handlebars.SafeString("<i class='icon-map-marker' title='Evénement de portée départementale'></i>"),
-        'regional':     new Handlebars.SafeString("<i class='icon-road' title='Evénement de portée régionale'></i>"),
-        'national':     new Handlebars.SafeString("<i class='icon-flag' title='Evénement de portée nationale'></i>"),
-        'international':new Handlebars.SafeString("<i class='icon-plane' title='Evénement de portée internationale'></i>"),
+    var inconificationTable = {
+        'provisoire': new Handlebars.SafeString("<i class='icon-question-sign' title='Evénement provisoire qui peut encore changer de date, de lieu.'></i>"),
+        'definitif': new Handlebars.SafeString("<i class='icon-ok' title='Evénement confirmé, la date et le lieu ne changeront plus.'></i>"),
+        'annule': new Handlebars.SafeString("<i class='icon-remove' title='Evénement qui n\'aura pas lieu.></i>"),
+        'local': new Handlebars.SafeString("<i class='icon-home' title='Organisation locale'></i>"),
+        'departemental': new Handlebars.SafeString("<i class='icon-map-marker' title='Evénement de portée départementale'></i>"),
+        'regional': new Handlebars.SafeString("<i class='icon-road' title='Evénement de portée régionale'></i>"),
+        'national': new Handlebars.SafeString("<i class='icon-flag' title='Evénement de portée nationale'></i>"),
+        'international': new Handlebars.SafeString("<i class='icon-plane' title='Evénement de portée internationale'></i>"),
     };
-    if(inconificationTable[text])
+    if (inconificationTable[text])
         return inconificationTable[text];
     else
         return text;
@@ -98,7 +99,8 @@ function getMonthIndex(d)
         'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
     return nommois[d.getMonth()] + " " + d.getFullYear();
 
-};
+}
+;
 
 /*
  * affiche un message sous form d'un div alert
@@ -109,39 +111,40 @@ function flash(message, className)
     if (_.isUndefined(className))
         className = 'alert';
     $('#flashMessage').html(Template.flash({message: message, className: className})).fadeIn(200);
-};
+}
+;
 
 function checkBoxesValues(id)
 {
-    var vals=new Array();
-    $('#'+id+' :checkbox:checked').each(function(i){
+    var vals = new Array();
+    $('#' + id + ' :checkbox:checked').each(function(i) {
         vals.push($(this).val());
     });
     return vals;
 }
 
 
-function displayView(viewId){
-    $view=$('#'+viewId);
+function displayView(viewId) {
+    $view = $('#' + viewId);
     $('.view').fadeOut(100);
     $view.fadeIn(300);
     Session.set('currentView', viewId);
 }
 
 /**
-* repère les templates générés plusieurs fois : à appeler après la génération des templates
-*/
-function logRenders () {
-    _.each(Template, function (template, name) {
-      var oldRender = template.rendered;
-      var counter = 0;
- 
-      template.rendered = function () {
-        console.log(name, "render count: ", ++counter);
-        oldRender && oldRender.apply(this, arguments);
-      };
+ * repère les templates générés plusieurs fois : à appeler après la génération des templates
+ */
+function logRenders() {
+    _.each(Template, function(template, name) {
+        var oldRender = template.rendered;
+        var counter = 0;
+
+        template.rendered = function() {
+            console.log(name, "render count: ", ++counter);
+            oldRender && oldRender.apply(this, arguments);
+        };
     });
-  }
+}
 
 
 /** *
@@ -203,7 +206,7 @@ Template.ariane.links = function() {
                 {
                     id: 'detaillink',
                     label: currentTitle,
-                    href:  Session.get('evtEnCours')
+                    href: Session.get('evtEnCours')
                 });
         breadcrumb.push(
                 {
@@ -217,7 +220,7 @@ Template.ariane.links = function() {
 };
 
 Template.ariane.events({
-    'click #detaillink a' : function(e){
+    'click #detaillink a': function(e) {
         e.preventDefault();
         Session.set('evtEnCours', $(e.currentTarget).attr('href'));
         console.log($(e.currentTarget).attr('href'));
@@ -253,7 +256,7 @@ Template.listeEvt.evenements = function() {
 Template.listeEvt.events({
     'click #newEvt': function(e) {
         // pour ne pas préremplir si on a sélectionné un auparavant
-        Session.set('evtEnCours', undefined);        
+        Session.set('evtEnCours', undefined);
         displayView('nouvelEvt');
 
     },
@@ -277,14 +280,14 @@ Template.detailEvt.evenement = function() {
     if (res.plan
             && res.plan.indexOf("maps.google") !== -1)
     {
-        res.planiframable=res.plan+"&output=embed";
+        res.planiframable = res.plan + "&output=embed";
     }
 
     return res;
 };
 Template.detailEvt.events({
     'click #return': function(e) {
-            displayView('listeEvt');
+        displayView('listeEvt');
     }
 });
 
@@ -306,8 +309,8 @@ Template.nouvelEvt.rendered = function() {
     $('[data-type="checkbox"]').each(function() {
         var valChecked = $(this).attr("data-value").split(',');
         //console.log(valChecked);
-        _.each(valChecked, function(item,key,list){
-            $('[value="' + item + '"]').attr('checked',true);
+        _.each(valChecked, function(item, key, list) {
+            $('[value="' + item + '"]').attr('checked', true);
         })
 
     });

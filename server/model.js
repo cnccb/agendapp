@@ -20,7 +20,7 @@ if (Meteor.isServer) {
     Meteor.methods({
         fetchOneEvt: function(idEvt)
         {
-           return Evenements.findOne({_id: idEvt}, {fields:{_id: 1}});
+            return Evenements.findOne({_id: idEvt}, {fields: {_id: 1}});
         },
         addNewEvent: function(parameters)
         {
@@ -62,8 +62,8 @@ if (Meteor.isServer) {
             if (parameters.dejaexistant)
             {
                 //@todo: protéger contre le changement d'email (ou revalidation)
-                newEvent.valide= true,
-                Evenements.update(parameters.dejaexistant,newEvent);
+                newEvent.valide = true,
+                        Evenements.update(parameters.dejaexistant, newEvent);
                 return 'Evenement mis à jour';
             }
 
