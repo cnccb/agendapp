@@ -6,112 +6,147 @@
         {{#if evenement.echelle}}<li>Echelle : {{evenement.echelle}} ({{iconify evenement.echelle}})</li>{{/if}}
     </ul>
 
-    <div class="row">
+    <div class="row" >
+        <div class="span9" >
 
-        <div class="span4">
-            <div class="well">
-                <h2>Dates</h2>
-                <p><strong>Du {{evenement.datedeb}} au {{evenement.datefin}}</strong>
-                    {{#if evenement.horaires}}<br>Horaires : {{evenement.horaires}}{{/if}}
-                    {{#if evenement.forclusion}}<br>Forclusion : {{evenement.forclusion}}{{/if}}
-                </p>
-            </div>
-        </div>
+            <div class="row">
 
-        {{#if evenement.lieu}}
-        <div class="span4">
-            <div class="well">
-                <h2>Adresse</h2>
-                <address>
-                    <strong>{{evenement.lieu}}</strong>
-                    {{#if evenement.codepostal}}<br>{{evenement.codepostal}}{{/if}}
-                    {{#if evenement.planiframable}}
-                    <br><iframe id="plandaccces" src="{{evenement.planiframable}}"></iframe>
-                    {{else}}
-                    {{#if evenement.plan}}<br><a href="{{evenement.plan}}">{{evenement.plan}}</a>{{/if}}
-                    {{/if}}
-                </address>            
-            </div>
-        </div>
-        {{/if}}
+                <div class="span3">
+                    <div class="well">
+                        <h2>Dates</h2>
+                        <p><strong>Du {{evenement.datedeb}} au {{evenement.datefin}}</strong>
+                            {{#if evenement.horaires}}<br>Horaires : {{evenement.horaires}}{{/if}}
+                            {{#if evenement.forclusion}}<br>Forclusion : {{evenement.forclusion}}{{/if}}
+                        </p>
+                    </div>
+                </div>
 
-        {{#if evenement.orga}}
-        <div class="span4">
-            <div class='well'>
-                <h2>Organisateur</h2>
-                <address>
-                    <strong>{{evenement.orga}}</strong>
-                    {{#if evenement.tel}}<br>{{evenement.tel}}{{/if}}
-                    {{#if evenement.contact}}<br><a href="mailto:{{evenement.orga}}<{{evenement.contact}}>?subject=[{{evenement.nom}}]">{{evenement.contact}}</a>{{/if}}  
-                    {{#if evenement.url}}<br><a href="{{evenement.url}}">{{evenement.url}}</a>{{/if}}                
-                </address>            
-            </div>
-        </div>
-        {{/if}}        
-
-    </div>
-
-    <div class="row">
-
-
-        <div class="span8">
-            <div class='well'>
-                <h2>Programme</h2>
-                {{#if evenement.programme}}
-                <p>{{evenement.programme}}</p>
-                {{else}}
-                <p>A venir</p>
+                {{#if evenement.lieu}}
+                <div class="span3">
+                    <div class="well">
+                        <h2>Adresse</h2>
+                        <address>
+                            <strong>{{evenement.lieu}}</strong>
+                            {{#if evenement.codepostal}}<br>{{evenement.codepostal}}{{/if}}
+                            {{#if evenement.planiframable}}
+                            <br><iframe id="plandaccces" src="{{evenement.planiframable}}"></iframe>
+                            {{else}}
+                            {{#if evenement.plan}}<br><a href="{{evenement.plan}}">{{evenement.plan}}</a>{{/if}}
+                            {{/if}}
+                        </address>            
+                    </div>
+                </div>
                 {{/if}}
+
+                {{#if evenement.orga}}
+                <div class="span3">
+                    <div class='well'>
+                        <h2>Organisateur</h2>
+                        <address>
+                            <strong>{{evenement.orga}}</strong>
+                            {{#if evenement.tel}}<br>{{evenement.tel}}{{/if}}
+                            {{#if evenement.contact}}<br><a href="mailto:{{evenement.orga}}<{{evenement.contact}}>?subject=[{{evenement.nom}}]">{{evenement.contact}}</a>{{/if}}  
+                            {{#if evenement.url}}<br><a href="{{evenement.url}}">{{evenement.url}}</a>{{/if}}                
+                        </address>            
+                    </div>
+                </div>
+                {{/if}}        
             </div>
-        </div>
+
+            <div class="row">
+                <div class="span6">
+                    <div class='well'>
+                        <h2>Programme</h2>
+                        {{#if evenement.programme}}
+                        <p>{{evenement.programme}}</p>
+                        {{else}}
+                        <p>A venir</p>
+                        {{/if}}
+                    </div>
+                </div>
 
 
-        <div class="span4">
-            <div class="well">
-                <h2>Divers</h2>
-                <ul class="unstyled">
-                    {{#if evenement.cible}}
-                    <li>
+                <div class="span3">
+                    <div class="well">
+                        <h2>Divers</h2>
+                        <ul class="unstyled">
+                            {{#if evenement.cible}}
+                            <li>
 
-                        Cible (public attendu) :
-                        {{#each evenement.cible}}<span class='label'>{{this}}</span>{{/each}}
-                    </li>
-                    {{/if}}
-                    {{#if evenement.conditions}}<li>Conditions de participation : {{evenement.conditions}}</li>{{/if}}
-                    {{#if evenement.prix}}<li>Prix : {{evenement.prix}}</li>{{/if}}
-                    {{#if evenement.options}}<li>Options:{{evenement.options}}</li>{{/if}}
-                </ul>
-            </div>
-        </div>
+                                Cible (public attendu) :
+                                {{#each evenement.cible}}<span class='label'>{{this}}</span>{{/each}}
+                            </li>
+                            {{/if}}
+                            {{#if evenement.conditions}}<li>Conditions de participation : {{evenement.conditions}}</li>{{/if}}
+                            {{#if evenement.prix}}<li>Prix : {{evenement.prix}}</li>{{/if}}
+                            {{#if evenement.options}}<li>Options:{{evenement.options}}</li>{{/if}}
+                        </ul>
+                    </div>
+                </div>
 
-    </div>        
+            </div>        
 
-    <div class="row">
-        {{#if evenement.hebergement}}
-        <div class="span4">
-            <div class="well">
-                <h2>Hébergement recommandées</h2>
-                <p>{{evenement.hebergement}}</p>
-            </div>
+            <div class="row">
+                {{#if evenement.hebergement}}
+                <div class="span3">
+                    <div class="well">
+                        <h2>Hébergement recommandées</h2>
+                        <p>{{evenement.hebergement}}</p>
+                    </div>
+                </div>
+                {{/if}}
+                {{#if evenement.restauration}} 
+                <div class="span3">
+                    <div class="well">
+                        <h2>Restauration recommandées</h2>
+                        <p>{{evenement.restauration}}</p>
+                    </div>
+                </div>
+                {{/if}}
+                {{#if evenement.visites}}
+                <div class="span3">
+                    <div class="well">
+                        <h2>Visites recommandées</h2>
+                        <p>{{evenement.visites}}
+                        </p>
+                    </div>
+                </div>
+                {{/if}}
+            </div>        
         </div>
-        {{/if}}
-        {{#if evenement.restauration}} 
-        <div class="span4">
-            <div class="well">
-                <h2>Restauration recommandées</h2>
-                <p>{{evenement.restauration}}</p>
-            </div>
+        <div class="span3" >
+            <aside class="well aide">
+                <h3>Mieux comprendre</h3>
+                <dl>
+                    <dt>Attention</dt>
+                    <dd>
+                        <strong>Avant de prévoir un déplacement assurez vous bien 
+                            que l'événement a le statut définitif.</strong>
+                        Pour faciliter l'organisation du calendrier, il est proposé
+                        aux organisateurs d'indiquer les paramètres de leurs
+                        événements avant qu'ils ne soient complètement validés.
+                        Par exemple, il arrive qu'un événement soit encore à la 
+                        recherche d'un lieu, ou que la mairie n'aie pas encore
+                        donné son accord pour tel ou tel gymnase. Dans ces cas
+                        l'événement doit avoir le statut "provisoire".
+                    </dd>
+                    <dt>Responsabilité</dt>
+                    <dd>
+                    Les événements indiqués ici vous sont proposés par leurs 
+                    organisateurs respectifs. Il est inutile de contacter les
+                    administrateurs du site pour en apprendre davantage. Chaque
+                    organisateur est responsable des informations publiées.
+                    </dd>
+                    <dt>Modification</dt>
+                    <dd>
+                    Si vous êtes l'auteur de cet événement et que vous souhaitez 
+                    le modifier, reportez vous au mail de confirmation que vous 
+                    avez reçu: il contient un lien spécial qui vous permettra
+                    d'accéder à une page de modification.
+                    </dd>
+                </dl>
+            </aside>
         </div>
-        {{/if}}
-        {{#if evenement.visites}}
-        <div class="span4">
-            <div class="well">
-                <h2>Visites recommandées</h2>
-                <p>{{evenement.visites}}
-                </p>
-            </div>
-        </div>
-        {{/if}}
-    </div>        
+    </div>
 
 </template>

@@ -15,6 +15,9 @@ tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{
 #detailEvt div h2{font-size: 110%}
 #nouvelEvt .evtParOption{display:none;} 
 
+.aide{
+    background-color: #ffc;
+}
 /*flash messages*/
 #flashMessage{margin: 20px; display: none}
 
