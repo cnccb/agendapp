@@ -369,6 +369,7 @@ Template.nouvelEvt.events({
         // NB checkValidity will fire "invalid" events
         if (!(e.target.form.checkValidity()))
         {
+            $('html').animate({scrollTop: $('input:invalid').offset().top}, 'slow');
             console.log("form invalid : exiting");
             return false;
         }
@@ -443,8 +444,6 @@ Template.nouvelEvt.events({
         }
         $input.siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
         $input.siblings('.errorbox').fadeIn(500);
-        $('html').animate({scrollTop: $input.offset().top}, 'slow');
-
     },
     'blur input': function(e)
     {
