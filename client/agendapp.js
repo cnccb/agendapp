@@ -285,8 +285,16 @@ Template.listeEvt.events({
         e.preventDefault();
 
     },
-    'keyup [name=searchString]': function(e, context) {
+    'keyup [name=searchString]': function(e) {
         Session.set("search_keywords", e.currentTarget.value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
+    },
+    'click .clicktosearch': function(e) {
+        e.preventDefault();
+        var thesource = $(e.currentTarget);
+        var newvalue=thesource.attr('href');
+        thesource.siblings('input').attr("value",newvalue);
+        thesource.siblings('input').keyup();
+        Session.set("search_keywords", newvalue.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
     }
 
 
