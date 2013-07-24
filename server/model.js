@@ -33,7 +33,6 @@ if (Meteor.isServer) {
                         codeedition: secretcode, // Pour le lien d'admin
                         valide: false,
                         admin: parameters.admin, //Mail pour l'administration
-                        // password:'test',
                         nom: parameters.nom, //nom de l'évènement
                         datedeb: parameters.datedeb, // Date 
                         datefin: parameters.datefin, // Date 

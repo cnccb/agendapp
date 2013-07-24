@@ -31,7 +31,8 @@ if (Meteor.isServer) {
     Meteor.startup(function() {
         if (Evenements.find({}).count() <= 3) {
             testEvt.forEach(function(item) {
-                Evenements.insert(item);
+                var id=Evenements.insert(item);
+                console.log(item.nom+": "+"#"+item.codeedition+"#"+id);
             });
         }
         ;

@@ -413,7 +413,6 @@ Template.nouvelEvt.events({
         var newEvent =
                 {
                     admin: admin.value, //Mail pour l'administration
-                    // password:'test',
                     nom: nom.value, //nom de l'évènement
                     datedeb: datedeb.value, // Date 
                     datefin: datefin.value, // Date 
