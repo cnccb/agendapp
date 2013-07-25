@@ -93,8 +93,8 @@ Handlebars.registerHelper('iconify', function(text) {
  */
 function getMonthIndex(d)
 {
-    if (_.isNaN(d.getFullYear()))
-        return 'Inconnu';
+    if (d === null || typeof d === 'undefined' || _.isNaN(d))
+        return '';
     var nommois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
         'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
     return nommois[d.getMonth()] + " " + d.getFullYear();
@@ -107,26 +107,30 @@ function getDateFromInput(inputtext)
     var patronUniversl = /[0-9]{4}[./-][0-9]{2}[./-][0-9]{2}/g;
     if (patronFrancais.test(inputtext))
     {
-        console.log('Francais:' + inputtext);
+        //console.log('Francais:' + inputtext);
         var split = inputtext.split(/[./-]/g);
         return new Date(split[2], split[1] - 1, split[0]);
     }
     else if (patronUniversl.test(inputtext))
     {
-        console.log('Universel:' + inputtext);
+        //console.log('Universel:' + inputtext);
         var split = inputtext.split(/[./-]/g);
         return new Date(split[0], split[1] - 1, split[2]);
     }
     else
     {
-        console.log('pas trouvé:' + inputtext);
+        console.log('Format de date non reconnu:' + inputtext);
         return null;
     }
 }
 function getStringFromDate(date, universal)
 {
+    if (date === null)
+        return '';
+    if (typeof date === 'undefined')
+        return '';
+
     universal = typeof universal !== 'undefined' ? universal : true;
-    console.log(date);
     var year = date.getFullYear();
     var month = (date.getMonth() + 1);
     var day = date.getDate();
@@ -295,18 +299,28 @@ Template.listeEvt.evenements = function() {
 
     var liste = Evenements.find(conditions, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
+    var evenementsSansDate = new Array();
     Session.set('titreEncours', '');
 
     var lastindex = null;
     _.each(liste, function(value, key, list) {
-        var d = new Date(value.datedeb);
+        var d = getDateFromInput(value.datedeb);
         var index = getMonthIndex(d);
         if (index !== lastindex)
         {
-            evenements.push({"TitreIntermediaire": index});
+            if (index === '')
+                evenementsSansDate.push({"TitreIntermediaire": 'Sans date'});
+            else
+                evenements.push({"TitreIntermediaire": index});
             lastindex = index;
         }
-        value.jourdeb = d.toLocaleDateString();
+        value.jourdeb = getStringFromDate(d, false);
+        if (index === '')
+            evenementsSansDate.push(value);
+        else
+            evenements.push(value);
+    });
+    _.each(evenementsSansDate, function(value, key, list) {
         evenements.push(value);
     });
     //console.log(evenements);
@@ -348,8 +362,14 @@ Template.listeEvt.events({
  */
 
 Template.detailEvt.evenement = function() {
+    if (!Session.get('evtEnCours'))
+        return null;
+
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['admin', '_id', 'codeedition']);
+    res.datedeb = getStringFromDate(getDateFromInput(res.datedeb), false);
+    res.datefin = getStringFromDate(getDateFromInput(res.datefin), false);
+    res.forclusion = getStringFromDate(getDateFromInput(res.forclusion), false);
 
     Session.set('titreEncours', res.nom);
     //evenement.planiframable 
@@ -391,10 +411,11 @@ Template.nouvelEvt.rendered = function() {
 
 
     //définition des validateur des champs dates
-    //@todo: expliquer à julien pourquoi l'avoir mis là plutot que dans les balises html?
-    $('#frmNouvelEvt input[type="date"]').attr('pattern', '(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d');
-    $('#frmNouvelEvt input[type="date"]').attr('min', '2000-01-01');
-    $('#frmNouvelEvt input[type="date"]').attr('max', '2099-12-31');
+    //$('#frmNouvelEvt input[type="date"]').attr('pattern', '(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)[0-9][0-9]');
+    $('#frmNouvelEvt input[type="date"]').attr('min', getStringFromDate(new Date()));
+    var end = new Date();
+    end.setFullYear(end.getFullYear() + 3);
+    $('#frmNouvelEvt input[type="date"]').attr('max', getStringFromDate(end));
 };
 Template.nouvelEvt.evenement = function() {
     //pour eviter d'afficher un evenement vide
@@ -407,6 +428,9 @@ Template.nouvelEvt.evenement = function() {
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['codeedition']);
     Session.set('titreEncours', res.nom);
+    res.datedeb = getStringFromDate(getDateFromInput(res.datedeb), true);
+    res.datefin = getStringFromDate(getDateFromInput(res.datefin), true);
+    res.forclusion = getStringFromDate(getDateFromInput(res.forclusion), true);
 
     return res;
 };
@@ -455,9 +479,9 @@ Template.nouvelEvt.events({
                 {
                     admin: admin.value, //Mail pour l'administration
                     nom: nom.value, //nom de l'évènement
-                    datedeb: datedeb.value, // Date 
-                    datefin: datefin.value, // Date 
-                    forclusion: forclusion.value, //Date de forclusion
+                    datedeb: getStringFromDate(getDateFromInput(datedeb.value)), // Date 
+                    datefin: getStringFromDate(getDateFromInput(datefin.value)), // Date 
+                    forclusion: getStringFromDate(getDateFromInput(forclusion.value)), //Date de forclusion
                     horaires: horaires.value, //horaires (avec alternatives si pas bordé)
                     echelle: $(echelle).attr('data-value'), //Echelle (nationale, régionale, ...)
                     cible: checkBoxesValues('cible'), //Public attendu (->cible)
@@ -500,7 +524,7 @@ Template.nouvelEvt.events({
                 flash(result, 'info');
                 $('html').animate({scrollTop: $('#flashMessage').offset().top}, 'slow');
 
-                console.log(newEvent);
+                //console.log(newEvent);
             }
         });
         console.log("Evènement créé/modifié");
