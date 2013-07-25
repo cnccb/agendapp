@@ -343,7 +343,7 @@ Template.listeEvt.events({
 
     },
     'keyup [name=searchString]': function(e) {
-        Session.set("search_keywords", e.currentTarget.value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
+        Session.set("search_keywords", $("#e.currentTarget").value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
     },
     'click .clicktosearch': function(e) {
         e.preventDefault();
@@ -477,42 +477,43 @@ Template.nouvelEvt.events({
             return false;
         }
 
+
         // Filtre des valeurs du formulaire
         var newEvent =
                 {
-                    admin: admin.value, //Mail pour l'administration
-                    nom: nom.value, //nom de l'évènement
-                    datedeb: getStringFromDate(getDateFromInput(datedeb.value)), // Date 
-                    datefin: getStringFromDate(getDateFromInput(datefin.value)), // Date 
-                    forclusion: getStringFromDate(getDateFromInput(forclusion.value)), //Date de forclusion
-                    horaires: horaires.value, //horaires (avec alternatives si pas bordé)
-                    echelle: $(echelle).attr('data-value'), //Echelle (nationale, régionale, ...)
+                    admin: $("#admin").val(), //Mail pour l'administration
+                    nom: $("#nom").val(), //nom de l'évènement
+                    datedeb: getStringFromDate(getDateFromInput($("#datedeb").val())), // Date 
+                    datefin: getStringFromDate(getDateFromInput($("#datefin").val())), // Date 
+                    forclusion: getStringFromDate(getDateFromInput($("#forclusion").val())), //Date de forclusion
+                    horaires: $("#horaires").val(), //horaires (avec alternatives si pas bordé)
+                    echelle: $("#echelle").attr('data-value'), //Echelle (nationale, régionale, ...)
                     cible: checkBoxesValues('cible'), //Public attendu (->cible)
-                    prix: prix.value, //Prix d'inscription
-                    orga: orga.value, //Nom de l'organisateur, 
-                    statut: $(statut).attr('data-value'), //Statut           
-                    contact: contact.value, //Contact (pour information)            
-                    tel: tel.value, //tel orga
-                    lieu: lieu.value, //Lieu / adresse
-                    codepostal: codepostal.value, //Lieu / adresse
-                    plan: plan.value, // Plan d’accès
-                    url: url.value,
-                    programme: programme.value, // Programme
-                    options: options.value, //Options (buvette, offre de repas, etc.)
-                    conditions: conditions.value, //Conditions de participation
-                    hebergement: hebergement.value, //Recommandations d’hébergement
-                    restauration: restauration.value, //Recommandations restauration
-                    visites: visites.value //Recommandations visites
+                    prix: $("#prix").val(), //Prix d'inscription
+                    orga: $("#orga").val(), //Nom de l'organisateur, 
+                    statut: $("#statut").attr('data-value'), //Statut           
+                    contact: $("#contact").val(), //Contact (pour information)            
+                    tel: $("#tel").val(), //tel orga
+                    lieu: $("#lieu").val(), //Lieu / adresse
+                    codepostal: $("#codepostal").val(), //Lieu / adresse
+                    plan: $("#plan").val(), // Plan d’accès
+                    url: $("#url").val(),
+                    programme: $("#programme").val(), // Programme
+                    options: $("#options").val(), //Options (buvette, offre de repas, etc.)
+                    conditions: $("#conditions").val(), //Conditions de participation
+                    hebergement: $("#hebergement").val(), //Recommandations d’hébergement
+                    restauration: $("#restauration").val(), //Recommandations restauration
+                    visites: $("#visites").val() //Recommandations visites
                 };
         //quelques défauts
         if (!newEvent.statut)
             newEvent.statut = 'temporaire';
 
         // pour l'update
-        if (dejaexistant.value != 'null')
+        if ($("#dejaexistant").value != 'null')
         {
-            console.log(dejaexistant.value)
-            newEvent.dejaexistant = dejaexistant.value;
+            console.log($("#dejaexistant").value)
+            newEvent.dejaexistant = $("#dejaexistant").value;
         }
 
         // envoi des informations au serveur pour creation 

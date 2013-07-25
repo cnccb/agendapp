@@ -90,7 +90,8 @@ if (Meteor.isServer) {
                 console.log("mail envoyé");
             } catch (e)
             {
-                console.log("impossible d'envoyer le mail");
+                console.log("impossible d'envoyer le mail"+e.message);
+                throw new Meteor.Error(500, "impossible d'envoyer le mail");
             }
             return 'Evenement créé et mail envoyé.';
         },
