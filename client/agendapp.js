@@ -447,13 +447,13 @@ Template.nouvelEvt.events({
     'click #ouvrirreco': function(e) {
         $('#evtReco .evtParOption').toggle();
         $('#ouvrirreco i').toggleClass('icon-chevron-right  icon-chevron-down');
-        $('html').animate({scrollTop: $("#ouvrirreco").offset().top}, 'slow');
+        $('html, body').animate({scrollTop: $("#ouvrirreco").offset().top}, 'slow');
         return false;
     },
     'click #ouvrircomplement': function(e) {
         $('#evtCompInfo .evtParOption').toggle();
         $('#ouvrircomplement i').toggleClass('icon-chevron-right  icon-chevron-down');
-        $('html').animate({scrollTop: $("#ouvrircomplement").offset().top}, 'slow');
+        $('html, body').animate({scrollTop: $("#ouvrircomplement").offset().top}, 'slow');
         return false;
     },
     //@todo: faire en sorte que ce soit correctement valué/initialisé/repopulé
@@ -471,7 +471,7 @@ Template.nouvelEvt.events({
         // NB checkValidity will fire "invalid" events
         if (!(e.target.form.checkValidity()))
         {
-            $('html').animate({scrollTop: $('input:invalid').first().offset().top}, 'slow');
+            $('html,body').animate({scrollTop: $('input:invalid').first().offset().top}, 'slow');
             console.log($('input:invalid').first());
             console.log("form invalid : exiting");
             return false;
@@ -525,7 +525,7 @@ Template.nouvelEvt.events({
             } else
             {
                 flash(result, 'info');
-                $('html').animate({scrollTop: $('#flashMessage').offset().top}, 'slow');
+                $('html,body').animate({scrollTop: $('#flashMessage').offset().top}, 'slow');
 
                 //console.log(newEvent);
             }
