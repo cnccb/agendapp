@@ -107,37 +107,37 @@ function getDateFromInput(inputtext)
     var patronUniversl = /[0-9]{4}[./-][0-9]{2}[./-][0-9]{2}/g;
     if (patronFrancais.test(inputtext))
     {
-        console.log('Francais:'+inputtext);
-        var split=inputtext.split(/[./-]/g);
-        return new Date(split[2],split[1]-1,split[0]);
+        console.log('Francais:' + inputtext);
+        var split = inputtext.split(/[./-]/g);
+        return new Date(split[2], split[1] - 1, split[0]);
     }
     else if (patronUniversl.test(inputtext))
     {
-        console.log('Universel:'+inputtext);
-        var split=inputtext.split(/[./-]/g);
-        return new Date(split[0],split[1]-1,split[2]);
+        console.log('Universel:' + inputtext);
+        var split = inputtext.split(/[./-]/g);
+        return new Date(split[0], split[1] - 1, split[2]);
     }
     else
     {
-        console.log('pas trouvé:'+inputtext);
+        console.log('pas trouvé:' + inputtext);
         return null;
     }
 }
 function getStringFromDate(date, universal)
 {
-    universal = typeof universal !== 'undefined' ? universal:true;
+    universal = typeof universal !== 'undefined' ? universal : true;
     console.log(date);
-    var year=date.getFullYear();
-    var month=(date.getMonth()+1);
-    var day=date.getDate();
-    if(month<10)
-        month='0'+month;
-    if(day<10)
-        day='0'+day;
-    if(universal)
-        return ""+year+'-'+month+'-'+day;
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1);
+    var day = date.getDate();
+    if (month < 10)
+        month = '0' + month;
+    if (day < 10)
+        day = '0' + day;
+    if (universal)
+        return "" + year + '-' + month + '-' + day;
     else
-        return ""+day+'/'+month+'/'+year;
+        return "" + day + '/' + month + '/' + year;
 }
 
 /*
@@ -274,6 +274,9 @@ Template.ariane.events({
 /**
  * LISTEEVT
  */
+Template.listeEvt.rendered = function() {
+    $('#attente').fadeOut(200);
+};
 Template.listeEvt.evenements = function() {
     var keywords = new RegExp(Session.get("search_keywords"), "i");
     var conditions = {
