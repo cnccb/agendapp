@@ -1,21 +1,25 @@
 <template name="listeEvt">
-    <h1>Calendrier </h1>
-
     <div class="row" >
         <div class="span8" >
-            <button id="newEvt" class="btn pull-right btn-success"><i class="icon-plus icon-white"></i> Nouvel événement</button>
-            <form class="navbar-search" id="search">
-                <input type="text" class="search-query" placeholder="Search" id='searchString' name='searchString'>
-                <a class='clicktosearch' href='provisoire'>{{iconify "provisoire"}}</a>
-                <a class='clicktosearch' href='definitif'>{{iconify "definitif"}}</a>
-                <a class='clicktosearch' href=''>{{iconify "annule"}}</a>
-                <a class='clicktosearch' href='national'>{{iconify "national"}}</a>
-                <a class='clicktosearch' href='regional'>{{iconify "regional"}}</a>
-                <a class='clicktosearch' href='departemental'>{{iconify "departemental"}}</a>
-                <a class='clicktosearch' href='local'>{{iconify "local"}}</a>
-                <a class='clicktosearch' href='international'>{{iconify "international"}}</a>
-            </form>
-
+            <div class='row nav'>
+                <div class="span6">
+                    <form class="navbar-search" id="search">
+                        <input type="text" class="search-query" placeholder="rechercher" id='searchString' name='searchString'>
+                        <a class='clicktosearch' href='provisoire'>{{iconify "provisoire"}}</a>
+                        <a class='clicktosearch' href='definitif'>{{iconify "definitif"}}</a>
+                        <a class='clicktosearch' href=''>{{iconify "annule"}}</a>
+                        <a class='clicktosearch' href='national'>{{iconify "national"}}</a>
+                        <a class='clicktosearch' href='regional'>{{iconify "regional"}}</a>
+                        <a class='clicktosearch' href='departemental'>{{iconify "departemental"}}</a>
+                        <a class='clicktosearch' href='local'>{{iconify "local"}}</a>
+                        <a class='clicktosearch' href='international'>{{iconify "international"}}</a>
+                    </form>                    
+                </div>
+                <div class="span2">
+                        <button id="newEvt" class="btn pull-right btn-success"><i class="icon-plus icon-white"></i> Nouvel événement</button>
+                </div>
+            </div>
+            <h1>Calendrier </h1>
             <table class="table table-hover table-striped table-condensed">
                 <tbody>
                     {{#each evenements}}
@@ -36,7 +40,7 @@
         {{#constant}}
         <div class="span4" >
             <aside class="well aide">
-                <h3>Le saviez vous?</h3>
+                <h3>Mode d'emploi</h3>
                 <dl>
                     <dt>Pour <strong>créer</strong> votre événement</dt>
                     <dd>Il suffit de cliquer sur le bouton "Nouvel événement".</dd>
@@ -52,9 +56,9 @@
                         reçu par mail.</dd>
                     <dt>Si votre événement ne s'affiche plus</dt>
                     <dd>Si vous ne trouvez plus votre événement, vérifiez le
-                        filtre de recherche est bien vide. Sinon connectez vous
+                        filtre de recherche est bien vide. Sinon connectez-vous
                         sur votre lien de modification pour vérifier que votre 
-                        événement n'a pas le statut "annulé"</dd>
+                        événement n'a pas le statut "annulé".</dd>
                 </dl>
             </aside>
         </div>

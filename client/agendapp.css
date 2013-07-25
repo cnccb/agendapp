@@ -15,10 +15,8 @@ tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{
 #detailEvt div h2{font-size: 110%}
 #nouvelEvt .evtParOption{display:none;} 
 
-.breadcrumb{background-color: #fff;}
-.well.aide{background-color: #ffc;}
+.well.aide{background-color: #fff; color: #707070}
 #ficheEvt .well{background-color: #f8f8ff;}
-.breadcrumb{margin-bottom:0;}
 
 
 /*flash messages*/
