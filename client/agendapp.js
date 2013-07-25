@@ -357,8 +357,9 @@ Template.detailEvt.evenement = function() {
     {
         if (res.plan.indexOf("maps.google") !== -1)
             res.planiframable = res.plan + "&output=embed";
-        else if (res.plan.indexOf("goo.gl") !== -1)
-            res.planiframable = res.plan + "&output=embed";
+        // les urls abrégées ne s'embed pas bien.
+        //else if (res.plan.indexOf("goo.gl") !== -1)
+        //res.planiframable = res.plan + "&output=embed";
     }
 
     return res;
