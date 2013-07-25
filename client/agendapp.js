@@ -274,9 +274,6 @@ Template.ariane.events({
 /**
  * LISTEEVT
  */
-Template.listeEvt.rendered = function() {
-    $('#attente').fadeOut(200);
-};
 Template.listeEvt.evenements = function() {
     var keywords = new RegExp(Session.get("search_keywords"), "i");
     var conditions = {
