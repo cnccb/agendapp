@@ -1,8 +1,10 @@
 
 if (Meteor.isServer) {
     Meteor.startup(function() {
-        process.env.MAIL_URL = 'smtp://live.cnccb%40gmail.com:cyrano2013@smtp.gmail.com:465/'; //serveur pour l'envoi du mail de confirmation
         SERVER_URL = Meteor.absoluteUrl(); //adresse du serveur
+        if(SERVER_URL!="http://localhost:3000/") 
+            process.env.MAIL_URL = 'smtp://live.cnccb%40gmail.com:cyrano2013@smtp.gmail.com:465/'; //serveur pour l'envoi du mail de confirmation
+
     });
 //todo finir quand on enlevera l'autopublish
     // Meteor.publish("evt-all", function () {
