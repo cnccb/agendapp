@@ -510,10 +510,10 @@ Template.nouvelEvt.events({
             newEvent.statut = 'temporaire';
 
         // pour l'update
-        if ($("#dejaexistant").value != 'null')
+        if ($("#dejaexistant").val() != 'null')
         {
-            console.log($("#dejaexistant").value)
-            newEvent.dejaexistant = $("#dejaexistant").value;
+            console.log($("#dejaexistant").val())
+            newEvent.dejaexistant = $("#dejaexistant").val();
         }
 
         // envoi des informations au serveur pour creation 
