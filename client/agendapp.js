@@ -239,7 +239,7 @@ Template.ariane.links = function() {
                     label: 'création d\'un nouvel événement',
                     last: true
                 });
-
+        $('#frmNouvelEvt')[0].reset(); //pour éviter que les champs restent remplis après un première création
     }
     // Modification
     else if (currentView === 'nouvelEvt')
