@@ -601,4 +601,3 @@ Template.nouvelEvt.events({
 });
 
 logRenders();
-
