@@ -144,6 +144,41 @@ function getStringFromDate(date, universal)
         return "" + day + '/' + month + '/' + year;
 }
 
+tracker_GA = function(page) {
+var _gaq = window._gaq || [];
+    _gaq.push(['_setAccount', 'UA-42796021-1']);
+    _gaq.push(['_trackPageview'],page);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+};
+
+tracker_PphpMV= function(page) {
+    window.a_vars = Array();
+    window.pagename = 'test/agendapp/'+page;
+
+    window.phpmyvisitesSite = 17;
+    window.phpmyvisitesURL = "http://console.akantor.net/phpmv2/phpmyvisites.php";
+
+    (function() {
+        var pmv = document.createElement('script');
+        pmv.type = 'text/javascript';
+        pmv.async = true;
+        pmv.src = 'http://console.akantor.net/phpmv2/phpmyvisites.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(pmv, s);
+    })();
+    pmv_log(phpmyvisitesURL, phpmyvisitesSite, pagename, a_vars);
+    console.log('tracking'+page);
+};
+
+tracker_Piwik= function(code){};
+
 /*
  * affiche un message sous form d'un div alert
  * className = info|warning|error
@@ -171,6 +206,8 @@ function displayView(viewId) {
     $('.view').fadeOut(100);
     $view.fadeIn(300);
     Session.set('currentView', viewId);
+    new tracker_PphpMV(viewId);
+    new tracker_GA(viewId);
 }
 
 /**
@@ -199,7 +236,7 @@ Template.entete.events({
         location.hash = '';
     }
 });
-
+ 
 /**
  * fil d'ariane / navigation
  */
