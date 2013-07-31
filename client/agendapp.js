@@ -10,7 +10,7 @@ Meteor.startup(function() {
 // var localGetDetailEvt=null;
 // Deps.autorun(function(){
 //     Meteor.subscribe('getDetailEvt');
-
+    
     //vérification de la query
     //flash("test flash", "info");
     var query = window.location.href.split('#');
@@ -276,6 +276,7 @@ Template.ariane.links = function() {
                     label: 'création d\'un nouvel événement',
                     last: true
                 });
+        $('#frmNouvelEvt')[0].reset(); //pour éviter que les champs restent remplis après un première création
 
     }
     // Modification
@@ -427,6 +428,7 @@ Template.detailEvt.evenement = function() {
  */
 
 Template.nouvelEvt.rendered = function() {
+    
     //infobulles d'aide
     $('button.bspopover').popover({trigger: "hover", container: 'body'}); //initialize all popover in this template
     //etat des boutons radio
@@ -456,6 +458,26 @@ Template.nouvelEvt.rendered = function() {
     var end = new Date();
     end.setFullYear(end.getFullYear() + 3);
     $('#frmNouvelEvt input[type="date"]').attr('max', getStringFromDate(end));
+
+    //creation des datepicker pour tous les éléments dates s'il ne sont pas reconnus par le navigateur
+    var dateToFrString="";
+    $('#frmNouvelEvt input[type="date"]').each(function(){
+        if(document.getElementById($(this).attr('id')).type=='text')
+        { 
+            //console.log("vérif date pour "+$(this).attr('id'));
+            // //changement de la valeur du champs en une chaîne au format dd/mm/yyyy
+            if($(this).val())
+            {
+                dateToFrString=getStringFromDate(getDateFromInput($(this).val()),false);
+                $(this).val(dateToFrString);
+                $(this).attr('value',dateToFrString);
+                //console.log("nouvelle valeur : " + $(this).val());
+            }         
+            //le datepicker est ensuite créé à la volée lors du click sur le champs date, 
+            //et initialisé avec la valeur de l'input ou la date du jour par défaut  
+            // cf 'click [type=date]' dans les events de nouvelEvt 
+        }
+    });
 };
 Template.nouvelEvt.evenement = function() {
     //pour eviter d'afficher un evenement vide
@@ -500,6 +522,24 @@ Template.nouvelEvt.events({
         //console.log($buttonGroup);
         $buttonGroup.attr("data-value", $button.attr("data-value"));
         //console.log($buttonGroup.attr('data-value'));
+    },
+    'mousedown [type=date]' : function(e){
+       //création d'un datepicker à la volée si le champs date n'est pas reconnu par le navigateur (voir le rendered du template)
+       //le principe du test est que si le browser ne reconnait pas le type date, il mettra le type par defaut, ie "text".
+       //donc on applique le datepicker aux champs date reconnu comme du text, en donnant le bon format 
+       //la bibli utilisée est http://eternicode.github.io/bootstrap-datepicker/ patchée pour firefox(cf bug #552)
+        
+       var $input = $(e.currentTarget);
+        if(document.getElementById($input.attr('id')).type=='text'){
+            $input.datepicker({
+            language: 'fr',
+            format: 'dd/mm/yyyy',
+            autoclose: true, //ferme la fenêtre sur clic
+            startDate: getStringFromDate(getDateFromInput($input.attr('min')), false), 
+            endDate: getStringFromDate(getDateFromInput($input.attr('max')), false)
+        });
+        }
+        
     },
     'click #submitevt': function(e) {
         // vérifie la validité du formulaire en se reposant sur le navigateur
@@ -597,4 +637,3 @@ Template.nouvelEvt.events({
 });
 
 logRenders();
-
