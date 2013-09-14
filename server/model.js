@@ -6,18 +6,6 @@ if (Meteor.isServer) {
             process.env.MAIL_URL = 'smtp://live.cnccb%40gmail.com:cyrano2013@smtp.gmail.com:465/'; //serveur pour l'envoi du mail de confirmation
 
     });
-//todo finir quand on enlevera l'autopublish
-    // Meteor.publish("evt-all", function () {
-    // return Evenements.find(); // tous les evenements
-    // });
-    // Meteor.publish("evt-details", function(idEvt){
-    // return Evenements.find({permalink:idEvt}); //un evt en particulier, par son permalink
-    // });
-
-    Meteor.publish("getDetailEvt", function()
-    {
-        return Evenements.find({}, {fields: {codeedition: 0, admin: 0}});
-    });
 
     Meteor.methods({
         fetchOneEvt: function(idEvt)
@@ -73,7 +61,7 @@ if (Meteor.isServer) {
             // Envoi du mail avec code d'edition
 
             var evt = Evenements.findOne(evtId);
-            var urlConfirm = "" + SERVER_URL + "#" + evt.codeedition + '#' + evt._id;
+            var urlConfirm = "" + SERVER_URL + 'event/' + evt._id  + '/edit/' + evt.codeedition  ;
             var message = "Bonjour, \n\n Vous avez ajouté l'événement "
                     + "'" + evt.nom + "' sur l'application Agend'app. Voici le lien qui vous permettra de le modifier par la suite :\n"
                     + urlConfirm + "\n\n"

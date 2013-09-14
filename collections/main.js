@@ -34,9 +34,16 @@ if (Meteor.isServer) {
                 var id=Evenements.insert(item);
                 console.log(item.nom+": "+"#"+item.codeedition+"#"+id);
             });
-        }
-        ;
-        // code to run on server at startup
+        };
+        Meteor.publish("allEvents", function(){
+            return Evenements.find({}, {fields: {codeedition: 0}});
+        });
     });
+}
+
+if(Meteor.isClient){
+    Meteor.startup(function(){
+        Meteor.subscribe('allEvents');
+    })
 }
 
