@@ -76,7 +76,7 @@ Template.nouvelEvt.evenement = function() {
 Template.nouvelEvt.events({
     'click #cancel': function(e) {
         e.preventDefault();
-        displayView('listeEvt');
+        page('/');
     },
     //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrirreco': function(e) {
@@ -187,7 +187,7 @@ Template.nouvelEvt.events({
         console.log("Evènement créé/modifié");
 
         // Retour à l'interface du calendrier
-        displayView('listeEvt');
+        page('/')
         // message de validation??        
         //return false;
     },
