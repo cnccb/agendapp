@@ -9,9 +9,12 @@ Template.detailEvt.evenement = function() {
 
     var res = Evenements.findOne(Session.get('evtEnCours'));
     res = _.omit(res, ['admin', '_id', 'codeedition']);
-    res.datedeb = getStringFromDate(getDateFromInput(res.datedeb), false);
-    res.datefin = getStringFromDate(getDateFromInput(res.datefin), false);
-    res.forclusion = getStringFromDate(getDateFromInput(res.forclusion), false);
+    if(res.datedeb)
+        res.datedeb = getStringFromDate(getDateFromInput(res.datedeb), false);
+    if(res.datefin)
+        res.datefin = getStringFromDate(getDateFromInput(res.datefin), false);
+    if(res.forclusion)
+        res.forclusion = getStringFromDate(getDateFromInput(res.forclusion), false);
 
     Session.set('titreEncours', res.nom);
     //evenement.planiframable 

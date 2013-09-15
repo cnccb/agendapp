@@ -1,4 +1,4 @@
 Meteor.startup(function() {
     initApp();
-    logRenders();
+    //logRenders();
 });

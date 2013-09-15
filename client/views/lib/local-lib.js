@@ -16,6 +16,10 @@ getMonthIndex = function(d)
 
 getDateFromInput = function(inputtext)
 {
+    if(_.isUndefined(inputtext))
+    {
+        return null;               
+    }
     var patronFrancais = /[0-9]{2}[./-][0-9]{2}[./-][0-9]{4}/g;
     var patronUniversl = /[0-9]{4}[./-][0-9]{2}[./-][0-9]{2}/g;
     if (patronFrancais.test(inputtext))
