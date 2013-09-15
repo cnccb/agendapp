@@ -149,6 +149,7 @@ Template.nouvelEvt.events({
                     tel: $("#tel").val(), //tel orga
                     lieu: $("#lieu").val(), //Lieu / adresse
                     codepostal: $("#codepostal").val(), //Lieu / adresse
+                    ville: $("#ville").val(), //Lieu / adresse
                     plan: $("#plan").val(), // Plan d’accès
                     url: $("#url").val(),
                     programme: $("#programme").val(), // Programme
@@ -200,6 +201,20 @@ Template.nouvelEvt.events({
         }
         $input.siblings('.errorbox').children('p').text(e.currentTarget.validationMessage);
         $input.siblings('.errorbox').fadeIn(500);
+    },
+
+    'keyup #codepostal' : function(e){
+        var cp = $('#codepostal').val();
+        if(cp.length !== 5)
+            return;
+
+        var res = Communes.findOne({cp:cp});
+        if(res)
+            ville = res.ville;
+        else 
+            ville = "";
+        //console.log('ville trouvée : ', ville);
+        $('#ville').val(ville);
     },
     'blur input': function(e)
     {

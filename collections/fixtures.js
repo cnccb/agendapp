@@ -16,6 +16,7 @@ testEvt = [
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
         lieu: 'Gymnase de Reuilly, 75012 Paris', //Lieu / adresse
         codepostal: '75012', //cp / adresse 
+        ville:'Paris',
         plan: 'http://goo.gl/maps/U6l2H', // Plan d’accès
         url: 'http://www.internationaux2015.com',
         programme: 'Ca va poutrer', // Programme
@@ -40,8 +41,9 @@ testEvt = [
         orga: 'P. Brasey', //Nom de l'organisateur, 
         statut: 'definitif', //Statut           
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
-        lieu: 'Ambérieu en bugey', //Lieu / adresse
+        lieu: 'Gymnase de la Sensive', //Lieu / adresse
         codepostal: '01001', //cp / adresse 
+        ville:'Ambérieu en bugey',
         plan: 'http://goo.gl/maps/U6l2H', // Plan d’accès
         url: '',
         programme: 'Phase finale des championnats de France.', // Programme
@@ -68,6 +70,7 @@ testEvt = [
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
         lieu: 'Saint Martin Le Beau', //Lieu / adresse
         codepostal: '37270', //cp / adresse 
+        ville:'Tours',
         plan: 'http://goo.gl/maps/U6l2H', // Plan d’accès
         url: 'http://www.internationaux2013.com',
         programme: 'Lorem ipsum dolem', // Programme
@@ -94,6 +97,7 @@ testEvt = [
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
         lieu: 'Gymnase de Reully, 75012 Paris', //Lieu / adresse
         codepostal: '75012', //cp / adresse 
+        ville:'Paris',
         plan: 'http://goo.gl/maps/U6l2H', // Plan d’accès
         url: 'http://www.internationaux2015.com',
         programme: 'bla bla bla bla bla bla bla', // Programme
@@ -120,6 +124,7 @@ testEvt = [
         contact: 'webmaster@darkhan.net', //Contact (pour information)            
         lieu: 'Gymnase Jules Noel, 3 avenue Maurice d\'Ocagne.', //Lieu / adresse
         codepostal: '75014', //cp / adresse 
+        ville:'Paris',
         plan: 'http://goo.gl/maps/U6l2H', // Plan d’accès
         url: 'http://www.cnccb.net',
         programme: 'La grande rencontre inter-galactique des cannistes', // Programme

@@ -32,7 +32,7 @@
                     <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voir les détails' >
                         <td class="muted">{{jourdeb}}</td>
                         <td>{{iconify statut}} {{iconify echelle}}
-                            <strong>{{nom}} ({{codepostal}})</strong> - {{lieu}} </td>
+                            <strong>{{nom}} {{#if ville}} ({{ville}}) {{/if}}</strong>{{#if lieu}} - {{lieu}} {{/if}}</td>
                     </tr>
                     {{/if}}
                     {{/each}}

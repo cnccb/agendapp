@@ -52,4 +52,4 @@ Handlebars.registerHelper('i18n', function(text){
         return i18n[text]
     else 
         return text;
-})
+});

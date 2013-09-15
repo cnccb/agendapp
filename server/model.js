@@ -37,6 +37,7 @@ if (Meteor.isServer) {
                         tel: parameters.tel, //tel orga
                         lieu: parameters.lieu, //Lieu / adresse
                         codepostal: parameters.codepostal, //Lieu / adresse
+                        ville: parameters.ville, //Lieu / adresse
                         plan: parameters.plan, // Plan d’accès
                         url: parameters.url,
                         programme: parameters.programme, // Programme

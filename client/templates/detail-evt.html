@@ -45,6 +45,7 @@
                         <address>
                             <strong>{{evenement.lieu}}</strong>
                             {{#if evenement.codepostal}}<br>{{evenement.codepostal}}{{/if}}
+                            {{#if evenement.ville}}<br>{{evenement.ville}}{{/if}}
                             {{#if evenement.planiframable}}
                             <br><iframe id="plandaccces" src="{{evenement.planiframable}}"></iframe>
                             {{else}}
@@ -100,7 +101,7 @@
                 {{#if evenement.hebergement}}
                 <div class='span3'>
                     <div class='detailSection'>
-                        <h2>Hébergement recommandées</h2>
+                        <h2>Hébergement</h2>
                         <p>{{evenement.hebergement}}</p>
                     </div>
                 </div>
@@ -108,7 +109,7 @@
                 {{#if evenement.restauration}} 
                 <div class='span3'>
                     <div class='detailSection'>
-                        <h2>Restauration recommandées</h2>
+                        <h2>Restauration</h2>
                         <p>{{evenement.restauration}}</p>
                     </div>
                 </div>

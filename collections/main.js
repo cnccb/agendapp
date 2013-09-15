@@ -1,6 +1,7 @@
 
 
 Evenements = new Meteor.Collection('evenements');
+Communes = new Meteor.Collection('Communes');
 /*
  structure :
  ->evenement:
@@ -35,15 +36,30 @@ if (Meteor.isServer) {
                 console.log(item.nom+": "+"#"+item.codeedition+"#"+id);
             });
         };
+        if (Communes.find({}).count() == 0) {
+            console.log('insertions des communes : ', codesPostaux.length);
+            _.each(codesPostaux,function(item) {
+                var id=Communes.insert(item);                
+                if(!id)
+                  console.log("commune : ",item," problématique");
+            });
+            console.log(Communes.find().count()+' communes insérées');
+        };
+
         Meteor.publish("allEvents", function(){
             return Evenements.find({}, {fields: {codeedition: 0}});
         });
+        Meteor.publish("allCommunes", function(){
+            return Communes.find({});
+        })
     });
 }
 
 if(Meteor.isClient){
     Meteor.startup(function(){
         Meteor.subscribe('allEvents');
+        Meteor.subscribe('allCommunes');
+
     })
 }
 
