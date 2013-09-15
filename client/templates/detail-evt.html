@@ -1,27 +1,46 @@
 <template name='detailEvt'>
-    <h1>{{evenement.nom}}</h1>
-    <ul  class="inline">
-        {{#if evenement.statut}}<li>Statut : {{evenement.statut}} ({{iconify evenement.statut}})</li>{{/if}}
-        {{#if evenement.echelle}}<li>Echelle : {{evenement.echelle}} ({{iconify evenement.echelle}})</li>{{/if}}
-    </ul>
+    <div id="resumeEvt">
+        <h1>{{evenement.nom}}</h1>
+        <ul class='inline'>
+            {{#if evenement.statut}}
+                <li>
+                    <span class='label'>{{iconify evenement.statut}} {{i18n evenement.statut}}</span>
+                </li>
+            {{/if}}
+            {{#if evenement.echelle}}
+                <li>
+                    <span class='label'>{{iconify evenement.echelle}} {{i18n evenement.echelle}}</span>
+                </li>
+            {{/if}}
+            {{#if evenement.cible}}
+                <li>
+                    {{#each evenement.cible}}
+                        <span class='label'>{{iconify this}} {{i18n this}}</span>
+                    {{/each}}
+                </li>
+            {{/if}}
+        </ul>
+    </div>
 
-    <div class="row" >
-        <div class="span9" id='ficheEvt'>
-
-            <div class="row">
-                <div class="span3">
-                    <div class="well">
+    <div class='row' >
+        <div class='span9' id='ficheEvt'>
+            <div class='row'>
+                <div class='span3'>
+                    <div class='detailSection'>
                         <h2>Dates</h2>
-                        <p><strong>Du {{evenement.datedeb}} au {{evenement.datefin}}</strong>
-                            {{#if evenement.horaires}}<br>Horaires : {{evenement.horaires}}{{/if}}
-                            {{#if evenement.forclusion}}<br>Forclusion : {{evenement.forclusion}}{{/if}}
+                        <p>
+                            <h4>{{evenement.datedeb}} - {{evenement.datefin}}</h4>
+                            <dl>
+                            {{#if evenement.horaires}}<dt>Horaires</dt><dd> {{evenement.horaires}}{{/if}}</dd>
+                            {{#if evenement.forclusion}}<dt>Forclusion</dt><dd>{{evenement.forclusion}}{{/if}}</dd>
+                            </dl>
                         </p>
                     </div>
                 </div>
 
                 {{#if evenement.lieu}}
-                <div class="span3">
-                    <div class="well">
+                <div class='span3'>
+                    <div class='detailSection'>
                         <h2>Adresse</h2>
                         <address>
                             <strong>{{evenement.lieu}}</strong>
@@ -37,8 +56,8 @@
                 {{/if}}
 
                 {{#if evenement.orga}}
-                <div class="span3">
-                    <div class='well'>
+                <div class='span3'>
+                    <div class='detailSection'>
                         <h2>Organisateur</h2>
                         <address>
                             <strong>{{evenement.orga}}</strong>
@@ -51,9 +70,9 @@
                 {{/if}}        
             </div>
 
-            <div class="row">
-                <div class="span6">
-                    <div class='well'>
+            <div class='row'>
+                <div class='span6'>
+                    <div class='detailSection'>
                         <h2>Programme</h2>
                         {{#if evenement.programme}}
                         <p>{{evenement.programme}}</p>
@@ -64,46 +83,39 @@
                 </div>
 
 
-                <div class="span3">
-                    <div class="well">
+                <div class='span3'>
+                    <div class='detailSection'>
                         <h2>Divers</h2>
-                        <ul class="unstyled">
-                            {{#if evenement.cible}}
-                            <li>
-
-                                Cible (public attendu) :
-                                {{#each evenement.cible}}<span class='label'>{{this}}</span>{{/each}}
-                            </li>
-                            {{/if}}
-                            {{#if evenement.conditions}}<li>Conditions de participation : {{evenement.conditions}}</li>{{/if}}
-                            {{#if evenement.prix}}<li>Prix : {{evenement.prix}}</li>{{/if}}
-                            {{#if evenement.options}}<li>Options:{{evenement.options}}</li>{{/if}}
-                        </ul>
+                        <dl>                            
+                            {{#if evenement.conditions}}<dt>Conditions de participation</dt><dd> {{evenement.conditions}}</dd>{{/if}}
+                            {{#if evenement.prix}}<dt>Prix</dt><dd>{{evenement.prix}}</dd>{{/if}}
+                            {{#if evenement.options}}<dt>Options</dt><dd>{{evenement.options}}</dd>{{/if}}
+                        </dl>
                     </div>
                 </div>
 
             </div>        
 
-            <div class="row">
+            <div class='row'>
                 {{#if evenement.hebergement}}
-                <div class="span3">
-                    <div class="well">
+                <div class='span3'>
+                    <div class='detailSection'>
                         <h2>Hébergement recommandées</h2>
                         <p>{{evenement.hebergement}}</p>
                     </div>
                 </div>
                 {{/if}}
                 {{#if evenement.restauration}} 
-                <div class="span3">
-                    <div class="well">
+                <div class='span3'>
+                    <div class='detailSection'>
                         <h2>Restauration recommandées</h2>
                         <p>{{evenement.restauration}}</p>
                     </div>
                 </div>
                 {{/if}}
                 {{#if evenement.visites}}
-                <div class="span3">
-                    <div class="well">
+                <div class='span3'>
+                    <div class='detailSection'>
                         <h2>Visites recommandées</h2>
                         <p>{{evenement.visites}}
                         </p>
@@ -113,9 +125,9 @@
             </div>        
         </div>
         {{#constant}}
-        <div class="span3" >
-            <aside class="well aide">
-                <h3>Mieux comprendre</h3>
+        <div class='span3' >
+            <aside class='well aide'>
+                <h3>Notes</h3>
                 <dl>
                     <dt>Attention</dt>
                     <dd>
@@ -147,6 +159,5 @@
             </aside>
         </div>
         {{/constant}}
-    </div>
-
+    </div>    
 </template>

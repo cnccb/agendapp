@@ -1,4 +1,8 @@
-/* CSS declarations go here */
+@font-face { font-family: "Ubuntu-Light";     src: url('/font/Ubuntu-L.ttf'); }
+
+body{font-family: "Ubuntu-Light", sans-serif}
+.label {font-family: arial, sans-serif}
+
 #nouvelEvt{display:none;}
 #detailEvt{display:none;}
 tr.clickToDetail:hover,#logotitre:hover{cursor: pointer;}
@@ -9,10 +13,14 @@ tr.national td strong{}
 tr.international td strong{}
 tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{}
 .header .span3 img{float:right; margin-right: -25px;}
+
 #ouvrircomplement:hover{cursor: pointer;}
 #ouvrirreco:hover{cursor: pointer;}
 
-#detailEvt div h2{font-size: 110%}
+#detailEvt .detailSection {font-family: ubuntu }
+#detailEvt h1{text-transform: uppercase;}
+#detailEvt div h2{font-size: 110%;background: #998; color : #fff; padding: 5px 5px;text-transform: uppercase;}
+
 #nouvelEvt .evtParOption{display:none;} 
 
 .well.aide{background-color: #fff; color: #707070}

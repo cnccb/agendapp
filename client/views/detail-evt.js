@@ -29,3 +29,7 @@ Template.detailEvt.evenement = function() {
 
     return res;
 };
+
+Template.detailEvt.rendered = function(){
+    $('.label i').addClass('icon-white');
+}
