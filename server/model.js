@@ -16,7 +16,7 @@ if (Meteor.isServer) {
         {
             var secretcode = Random.hexString(12);
             //@todo: supprimer pour la mise en prod.
-            secretcode = "123";
+            //secretcode = "123";
             // admin calculus
             var newEvent =
                     {
