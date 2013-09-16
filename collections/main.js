@@ -49,9 +49,6 @@ if (Meteor.isServer) {
         Meteor.publish("allEvents", function(){
             return Evenements.find({}, {fields: {codeedition: 0}});
         });
-        Meteor.publish("allCommunes", function(){
-            return Communes.find({});
-        })
     });
 }
 
@@ -59,7 +56,6 @@ if(Meteor.isClient){
     Meteor.startup(function(){
         Meteor.subscribe('allEvents');
         Meteor.subscribe('allCommunes');
-
     })
 }
 

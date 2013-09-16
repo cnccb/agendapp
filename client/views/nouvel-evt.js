@@ -207,14 +207,12 @@ Template.nouvelEvt.events({
         var cp = $('#codepostal').val();
         if(cp.length !== 5)
             return;
-
-        var res = Communes.findOne({cp:cp});
-        if(res)
-            ville = res.ville;
-        else 
-            ville = "";
-        //console.log('ville trouvée : ', ville);
-        $('#ville').val(ville);
+        Meteor.call('getVille', cp, function(error, ville){
+            if(error)
+                console.log(error);
+            else
+                $('#ville').val(ville);
+        });
     },
     'blur input': function(e)
     {
