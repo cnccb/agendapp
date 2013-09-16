@@ -30,12 +30,12 @@ Communes = new Meteor.Collection('Communes');
 //init base
 if (Meteor.isServer) {
     Meteor.startup(function() {
-        if (Evenements.find({}).count() <= 3) {
-            testEvt.forEach(function(item) {
-                var id=Evenements.insert(item);
-                console.log(item.nom+": "+"#"+item.codeedition+"#"+id);
-            });
-        };
+        // if (Evenements.find({}).count() <= 3) {
+        //     testEvt.forEach(function(item) {
+        //         var id=Evenements.insert(item);
+        //         console.log(item.nom+": "+"#"+item.codeedition+"#"+id);
+        //     });
+        // };
         if (Communes.find({}).count() == 0) {
             console.log('insertions des communes : ', codesPostaux.length);
             _.each(codesPostaux,function(item) {
