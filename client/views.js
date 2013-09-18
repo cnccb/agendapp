@@ -12,7 +12,7 @@ index = function(ctx, next){
 evtEdit = function(ctx, next){
     var evtCodeEditionContest = ctx.params.code;
     var evtCourantId = ctx.params.evt;
-    console.log('evt confirm :', evtCourantId, evtCodeEditionContest);
+    //console.log('evt / code confirm :', evtCourantId, evtCodeEditionContest);
 
     // test de validation (au cas où)
     Meteor.call('verifCodeConfirm', evtCourantId, evtCodeEditionContest, function(error, result) {
@@ -27,9 +27,10 @@ evtEdit = function(ctx, next){
             {
                 flash("Votre événement est validé !", 'info');
             } else {
-                console.log('Evénement déjà valide');
+                //console.log('Evénement déjà valide');
             }
             Session.set('evtEnCours', evtCourantId);
+            Session.set('codeedition', evtCodeEditionContest);
             displayView('nouvelEvt');
         }
     });
@@ -40,7 +41,7 @@ evtShow = function(ctx, next){
     Meteor.call('fetchOneEvt', ctx.params.evt, function(error, result) {
         if (result) {
             Session.set('evtEnCours', ctx.params.evt);
-            console.log("displaying evt" + ctx.params.evt);
+            //console.log("displaying evt" + ctx.params.evt);
             displayView('detailEvt');
         };
     });
@@ -49,6 +50,7 @@ evtShow = function(ctx, next){
 //nouvel evt
 evtNew = function(ctx, next){
     //vide le formulaire et l'affiche
+    //console.log('new event');
     Session.set('evtEnCours', undefined);
     displayView('nouvelEvt');
 };

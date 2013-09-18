@@ -51,7 +51,7 @@ Template.ariane.links = function() {
         // du coup le lien est créé avec un label vide. Ci-dessous une parade, moche...
         if(Session.get('evtEnCours') !== undefined && currentTitle === undefined )
         {
-            console.log('titre non defini pour #',Session.get('evtEnCours'));
+            //console.log('titre non defini pour #',Session.get('evtEnCours'));
             currentTitle = Evenements.find(Session.get('evtEnCours'), {fields:{nom :1}}).fetch().nom;
         }
 
@@ -75,7 +75,7 @@ Template.ariane.events({
     'click #detaillink a': function(e) {
         e.preventDefault();
         var evt = $(e.currentTarget).attr('href')
-        console.log(evt);
+        //console.log(evt);
         page('/event/'+evt);
     },
     'click #accueil': function(e) {

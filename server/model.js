@@ -2,7 +2,7 @@
 if (Meteor.isServer) {
     Meteor.startup(function() {
         SERVER_URL = Meteor.absoluteUrl(); //adresse du serveur
-        if(SERVER_URL!="http://localhost:3000/") 
+        //if(SERVER_URL!="http://localhost:3000/") 
             process.env.MAIL_URL = 'smtp://live.cnccb%40gmail.com:cyrano2013@smtp.gmail.com:465/'; //serveur pour l'envoi du mail de confirmation
 
     });
@@ -14,14 +14,10 @@ if (Meteor.isServer) {
         },
         addNewEvent: function(parameters)
         {
-            var secretcode = Random.hexString(12);
-            //@todo: supprimer pour la mise en prod.
-            //secretcode = "123";
+            var idEvt = parameters.idEvt;
             // admin calculus
             var newEvent =
                     {
-                        codeedition: secretcode, // Pour le lien d'admin
-                        valide: false,
                         admin: parameters.admin, //Mail pour l'administration
                         nom: parameters.nom, //nom de l'évènement
                         datedeb: parameters.datedeb, // Date 
@@ -45,24 +41,46 @@ if (Meteor.isServer) {
                         conditions: parameters.conditions, //Conditions de participation
                         hebergement: parameters.hebergement, //Recommandations d’hébergement
                         restauration: parameters.restauration, //Recommandations restauration
-                        visites: parameters.visites //Recommandations visites
+                        visites: parameters.visites, //Recommandations visites
+                        valide : false
                     };
 
             // si edition
-            if (parameters.dejaexistant)
+            if (idEvt)
             {
                 //@todo: protéger contre le changement d'email (ou revalidation)
-                newEvent.valide = true,
-                        Evenements.update(parameters.dejaexistant, newEvent);
-                return 'Evenement mis à jour';
+                evt = Evenements.findOne({_id: idEvt}, {fields: {_id: 1, codeedition : 1}});
+                if (parameters.codeedition === evt.codeedition)
+                {
+                    newEvent.valide = true;
+                    newEvent.codeedition = evt.codeedition;
+                    Evenements.update(idEvt, newEvent);
+
+                    console.log('parameter dejaexistant = true => update', newEvent);
+                    return 'Evenement mis à jour';
+                }
+                else 
+                {
+                    console.error("Mauvais code d'édition !", parameters);
+                    return "Erreur lors de la modification";
+                }
             }
 
+            //sinon création
+            var secretcode = Random.hexString(12);
+            console.log('addNEwEvent : nouveau code / params :', secretcode, parameters);
+            newEvent.codeedition = secretcode;
             var evtId = Evenements.insert(newEvent);
-            console.log("création de l'evenement : " + evtId);
-            // Envoi du mail avec code d'edition
-
             var evt = Evenements.findOne(evtId);
-            var urlConfirm = "" + SERVER_URL + 'event/' + evt._id  + '/edit/' + evt.codeedition  ;
+
+            console.log("création de l'evenement : " + evtId, evt);
+            
+            // Envoi du mail avec code d'edition
+            if(SERVER_URL && evt._id && evt.codeedition){
+                var urlConfirm = "" + SERVER_URL + 'event/' + evt._id  + '/edit/' + evt.codeedition  ;
+            }else{
+                throw new Meteor.Error(500, "impossible d'envoyer le mail - manque de donnéees");
+            }
             var message = "Bonjour, \n\n Vous avez ajouté l'événement "
                     + "'" + evt.nom + "' sur l'application Agend'app. Voici le lien qui vous permettra de le modifier par la suite :\n"
                     + urlConfirm + "\n\n"
@@ -89,7 +107,7 @@ if (Meteor.isServer) {
         verifCodeConfirm: function(evtId, codeConfirm)
         {
             var evt = Evenements.findOne(evtId);
-            console.log("Vérification du code de confirmation" + codeConfirm);
+            console.log("Vérification du code de confirmation " + codeConfirm);
             console.log("evt vérifié : ");
             console.log(evt);
             if (evt.codeedition !== codeConfirm)
