@@ -3,9 +3,11 @@
 */
 
 //index : affiche la liste des événements
-index = function(ctx, next){
-    displayView('listeEvt');
+index = function(ctx, next){    
     Session.set('currentView', 'listeEvt');
+    Session.set('evtEnCours', undefined);
+    Session.set('titreEncours', '');
+    displayView('listeEvt');
 };
 
 //edition evt : gère également la confirmation du code d'admin

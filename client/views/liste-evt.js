@@ -25,7 +25,6 @@ Template.listeEvt.evenements = function() {
     var liste = Evenements.find(conditions, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
     var evenementsSansDate = new Array();
-    Session.set('titreEncours', '');
 
     var lastindex = null;
     _.each(liste, function(value, key, list) {
