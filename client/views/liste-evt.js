@@ -66,7 +66,7 @@ Template.listeEvt.events({
 
     },
     'keyup [name=searchString]': function(e) {
-        Session.set("search_keywords", $("#e.currentTarget").value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
+        Session.set("search_keywords", $(e.currentTarget).val().replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
     },
     'click .clicktosearch': function(e) {
         e.preventDefault();
