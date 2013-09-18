@@ -15,8 +15,6 @@ if (Meteor.isServer) {
         addNewEvent: function(parameters)
         {
             var secretcode = Random.hexString(12);
-            //@todo: supprimer pour la mise en prod.
-            //secretcode = "123";
             // admin calculus
             var newEvent =
                     {
@@ -52,6 +50,9 @@ if (Meteor.isServer) {
             if (parameters.dejaexistant)
             {
                 //@todo: protéger contre le changement d'email (ou revalidation)
+                // pour éviter que le code ne change à chanque mise à jour.
+                var evt = Evenements.findOne(parameters.dejaexistant);
+                newEvent.codeedition = evt.codeedition;
                 newEvent.valide = true,
                         Evenements.update(parameters.dejaexistant, newEvent);
                 return 'Evenement mis à jour';

@@ -51,3 +51,7 @@ span.label{margin-right: 5px;}
     border-top: 1px solid #E5E5E5;
     background-color: whiteSmoke;
 }
+
+/* retour utilisateurs */
+/*PJ: on voit pas assez quand on clique */
+#nouvelEvt button.btn.active{background-color: #FF0;}
