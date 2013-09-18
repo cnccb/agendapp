@@ -54,6 +54,7 @@ Template.listeEvt.evenements = function() {
 };
 Template.listeEvt.events({
     'click #newEvt': function(e) {
+        resetForm('frmNouvelEvt');
         page('/event/new');
     },
     'click .clickToDetail': function(e) {

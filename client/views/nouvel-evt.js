@@ -60,6 +60,7 @@ Template.nouvelEvt.evenement = function() {
     if (Session.get('evtEnCours') === undefined)
     {
         Session.set('titreEncours', '');
+        resetForm('frmNouvelEvt');
         return null;
     }
 
@@ -190,6 +191,7 @@ Template.nouvelEvt.events({
         //console.log("Evènement créé/modifié");
 
         // Retour à l'interface du calendrier
+        resetForm("frmNouvelEvt");
         page('/')
         // message de validation??        
         //return false;

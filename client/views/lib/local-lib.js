@@ -123,6 +123,18 @@ checkBoxesValues = function(id){
     return vals;
 }
 
+resetForm = function (id) {
+    $('#'+id).each(function(){
+            this.reset();
+            //console.info('reseting ',this);
+    });
+    $('#'+id+' input:checkbox').each(function(item){
+        $(this).removeAttr('checked');
+    });
+    $('#'+id+' input:radio').each(function(item){
+        $(this).removeAttr('selected');
+    });
+}
 
 displayView = function(viewId) {
     $view = $('#' + viewId);
