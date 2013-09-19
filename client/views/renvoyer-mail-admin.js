@@ -11,8 +11,8 @@ Template.renvoyerMailAdmin.events({
 			}
 			if(result){
 				flash("Le mail a été renvoyé correctement", "success");
-				page("/event/"+Session.get('evtEnCours'));
 			}
-		} );
+		});
+		page("/event/"+Session.get('evtEnCours'));
 	}
 });

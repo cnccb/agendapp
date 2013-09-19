@@ -192,7 +192,12 @@ Template.nouvelEvt.events({
 
         // Retour à l'interface du calendrier
         resetForm("frmNouvelEvt");
-        page('/')
+        if (evtCourant !== undefined){
+            page('/event/'+evtCourant);
+        }
+        else{
+            page('/');
+        }
         // message de validation??        
         //return false;
     },
