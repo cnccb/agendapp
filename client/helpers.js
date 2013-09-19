@@ -18,16 +18,17 @@ Handlebars.registerHelper('iconify', function(text) {
         'departemental': new Handlebars.SafeString("<i class='icon-map-marker' title='Evénement départemental'></i>"),
         'regional': new Handlebars.SafeString("<i class='icon-road' title='Evénement régional'></i>"),
         'national': new Handlebars.SafeString("<i class='icon-flag' title='Evénement national'></i>"),
-        'international': new Handlebars.SafeString("<i class='icon-plane' title='Evénement international'></i>"),
+        'international': new Handlebars.SafeString("<i class='icon-globe' title='Evénement international'></i>"),
         //cible
         'competiteurs' : new Handlebars.SafeString("<i class='icon-user' title='Pour les compétiteurs'></i>"),
         'debutants' : new Handlebars.SafeString("<i class='icon-user' title='Pour les débutants'></i>"),
         'confirmes' : new Handlebars.SafeString("<i class='icon-user' title='Pour les confirmés'></i>"),
+        'jeunes' : new Handlebars.SafeString("<i class='icon-user' title='Pour les jeunes'></i>"),
     };
     if (inconificationTable[text])
         return inconificationTable[text];
     else
-        return text;
+        return new Handlebars.SafeString("<i class='' title='"+text+"'></i>");
 });
 
 Handlebars.registerHelper('i18n', function(text){
@@ -51,5 +52,5 @@ Handlebars.registerHelper('i18n', function(text){
     if (i18n[text])
         return i18n[text]
     else 
-        return text;
+        return new Handlebars.SafeString(""+text+"");
 });

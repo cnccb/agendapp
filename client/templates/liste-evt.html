@@ -21,18 +21,18 @@
                         <button id="newEvt" class="btn pull-right btn-success"><i class="icon-plus icon-white"></i> Nouvel événement</button>
                 </div>
             </div>
-            <h1>Calendrier </h1>
             <table class="table table-hover table-striped table-condensed">
                 <tbody>
                     {{#each evenements}}
                     {{#if TitreIntermediaire}}
-                    <tr class='monthline info'><td colspan='2' class="lead text--">{{TitreIntermediaire}}</td></tr> 
+                    <tr class='separator'><td colspan='3'></td></tr>
+                    <tr class='monthline info'><td colspan='3' class="lead text--">{{TitreIntermediaire}}</td></tr> 
                     {{else}}
 
                     <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voir les détails' >
                         <td class="muted">{{jourdeb}}</td>
-                        <td>{{iconify statut}} {{iconify echelle}}
-                            <strong>{{nom}} {{#if ville}} ({{ville}}) {{/if}}</strong>{{#if lieu}} - {{lieu}} {{/if}}</td>
+                        <td><strong>{{nom}}</strong>{{#if ville}}&nbsp;-&nbsp;{{ville}} {{/if}}</td>
+                        <td>{{iconify statut}} {{iconify echelle}}</td>
                     </tr>
                     {{/if}}
                     {{/each}}

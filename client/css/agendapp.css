@@ -55,3 +55,8 @@ span.label{margin-right: 5px;}
 /* retour utilisateurs */
 /*PJ: on voit pas assez quand on clique */
 #nouvelEvt button.btn.active{background-color: #bfb;}
+
+/*XL : aérer les evt mois par mois*/
+
+.table tbody tr.separator td {height: 20px; background: #fff; border: none }
+.table tbody tr.monthline {text-transform: uppercase;}
