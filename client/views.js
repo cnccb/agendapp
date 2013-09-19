@@ -38,6 +38,13 @@ evtEdit = function(ctx, next){
     });
 };
 
+//revoi du mail d'admin
+evtSend = function(ctx, next){
+    var evtCourantId = ctx.params.evt;
+    Session.set('evtEnCours', evtCourantId);
+    displayView('renvoyerMailAdmin');
+}
+
 //affichage des detail d'un evt
 evtShow = function(ctx, next){
     Meteor.call('fetchOneEvt', ctx.params.evt, function(error, result) {

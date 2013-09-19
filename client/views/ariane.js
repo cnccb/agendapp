@@ -32,6 +32,22 @@ Template.ariane.links = function() {
                     last: true
                 });
     }
+    //renvoyer le lien
+    else if (currentView === 'renvoyerMailAdmin')
+    {
+        breadcrumb.push(
+        {
+            id: 'detaillink',
+            label: currentTitle,
+            href: '/event/' + Session.get('evtEnCours')
+        });
+        breadcrumb.push(
+                {
+                    id: 'recevoir',
+                    label: 'recevoir le lien',
+                    last: true
+                });
+    }
     // Creation
     else if (currentView === 'nouvelEvt' && Session.get('evtEnCours') === undefined)
     {

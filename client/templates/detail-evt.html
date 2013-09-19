@@ -125,10 +125,17 @@
                 {{/if}}
             </div>        
         </div>
-        {{#constant}}
+        
         <div class='span3' >
+            <div id="sendMailLink">
+                <p>Vous êtes l'administateur de l'évenement ?
+                    <a href="/event/{{evenement._id}}/sendAdminLink">recevoir le lien d'administration à nouveau</a>
+                </p>
+            </div>
+            {{#constant}}
             <aside class='well aide'>
                 <h3>Notes</h3>
+
                 <dl>
                     <dt>Attention</dt>
                     <dd>
@@ -158,7 +165,8 @@
                     </dd>
                 </dl>
             </aside>
+            {{/constant}}
         </div>
-        {{/constant}}
+        
     </div>    
 </template>

@@ -1,0 +1,12 @@
+<template name="renvoyerMailAdmin">
+        <h1>{{evenement.nom}}<small> recevoir le lien d'administration</small></h1>
+
+        <p>Pour recevoir votre lien à nouveau, merci de saisir à nouveau l'e-mail utilisée pour créer l'évennement : 
+        <form id='frmRenvoyerMail' class="form-inline">
+            <fieldset>
+                <input type="email" name="emailAdmin" id="emailAdmin" />
+                <button id="sendMail" class="btn">recevoir l'e-mail</button>
+            </fieldset>
+            
+        </form>
+</template>
