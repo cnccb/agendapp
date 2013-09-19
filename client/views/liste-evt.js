@@ -25,7 +25,6 @@ Template.listeEvt.evenements = function() {
     var liste = Evenements.find(conditions, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
     var evenementsSansDate = new Array();
-    Session.set('titreEncours', '');
 
     var lastindex = null;
     _.each(liste, function(value, key, list) {
@@ -48,12 +47,13 @@ Template.listeEvt.evenements = function() {
     _.each(evenementsSansDate, function(value, key, list) {
         evenements.push(value);
     });
-    //console.log(evenements);
+    ////console.log(evenements);
     return evenements;
 
 };
 Template.listeEvt.events({
     'click #newEvt': function(e) {
+        resetForm('frmNouvelEvt');
         page('/event/new');
     },
     'click .clickToDetail': function(e) {
@@ -65,7 +65,7 @@ Template.listeEvt.events({
 
     },
     'keyup [name=searchString]': function(e) {
-        Session.set("search_keywords", $("#e.currentTarget").value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
+        Session.set("search_keywords", $(e.currentTarget).val().replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&"));
     },
     'click .clicktosearch': function(e) {
         e.preventDefault();

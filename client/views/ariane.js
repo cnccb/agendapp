@@ -5,6 +5,7 @@
 Template.ariane.links = function() {
     var currentView = Session.get('currentView');
     var currentTitle = Session.get('titreEncours');
+    console.log('current title : ',currentTitle);
         
     var breadcrumb = new Array();
 
@@ -40,21 +41,13 @@ Template.ariane.links = function() {
                     label: 'création d\'un nouvel événement',
                     last: true
                 });
-        $('#frmNouvelEvt')[0].reset(); //pour éviter que les champs restent remplis après un première création
+        resetForm('frmNouvelEvt'); //pour éviter que les champs restent remplis après un première création
 
     }
     // Modification
     else if (currentView === 'nouvelEvt')
     {
-
-        //@fixme : il existe un état (lorsque on arrive sur le lien d'admin de l'evt) où l'id evt existe en session mais pas son titre, 
-        // du coup le lien est créé avec un label vide. Ci-dessous une parade, moche...
-        if(Session.get('evtEnCours') !== undefined && currentTitle === undefined )
-        {
-            console.log('titre non defini pour #',Session.get('evtEnCours'));
-            currentTitle = Evenements.find(Session.get('evtEnCours'), {fields:{nom :1}}).fetch().nom;
-        }
-
+        
         breadcrumb.push(
                 {
                     id: 'detaillink',
@@ -75,8 +68,8 @@ Template.ariane.events({
     'click #detaillink a': function(e) {
         e.preventDefault();
         var evt = $(e.currentTarget).attr('href')
-        console.log(evt);
-        page('/event/'+evt);
+        //console.log(evt);
+        page(evt);
     },
     'click #accueil': function(e) {
         e.preventDefault();        

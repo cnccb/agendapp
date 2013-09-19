@@ -24,19 +24,19 @@ getDateFromInput = function(inputtext)
     var patronUniversl = /[0-9]{4}[./-][0-9]{2}[./-][0-9]{2}/g;
     if (patronFrancais.test(inputtext))
     {
-        //console.log('Francais:' + inputtext);
+        ////console.log('Francais:' + inputtext);
         var split = inputtext.split(/[./-]/g);
         return new Date(split[2], split[1] - 1, split[0]);
     }
     else if (patronUniversl.test(inputtext))
     {
-        //console.log('Universel:' + inputtext);
+        ////console.log('Universel:' + inputtext);
         var split = inputtext.split(/[./-]/g);
         return new Date(split[0], split[1] - 1, split[2]);
     }
     else
     {
-        console.log('Format de date non reconnu:' + inputtext);
+        //console.log('Format de date non reconnu:' + inputtext);
         return null;
     }
 };
@@ -100,7 +100,7 @@ tracker_PphpMV= function(page) {
             //pmv_log(phpmyvisitesURL, phpmyvisitesSite, pagename, a_vars);
         })();
     }
-    console.log('tracking'+page);
+    //console.log('tracking'+page);
 };
 
 tracker_Piwik= function(code){};
@@ -123,6 +123,18 @@ checkBoxesValues = function(id){
     return vals;
 }
 
+resetForm = function (id) {
+    $('#'+id).each(function(){
+            this.reset();
+            //console.info('reseting ',this);
+    });
+    $('#'+id+' input:checkbox').each(function(item){
+        $(this).removeAttr('checked');
+    });
+    $('#'+id+' input:radio').each(function(item){
+        $(this).removeAttr('selected');
+    });
+}
 
 displayView = function(viewId) {
     $view = $('#' + viewId);
@@ -142,7 +154,7 @@ logRenders = function() {
         var counter = 0;
 
         template.rendered = function() {
-            console.log(name, "render count: ", ++counter);
+            //console.log(name, "render count: ", ++counter);
             oldRender && oldRender.apply(this, arguments);
         };
     });
