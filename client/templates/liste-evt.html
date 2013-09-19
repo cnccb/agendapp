@@ -21,12 +21,12 @@
                         <button id="newEvt" class="btn pull-right btn-success"><i class="icon-plus icon-white"></i> Nouvel événement</button>
                 </div>
             </div>
-            <table class="table table-hover table-striped table-condensed">
+            <table class="table table-hover table-striped table-condensed" id="calendrier">
                 <tbody>
                     {{#each evenements}}
                     {{#if TitreIntermediaire}}
                     <tr class='separator'><td colspan='3'></td></tr>
-                    <tr class='monthline info'><td colspan='3' class="lead text--">{{TitreIntermediaire}}</td></tr> 
+                    <tr class='monthline'><td colspan='3' class="lead text--">{{TitreIntermediaire}}</td></tr> 
                     {{else}}
 
                     <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voir les détails' >
@@ -47,7 +47,7 @@
                     <dt>Pour <strong>créer</strong> votre événement</dt>
                     <dd>Il suffit de cliquer sur le bouton "Nouvel événement".</dd>
                     <dt>Pour <strong>avoir plus de détails</strong> sur un événement</dt>
-                    <dd>Cliquez sur la ligne concernée, ci-contre</dd>
+                    <dd>Cliquez sur la ligne concernée, ci-contre.</dd>
                     <dt>Pour <strong>modifier</strong> votre événement</dt>
                     <dd>Il faut utiliser le lien que vous avez reçu par mail lors de la création de l'événement.</dd>
                     <dt>Si vous êtes perdu</dt>

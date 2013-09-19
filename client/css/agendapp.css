@@ -19,7 +19,7 @@ tr.provisoire.international *,tr.provisoire.national *,tr.provisoire.regional *{
 
 #detailEvt .detailSection {font-family: ubuntu }
 #detailEvt h1{text-transform: uppercase;}
-#detailEvt div h2{font-size: 110%;background: #998; color : #fff; padding: 5px 5px;text-transform: uppercase;}
+#detailEvt div h2{font-size: 110%;background: #006b86; ; color : #fff; padding: 5px 5px;text-transform: uppercase;}
 
 #nouvelEvt .evtParOption{display:none;} 
 
@@ -58,5 +58,6 @@ span.label{margin-right: 5px;}
 
 /*XL : aérer les evt mois par mois*/
 
-.table tbody tr.separator td {height: 20px; background: #fff; border: none }
-.table tbody tr.monthline {text-transform: uppercase;}
+#calendrier tr.separator td {height: 20px; background: #fff; border: none ;}
+#calendrier tr.monthline>td {text-transform: uppercase;  font-weight: bold; background-color: #006b86 !important; color: #fff !important;}
+#calendrier tr.monthline:hover >td {background-color: #006b86 !important; color: #fff !important;}

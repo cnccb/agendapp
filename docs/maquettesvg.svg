@@ -28,22 +28,22 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.90509668"
-     inkscape:cx="425.72826"
-     inkscape:cy="2921.1601"
+     inkscape:zoom="1.28"
+     inkscape:cx="47.934407"
+     inkscape:cy="2973.948"
      inkscape:document-units="px"
-     inkscape:current-layer="g3669"
+     inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="744"
+     inkscape:window-width="1920"
+     inkscape:window-height="1032"
      inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-y="25"
      inkscape:window-maximized="1">
     <sodipodi:guide
        orientation="0,1"
-       position="656.59915,2818.3256"
+       position="572.31455,2738.9339"
        id="guide3574" />
     <sodipodi:guide
        orientation="0,1"
@@ -58,7 +58,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -98,20 +98,6 @@
        y="-1396.2375"
        rx="9.7724152"
        ry="3.1180789" />
-    <text
-       xml:space="preserve"
-       style="font-size:23.85733795px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#6f8a91;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-       x="132.69481"
-       y="-1829.7806"
-       id="text2985"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         id="tspan2987"
-         x="132.69481"
-         y="-1829.7806">canne de combat &amp; bâton</tspan></text>
     <image
        y="-1896.999"
        x="998.62018"
@@ -120,16 +106,6 @@
        height="76.771622"
        width="53.079189"
        inkscape:export-filename="/home/philoo/dev/canne/agendapp/docs/cnccb.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
-    <image
-       y="-1889.3879"
-       x="65.059456"
-       id="image3373"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAZCAYAAADaILXQAAAABHNCSVQICAgIfAhkiAAAAaBJREFU SIntlbGOqkAYhQ8MgzKB/DEEYmIMhSH6CDb0NjzDfRhfhPs2PoIJtY3GYhKDyhT/LVhYd7fg6rLd nmSKEzhf4Pz5M2BmtMf3/WIymbDv+4UQAv8jIcSH3CPPYubuxdVqxUQErTUOh4N1uVx64b7vYzab dbn9fm+1z5wgCIrRaPSHiDCfz0FE8DwPxhj2PK8XHgQBptNpl1ssFqy1xv1+/2stl0sOwxCe50Ep BSkljDGoqgp1XffCXdf9krterzifz3DCMEQcx7BtuwtIKUFEveDPanNBEAAAbCHEB/AQsm0bQghY /DjRgWUlScJKqcHBVVXBIaKX+u2T1rqBR1E0OBwAhp3kZ2VZxnme86M2m823fJ7nnGUZO0BTPgAr jmO8zYDTNLW01k/5sizxxmMAcAB0m3g6nQA0y6C1ftq3ankO0KxwmqYcRRGICEopEBEDeMq3f54k Ceq6bgYqpURZljgejyjLEkqpb3kp5fuXG2MG7dwY89v5b+dPdm5tt1ve7Xa43W6o6xqu63b34at+ PB5jvV4DzFzwz6j4B4oFOcU43phnAAAAAElFTkSuQmCC "
-       height="62.464527"
-       width="57.467354"
-       inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <text
@@ -608,168 +584,17 @@
          y="-449.00049">Public attendu</tspan></text>
     <g
        id="g4795"
-       transform="translate(0,12)">
-      <g
-         transform="translate(514.16764,-173.74624)"
-         id="g4756">
-        <g
-           transform="translate(-672.76159,163.64471)"
-           id="g4769">
-          <g
-             id="g4782">
-            <g
-               id="g5192-5"
-               transform="matrix(1.1564744,0,0,1.1564744,403.24725,879.99812)">
-              <rect
-                 rx="13.405472"
-                 y="-1787.5947"
-                 x="382.82834"
-                 height="35.273994"
-                 width="148.93463"
-                 id="rect5145-2"
-                 style="color:#000000;fill:#006cb7;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-              <text
-                 sodipodi:linespacing="125%"
-                 id="text5056-4-8"
-                 y="-1763.281"
-                 x="396.75235"
-                 style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-                 xml:space="preserve"><tspan
-                   style="font-size:24px;fill:#ffffff"
-                   y="-1763.281"
-                   x="396.75235"
-                   id="tspan5058-4-3"
-                   sodipodi:role="line">C'est parti !</tspan></text>
-            </g>
-            <text
-               xml:space="preserve"
-               style="font-size:24.33360291px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00aa00;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-               x="221.47136"
-               y="-1429.2745"
-               id="text3407-3"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan3409-2"
-                 x="221.47136"
-                 y="-1429.2745"
-                 style="font-weight:500;-inkscape-font-specification:Ubuntu Medium">En projet</tspan></text>
-            <image
-               y="-1454.3937"
-               x="182.76335"
-               id="image4689"
-               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAhCAYAAAAswACjAAAABHNCSVQICAgIfAhkiAAABI9JREFU SIntlk1sE1cUhc+dX8/YccZ/Y3eIRBJQI1AoQRC6iBqcFATypkiUCClICQuCkCxUFl0AUiWy6Rak 7roo3VM1LMqqIGilqlWycKTIUIFCgmOl7aTOGOzYGcbzuiBTBWObVO2iqnq2977zvXvvm/cG+K+I /kqyIAhJopdLGGNwHOfePwLx+XzjsiyPy7J8SJIk8DwPAKjVarBtG9Vq9Va1Wr1m23ZTYFOIKIpa IBCYCofDh9rb26GqKkRRBMdxAADXdWHbNsrlMlZXV2FZ1q1yuTzuOI61JYgoipqu69/HYrHecDiM jo4OjI6Ooru7G6ZpgohgWRZyuRzu37+PfD6PQqGAlZWVOdM033vx4sUrIL4RxDCMbxOJxIFYLIbz 58/j8uXLizt27LiYyWSu3717d2l+fv67Uqk0q2na8tDQkO44jvLs2TNwHKeLoqhZlvVNS4imaccN w/g4Fovh7NmzOHHixEUiOnX16tVMPp/fGY1GO2u1Gsrl8vrKyspvuVxu+uDBgwHG2FuFQgHr6+sH qtXqLdu2f/E8uXrInj17LoVCIUQiEdi2/Vk4HP5KFMWgJEn9hmG8482EMYZarYZqtYrp6enbe/fu ndV1HZFIBD09PZMtKwmHw59rmobBwcHSw4cPbzPGdFEUO48ePdqbSCRCRATvGHtyXRdra2uLiUSi L5fLSQC2PX369FMvLmxO1nU96ff7XwYE4QdFUdT+/v5uAH+eqnqAV1WpVFoPhUIZIhqwbTuwOf5K u86dO9cnSRJc14Xruj8zxsDzPHieR6MKNqtWq0FRlCxjDJIkIR6PJxtCOI4Dx3FwXRfFYrHIGGtq 2qga0zR/dV0XgiBgYmKiryEkGo2WPOOlpaX4lgkbymazPV61k5OTmYaQdDo9oygKOI5DsVjsa9We em10YB/Hcejs7AQR3WsIIaLM0NDQOs/zWFxc7F9eXt5yNU+ePNmez+d3AsCxY8dyr2ygPvn06dNf +Hw+tLW1YX5+/oNKpSK/CVCpVOTHjx+P+P1+RCIRjIyMfNISEo/HL124cGFNFEUwxvQHDx4Mtmob EWFmZuZDv98vC4KAK1euLBPRjZYQIrKSyeRoKpWCqqqwLOvdhYWF7c0gs7OzBxhjXYqi4MyZM9i9 e3eqPuc1yAZoKp1OX4/FYggGgzBNc9j7GDeL53msrq6+39bWhl27duHkyZMXiShTn9cQsgH6aGxs zBQEAZVKZZtlWe31OY8ePeqRZVkkIqTT6Z+I6Fojr6YQADh8+PCELMtQFAXPnz/v2TwbjuMQCATe liQJHR0d6OrqOtXMpyWEiKYMw3A4joPP5zM2Q4gIqqoqABCNRgtEtNDMR2gW8KSq6u9EFM9ms72W ZfU6jgMAEEUR3rMsy3KulccbIfv378/Ozc3FNU2Dqqrwrh0igiRJsG0bAwMDP7byeOO9wRg7fuTI ka+DwWDDuGVZuHPnzr5Gp8pTy5ls7HgqmUzCdd3XYq7rYnh4GK0AwBZ/7hhjN1Kp1JiiKPUbwM2b N78kovG/DdkANXpcikSkbdXjf/179AfYfKlTUL1eGQAAAABJRU5ErkJggg== "
-               height="33"
-               width="25" />
-            <image
-               y="-1456.1469"
-               x="330.26593"
-               id="image4700"
-               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAABTpJREFU WIXtlk9oE1kcx7+/zLzOTDIz+WeTmdil3UvTQrqkoET8A91LzoOLMDd70IuUtFcPW3ZdsN62FfHg QepZkJ57sVBtFYUNHlbpyYJ/6p+m2yRNOplM3h400jZNo+4eFtYvDAzv95v3+/ze+703P+Cb/u+i L3Hu6uqyJEmyRFEcEQShl+jD55xzeJ63Wq/XFxzHmavVanP/KoAkSSOqqs7qut6raRoURQFjDDsB XNdFtVpFqVRCsVhcLZfLo47jLPxjAF3XpyORyHh3dzd0XYckSWCMwefz7QJoNBpwXReO46BYLOLd u3coFAozxWJx4qsBwuHwrGmaZ2OxGDRNgyiKiEajOHLkCI4dO7bL98GDB3j8+DHW19dRr9dRKpXw 9u1bvH79+tbGxsboFwOEw+Hpw4cPjxuGgUAgAEVRcObMGZw+fXoVwNzHZ6csANadO3d6b9++jWq1 iq2tLaytreHly5czGxsb+67EvgC6ro/09PTcTSQSUFUVkiTh0qVL5f7+/p+JaLodNABwzidWVlZ+ m5ycVB3HQblcxqtXr/DixYsfi8XiwmcBDAwMrBmGEQ8Gg5BluRn8FBHlDwrOGOtTFCW0ubmJlZWV xcnJSXV7exubm5tYW1t78+zZM2PvN769A9Fo1NI0La5pGjjnsCxr+3OCy7KcDofDT2RZ/iMajaK/ v/+UZVnbnHNomgZN0+LRaNTqCDA8PJzTdR2iKELXddi2fbFTcEVR0qZpLvb19WkDAwO4cuVKgojy tm1f3DnX8PBwriNArVY7KkkSPM/D0NBQ6aA99/l8Ib/fP2Ka5qJpmmpPTw9u3LhRPn/+/J8AQETT Q0NDJc/zIEkSarXa0Y4AjuOojDG4rotkMjnfLrgsy9ahQ4eeJBKJu6ZpqoZh4PLly+VkMnmKiJ43 /ZLJ5LzrumCMwXEcde884t6B5iXjui7y+fy9nbZgMPgXYywoiiJUVUUkEoGu62CMYWpqat9Czefz 91zX/UmWZTDGWhJpASAiEBE45+Cc77INDg7qoihCEAR0dXVBlmWIoohSqYR2hdqcpzlvR4CDtLy8 XAQQBIClpSXcvHkT79+/h23b6FSo7dQCEI/H4XkeiAjLy8snAXwqQiIKNd8551Yqlbq6tbX1nWma v547d64d9Mnmisbj8RZ7SxEmk8lyo9EAYwyVSiXbjpyI5nRd/8E0ze+J6Jd2fpVKJcsYQ6PRQDKZ LHcESKVSj5pV63meFovF2v7NiOivnRW/V7FYbMLzPK15qlKp1KOOALZtXw2FQhAEAaqqwjCMqUAg kG4XpJ0CgUDaMIwpVVUhCAJCoRBs277aEYCI5nK53Jt6vQ5FURAMBmXDMBYVRflsCEVR0oZhLAaD QVlRFNTrdeRyuTdE1NIptQAAQCaTsbPZLIgIoVAIhmGoiURiMRAIHNhcfMx8IpFILBqGoYZCIRAR stksMpmMvZ//vseQiBY45zPVanV8aWkJkUgEPp9PZYz9XigUJiqVypzrunONRuNDFj4fGGOW3++3 IpFIb3d3N5rbePz4cYyNjc0Q0cK+sQ7KhnM+e/369bPz8/PgnKNaraJcLqNUKqFSqcDzPACAIAjw +/3QNA2qqkJRlE+ZX7hw4RYRjbaL0bEn5JxP5/P58WvXrqFQKMDzPLiuC9d1P92URATGGBhjEAQB kUgEY2NjSKfTM0T09T3hDogRALP379/vffjwIZ4+fYr19fVdTWk0GsXg4CAymQxOnDixCmC03bJ/ tTjnFud8lnP+nLfq+UdbS9PxTf9p/Q3C9Q1ktD00DgAAAABJRU5ErkJggg== "
-               height="32"
-               width="32" />
-            <text
-               xml:space="preserve"
-               style="font-size:24.33360291px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffcc00;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-               x="370.97394"
-               y="-1429.1816"
-               id="text3407-3-0"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan3409-2-9"
-                 x="370.97394"
-                 y="-1429.1816">Prévu</tspan></text>
-            <image
-               y="-1452.6042"
-               x="444.43347"
-               id="image4732"
-               xlink:href="data:image/png;base64,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 AElFTkSuQmCC "
-               height="31"
-               width="36" />
-            <text
-               xml:space="preserve"
-               style="font-size:24.33360291px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#803300;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-               x="487.14148"
-               y="-1429.2373"
-               id="text3407-3-0-5"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan3409-2-9-2"
-                 x="487.14148"
-                 y="-1429.2373">En cours</tspan></text>
-            <text
-               xml:space="preserve"
-               style="font-size:57.88137817px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-               x="185.32011"
-               y="-1610.8964"
-               id="text5050"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan5052"
-                 x="185.32011"
-                 y="-1610.8964">Nouvel évènement</tspan></text>
-            <text
-               xml:space="preserve"
-               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006cb7;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-               x="186.71577"
-               y="-1746.3774"
-               id="text5056"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan5058"
-                 x="186.71577"
-                 y="-1746.3774"
-                 style="font-size:24px;fill:#006cb7;fill-opacity:1">accueil</tspan></text>
-            <g
-               id="g5192"
-               transform="translate(22.635759,0)">
-              <rect
-                 rx="10.749837"
-                 y="-1769.6885"
-                 x="410.26334"
-                 height="28.286186"
-                 width="119.43056"
-                 id="rect5145"
-                 style="color:#000000;fill:#006cb7;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-              <text
-                 sodipodi:linespacing="125%"
-                 id="text5056-4"
-                 y="-1749.3054"
-                 x="423.41092"
-                 style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-                 xml:space="preserve"><tspan
-                   style="font-size:24px;fill:#ffffff"
-                   y="-1749.3054"
-                   x="423.41092"
-                   id="tspan5058-4"
-                   sodipodi:role="line">nouveau</tspan></text>
-            </g>
-            <text
-               xml:space="preserve"
-               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006cb7;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-               x="583.07495"
-               y="-1747.5294"
-               id="text5056-4-3"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan5058-4-1"
-                 x="583.07495"
-                 y="-1747.5294"
-                 style="font-size:24px;fill:#006cb7;fill-opacity:1">contact</tspan></text>
-            <text
-               xml:space="preserve"
-               style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006cb7;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-               x="291.54645"
-               y="-1746.3774"
-               id="text5056-4-3-0"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan5058-4-1-6"
-                 x="291.54645"
-                 y="-1746.3774"
-                 style="font-size:24px;fill:#006cb7;fill-opacity:1">calendrier</tspan></text>
-          </g>
-        </g>
-      </g>
+       transform="matrix(0.9794637,0,0,1.0587688,362.72507,86.022778)"
+       inkscape:export-filename="/home/philoo/dev/canne/cnccb/agendapp/public/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         id="rect3925"
+         width="538"
+         height="141"
+         x="-360.39224"
+         y="-1898.7582" />
     </g>
     <flowRoot
        xml:space="preserve"
@@ -1033,33 +858,33 @@
          y="345.69977">Visites</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:53.4107666px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006cb7;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-       x="129.21017"
-       y="-1853.6027"
+       style="font-size:53.4107666px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#005e8a;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+       x="63.210167"
+       y="-1835.6027"
        id="text2985-0"
        sodipodi:linespacing="125%"
-       inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
+       inkscape:export-filename="/home/philoo/dev/canne/cnccb/agendapp/public/logo.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan2987-5"
-         x="129.21017"
-         y="-1853.6027">calendrier national</tspan></text>
+         x="63.210167"
+         y="-1835.6027">calendrier national</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:23.85733795px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffcc00;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
-       x="584.28931"
-       y="-1819.2384"
+       x="517.81671"
+       y="-1803.0739"
        id="text2985-6"
        sodipodi:linespacing="125%"
-       inkscape:export-filename="/home/philoo/dev/canne/agendapp/public/logo.png"
+       inkscape:export-filename="/home/philoo/dev/canne/cnccb/agendapp/public/logo.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        transform="matrix(0.99961618,-0.02770367,0.02770367,0.99961618,0,0)"><tspan
          sodipodi:role="line"
          id="tspan2987-4"
-         x="584.28931"
-         y="-1819.2384"
+         x="517.81671"
+         y="-1803.0739"
          style="font-weight:500;-inkscape-font-specification:Ubuntu Medium">beta</tspan></text>
     <g
        id="g3669"

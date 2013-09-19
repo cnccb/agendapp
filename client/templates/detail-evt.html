@@ -64,7 +64,7 @@
                             <strong>{{evenement.orga}}</strong>
                             {{#if evenement.tel}}<br>{{evenement.tel}}{{/if}}
                             {{#if evenement.contact}}<br><a href="mailto:{{evenement.orga}}<{{evenement.contact}}>?subject=[{{evenement.nom}}]">{{evenement.contact}}</a>{{/if}}  
-                            {{#if evenement.url}}<br><a href="{{evenement.url}}" title="page web de l'évennement">{{evenement.urlLabel}}</a>{{/if}}                
+                            {{#if evenement.url}}<br><a href="{{evenement.url}}" title="page web de l'événement">{{evenement.urlLabel}}</a>{{/if}}                
                         </address>            
                     </div>
                 </div>
@@ -128,7 +128,7 @@
         
         <div class='span3' >
             <div id="sendMailLink">
-                <p>Vous êtes l'administateur de l'évenement ?
+                <p>Vous êtes l'administateur de l'événement ?
                     <a href="/event/{{evenement._id}}/sendAdminLink">recevoir le lien d'administration à nouveau</a>
                 </p>
             </div>
@@ -139,14 +139,14 @@
                 <dl>
                     <dt>Attention</dt>
                     <dd>
-                        <strong>Avant de prévoir un déplacement assurez vous bien 
+                        <strong>Avant de prévoir un déplacement assurez-vous bien 
                             que l'événement a le statut définitif.</strong>
                         Pour faciliter l'organisation du calendrier, il est proposé
                         aux organisateurs d'indiquer les paramètres de leurs
                         événements avant qu'ils ne soient complètement validés.
                         Par exemple, il arrive qu'un événement soit encore à la 
-                        recherche d'un lieu, ou que la mairie n'aie pas encore
-                        donné son accord pour tel ou tel gymnase. Dans ces cas
+                        recherche d'un lieu, ou que la mairie n'ait pas encore
+                        donné son accord pour tel ou tel gymnase. Dans ces cas-là,
                         l'événement doit avoir le statut "provisoire".
                     </dd>
                     <dt>Responsabilité</dt>
@@ -159,9 +159,10 @@
                     <dt>Modification</dt>
                     <dd>
                         Si vous êtes l'auteur de cet événement et que vous souhaitez 
-                        le modifier, reportez vous au mail de confirmation que vous 
-                        avez reçu: il contient un lien spécial qui vous permettra
+                        le modifier, reportez-vous au mail de confirmation que vous 
+                        avez reçu&nbsp;: il contient un lien spécial qui vous permettra
                         d'accéder à une page de modification.
+                        Vous pouvez également <a href="/event/{{evenement._id}}/sendAdminLink">recevoir le lien d'administration à nouveau</a>.
                     </dd>
                 </dl>
             </aside>
