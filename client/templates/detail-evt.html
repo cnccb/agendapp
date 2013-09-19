@@ -49,7 +49,7 @@
                             {{#if evenement.planiframable}}
                             <br><iframe id="plandaccces" src="{{evenement.planiframable}}"></iframe>
                             {{else}}
-                            {{#if evenement.plan}}<br><a href="{{evenement.plan}}">{{evenement.plan}}</a>{{/if}}
+                            {{#if evenement.plan}}<br><a href="{{evenement.plan}}" title="cliquer pour voir le plan">{{evenement.planLabel}}</a>{{/if}}
                             {{/if}}
                         </address>            
                     </div>
@@ -64,7 +64,7 @@
                             <strong>{{evenement.orga}}</strong>
                             {{#if evenement.tel}}<br>{{evenement.tel}}{{/if}}
                             {{#if evenement.contact}}<br><a href="mailto:{{evenement.orga}}<{{evenement.contact}}>?subject=[{{evenement.nom}}]">{{evenement.contact}}</a>{{/if}}  
-                            {{#if evenement.url}}<br><a href="{{evenement.url}}">{{evenement.url}}</a>{{/if}}                
+                            {{#if evenement.url}}<br><a href="{{evenement.url}}" title="page web de l'évennement">{{evenement.urlLabel}}</a>{{/if}}                
                         </address>            
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     <div class='detailSection'>
                         <h2>Programme</h2>
                         {{#if evenement.programme}}
-                        <p>{{evenement.programme}}</p>
+                        <p>{{nl2br evenement.programme}}</p>
                         {{else}}
                         <p>A venir</p>
                         {{/if}}

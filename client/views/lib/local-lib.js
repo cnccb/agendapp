@@ -181,11 +181,18 @@ getOneEvt = function(evtId){
     //evenement.planiframable 
     if (res.plan)
     {
+        res.planLabel = cutString(res.plan, 30);
         if (res.plan.indexOf("maps.google") !== -1)
             res.planiframable = res.plan + "&output=embed";
+
         // les urls abrégées ne s'embed pas bien.
         //else if (res.plan.indexOf("goo.gl") !== -1)
         //res.planiframable = res.plan + "&output=embed";
+    }
+
+    if(res.url)
+    {
+        res.urlLabel = cutString(res.url, 30);
     }
     //console.log('evt en cours : ', res);
     return res;

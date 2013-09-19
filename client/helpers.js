@@ -52,5 +52,11 @@ Handlebars.registerHelper('i18n', function(text){
     if (i18n[text])
         return i18n[text]
     else 
-        return new Handlebars.SafeString(""+text+"");
+        return new Handlebars.SafeString(text);
+});
+
+Handlebars.registerHelper('nl2br', function(text) {
+    text = text.toString();
+    text = text.replace(/(\r\n|\n|\r)/gm, '<br />');
+    return new Handlebars.SafeString(text);
 });
