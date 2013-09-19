@@ -101,9 +101,18 @@
                     <div class="control-group">
                         <label class="control-label">Contact</label>
                         <div class="controls">
-                            <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur" value="{{evenement.orga}}"/>            
-                            <input type="email" name="contact" id="contact" placeholder="email" value="{{evenement.contact}}"/>   
-                            <input type="tel" name="tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" id="tel" placeholder="téléphone" value="{{evenement.tel}}"/>   
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-user"></i></span>
+                                <input type="text" name="orga" id="orga" placeholder="nom de l'organisateur" value="{{evenement.orga}}"/> 
+                            </div>
+                            <div class="input-prepend">
+                                <span class="add-on">@</span>
+                                <input type="email" name="contact" id="contact" placeholder="email" value="{{evenement.contact}}"/>   
+                            </div>
+                            <div class="input-prepend" style="margin-top: 10px">
+                                <span class="add-on"><img src='/phone.png' alt='telephone'/></span>
+                                <input type="tel" class = "input-small" name="tel" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" id="tel" placeholder="téléphone" value="{{evenement.tel}}"/>   
+                            </div>
                         </div>
                     </div>
 

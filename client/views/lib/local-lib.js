@@ -146,6 +146,7 @@ displayView = function(viewId) {
     if(evtId == undefined || evtId == "undefined"|| evtId == "")
         evtId='accueil';    
     var pagetrack='/agendapp/'+evtId;
+    $("html, body").animate({ scrollTop: 0 }, 200);
     console.log('current track : ' , pagetrack);    
     new tracker_PphpMV(pagetrack);
     new tracker_GA(pagetrack);
