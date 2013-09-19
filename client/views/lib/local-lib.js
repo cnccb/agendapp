@@ -141,8 +141,14 @@ displayView = function(viewId) {
     $('.view').fadeOut(100);
     $view.fadeIn(300);
     Session.set('currentView', viewId);
-    new tracker_PphpMV(viewId);
-    new tracker_GA(viewId);
+    
+    var evtId=Session.get('evtEnCours');
+    if(evtId == undefined || evtId == "undefined"|| evtId == "")
+        evtId='accueil';    
+    var pagetrack='/agendapp/'+evtId;
+    console.log('current track : ' , pagetrack);    
+    new tracker_PphpMV(pagetrack);
+    new tracker_GA(pagetrack);
 }
 
 /**
