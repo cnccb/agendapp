@@ -62,9 +62,16 @@ span.label{margin-right: 5px;}
 #calendrier tr.monthline>td {text-transform: uppercase;  font-weight: bold; background-color: #006b86 !important; color: #fff !important;}
 #calendrier tr.monthline:hover >td {background-color: #006b86 !important; color: #fff !important;}
 
-i.icon-car{background: url('/icons/car.png') top left no-repeat}
-i.icon-bicycle{background: url('/icons/bicycle.png') top left no-repeat}
-i.icon-walk{background: url('/icons/walk.png') top left no-repeat}
-i.icon-train{background: url('/icons/train.png') top left no-repeat}
-i.icon-plane{background: url('/icons/plane.png') top left no-repeat}
-i.icon-walk{background: url('/icons/walk.png') top left no-repeat}
+.icon-car{background: url('/icons/car.png') top left no-repeat}
+.icon-bicycle{background: url('/icons/bicycle.png') top left no-repeat}
+.icon-walk{background: url('/icons/walk.png') top left no-repeat}
+.icon-train{background: url('/icons/train.png') top left no-repeat}
+.icon-plane{background: url('/icons/plane.png') top left no-repeat}
+.icon-walk{background: url('/icons/walk.png') top left no-repeat}
+
+.icon-car.icon-white{background: url('/icons/car-white.png') top left no-repeat}
+.icon-bicycle.icon-white{background: url('/icons/bicycle-white.png') top left no-repeat}
+.icon-walk.icon-white{background: url('/icons/walk-white.png') top left no-repeat}
+.icon-train.icon-white{background: url('/icons/train-white.png') top left no-repeat}
+.icon-plane.icon-white{background: url('/icons/plane-white.png') top left no-repeat}
+.icon-walk.icon-white{background: url('/icons/walk-white.png') top left no-repeat}
