@@ -5,7 +5,7 @@
 Template.ariane.links = function() {
     var currentView = Session.get('currentView');
     var currentTitle = Session.get('titreEncours');
-    console.log('current title : ',currentTitle);
+    //console.log('current title : ',currentTitle);
         
     var breadcrumb = new Array();
 

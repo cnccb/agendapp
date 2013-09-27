@@ -56,7 +56,7 @@ if (Meteor.isServer) {
                     newEvent.codeedition = evt.codeedition;
                     Evenements.update(idEvt, newEvent);
 
-                    console.log('parameter dejaexistant = true => update', newEvent);
+                    //console.log('parameter dejaexistant = true => update', newEvent);
                     return 'Evenement mis à jour';
                 }
                 else 
@@ -68,12 +68,12 @@ if (Meteor.isServer) {
 
             //sinon création
             var secretcode = Random.hexString(12);
-            console.log('addNEwEvent : nouveau code / params :', secretcode, parameters);
+            //console.log('addNEwEvent : nouveau code / params :', secretcode, parameters);
             newEvent.codeedition = secretcode;
             var evtId = Evenements.insert(newEvent);
             var evt = Evenements.findOne(evtId);
 
-            console.log("création de l'evenement : " + evtId, evt);
+            //console.log("création de l'evenement : " + evtId, evt);
                        
             return envoiMailAdmin(evt);;
         },
@@ -81,9 +81,9 @@ if (Meteor.isServer) {
         verifCodeConfirm: function(evtId, codeConfirm)
         {
             var evt = Evenements.findOne(evtId);
-            console.log("Vérification du code de confirmation " + codeConfirm);
-            console.log("evt vérifié : ");
-            console.log(evt);
+            //console.log("Vérification du code de confirmation " + codeConfirm);
+            //console.log("evt vérifié : ");
+            //console.log(evt);
             if (evt.codeedition !== codeConfirm)
                 throw new Error('Code edition incorrect');
             else if (evt.valide === false)
@@ -97,8 +97,8 @@ if (Meteor.isServer) {
         },
         renvoyerEmailAdmin: function(evtId, emailAdmin){
             var evt = Evenements.findOne(evtId);
-            console.log("Vérification du mail d'admin " + emailAdmin);
-            console.log("evt vérifié : ", evt);
+            //console.log("Vérification du mail d'admin " + emailAdmin);
+            //console.log("evt vérifié : ", evt);
 
             if(evt.admin === emailAdmin){
                 return envoiMailAdmin(evt);

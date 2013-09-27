@@ -11,13 +11,13 @@ Template.nouvelEvt.rendered = function() {
     $('[data-toggle="buttons-radio"]').each(function() {
         var valBouton = $(this).attr("data-value");
         var $button = $('[data-value="' + valBouton + '"]');
-        ////console.log($(this));
+        //console.log($(this));
         $button.button('toggle');
         $button.trigger('click');
     });
     $('[data-type="checkbox"]').each(function() {
         var valChecked = $(this).attr("data-value").split(',');
-        ////console.log(valChecked);
+        //console.log(valChecked);
         _.each(valChecked, function(item, key, list) {
             $('[value="' + item + '"]').attr('checked', true);
         })
@@ -40,14 +40,14 @@ Template.nouvelEvt.rendered = function() {
     $('#frmNouvelEvt input[type="date"]').each(function(){
         if(document.getElementById($(this).attr('id')).type=='text')
         { 
-            ////console.log("vérif date pour "+$(this).attr('id'));
+            //console.log("vérif date pour "+$(this).attr('id'));
             // //changement de la valeur du champs en une chaîne au format dd/mm/yyyy
             if($(this).val())
             {
                 dateToFrString=getStringFromDate(getDateFromInput($(this).val()),false);
                 $(this).val(dateToFrString);
                 $(this).attr('value',dateToFrString);
-                ////console.log("nouvelle valeur : " + $(this).val());
+                //console.log("nouvelle valeur : " + $(this).val());
             }         
             //le datepicker est ensuite créé à la volée lors du click sur le champs date, 
             //et initialisé avec la valeur de l'input ou la date du jour par défaut  
@@ -96,9 +96,9 @@ Template.nouvelEvt.events({
     'click [data-toggle="buttons-radio"] button': function(e) {
         $button = $(e.currentTarget);
         $buttonGroup = $(e.currentTarget).parent();
-        ////console.log($buttonGroup);
+        //console.log($buttonGroup);
         $buttonGroup.attr("data-value", $button.attr("data-value"));
-        ////console.log($buttonGroup.attr('data-value'));
+        //console.log($buttonGroup.attr('data-value'));
     },
     'mousedown [type=date]' : function(e){
        //création d'un datepicker à la volée si le champs date n'est pas reconnu par le navigateur (voir le rendered du template)
@@ -185,7 +185,7 @@ Template.nouvelEvt.events({
                 flash(result, 'info');
                 $('html,body').animate({scrollTop: $('#flashMessage').offset().top}, 'slow');
 
-                ////console.log(newEvent);
+                //console.log(newEvent);
             }
         });
         //console.log("Evènement créé/modifié");

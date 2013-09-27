@@ -24,13 +24,13 @@ getDateFromInput = function(inputtext)
     var patronUniversl = /[0-9]{4}[./-][0-9]{2}[./-][0-9]{2}/g;
     if (patronFrancais.test(inputtext))
     {
-        ////console.log('Francais:' + inputtext);
+        //console.log('Francais:' + inputtext);
         var split = inputtext.split(/[./-]/g);
         return new Date(split[2], split[1] - 1, split[0]);
     }
     else if (patronUniversl.test(inputtext))
     {
-        ////console.log('Universel:' + inputtext);
+        //console.log('Universel:' + inputtext);
         var split = inputtext.split(/[./-]/g);
         return new Date(split[0], split[1] - 1, split[2]);
     }
@@ -147,7 +147,7 @@ displayView = function(viewId) {
         evtId='accueil';    
     var pagetrack='/agendapp/'+evtId;
     $("html, body").animate({ scrollTop: 0 }, 200);
-    console.log('current track : ' , pagetrack);    
+    //console.log('current track : ' , pagetrack);    
     new tracker_PphpMV(pagetrack);
     new tracker_GA(pagetrack);
 }

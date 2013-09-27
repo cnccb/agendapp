@@ -37,13 +37,12 @@ if (Meteor.isServer) {
         //     });
         // };
         if (Communes.find({}).count() == 0) {
-            console.log('insertions des communes : ', codesPostaux.length);
+            //console.log('insertions des communes : ', codesPostaux.length);
             _.each(codesPostaux,function(item) {
                 var id=Communes.insert(item);                
-                if(!id)
-                  console.log("commune : ",item," problématique");
+                //if(!id) console.log("commune : ",item," problématique");
             });
-            console.log(Communes.find().count()+' communes insérées');
+            //console.log(Communes.find().count()+' communes insérées');
         };
 
         Meteor.publish("allEvents", function(){
