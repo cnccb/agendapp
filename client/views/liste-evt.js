@@ -8,6 +8,7 @@ Template.listeEvt.evenements = function() {
     var yesterday = new Date();
     yesterday.setDate( yesterday.getDate() - 1);
     yesterday=getStringFromDate(yesterday, true);
+    
     var conditions = {
         $and: [
             {valide: true},
@@ -30,7 +31,6 @@ Template.listeEvt.evenements = function() {
             }
         ]
     };
-    alert(yesterday);
 
     var liste = Evenements.find(conditions, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
