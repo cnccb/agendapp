@@ -20,10 +20,10 @@ envoiMailAdmin = function(evt){
             subject: "[Agend'app] Administration de : " + evt.nom + "",
             text: message
         });
-        console.log("mail envoyé");
+        //console.log("mail envoyé");
     } catch (e)
     {
-        console.log("impossible d'envoyer le mail"+e.message);
+        //console.log("impossible d'envoyer le mail"+e.message);
         throw new Meteor.Error(500, "impossible d'envoyer le mail");
     }
     return 'Evenement créé et mail envoyé.';

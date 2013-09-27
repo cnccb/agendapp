@@ -1,5 +1,5 @@
 Meteor.startup(function() {
     initApp();
-    console.log("app started");
+    //console.log("app started");
     //logRenders();
 });

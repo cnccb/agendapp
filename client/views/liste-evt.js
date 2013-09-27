@@ -57,7 +57,7 @@ Template.listeEvt.evenements = function() {
     _.each(evenementsSansDate, function(value, key, list) {
         evenements.push(value);
     });
-    ////console.log(evenements);
+    //console.log(evenements);
     return evenements;
 
 };
