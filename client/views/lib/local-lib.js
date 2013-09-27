@@ -4,6 +4,14 @@
  * BIBLIOTHEQUE
  * 
  */
+
+/****** hack IE ******/
+if (!window.console){
+  console =function(){};
+  console.log = function(){};
+} 
+/********************/
+
 getMonthIndex = function(d)
 {
     if (d === null || typeof d === 'undefined' || _.isNaN(d))
