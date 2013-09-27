@@ -1,0 +1,20 @@
+<template name="thanks">
+<div id="thanks">
+	<h1 class="green">Merci {{evt.orga}} !
+    </h1>
+    <h2 class="text-success">Votre événement a été créé avec succès.
+    </h2>
+            <p class="spaceCBefore">Le lien d'administration vous a été envoyé à l'adresse indiquée.
+            </p>
+            <p class="help">
+                Si vous ne recevez pas l'e-mail après plusieurs minutes (cela dépend de votre fournisseur également), vérifiez qu'il ne se trouve pas dans votre dossier spam. Sinon merci de nous contacter à webmaster@cnccb.net.
+            </p>
+        <ul class="pollLinks">
+            <li>
+                <h4>Lien à communiquer pour les détails de l'événement</h4>
+                <p>Vous pouvez envoyer ce lien par mail à tous vos contacts, qui pourront aller le consulter directement.</p>                
+                <p class="well"><a href="{{evt.permalink}}">{{evt.permalink}}</a></p>                
+            </li>
+        </ul>
+</div>
+</template>

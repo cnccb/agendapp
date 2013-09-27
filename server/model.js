@@ -66,7 +66,7 @@ if (Meteor.isServer) {
                     Evenements.update(idEvt, newEvent);
 
                     //console.log('parameter dejaexistant = true => update', newEvent);
-                    return 'Evenement mis à jour';
+                    return {message : 'Evenement mis à jour', type : 'maj'};
                 }
                 else 
                 {
@@ -85,7 +85,7 @@ if (Meteor.isServer) {
 
             //console.log("création de l'evenement : " + evtId, evt);
                        
-            return envoiMailAdmin(evt);;
+            return envoiMailAdmin(evt);
         },
         
         verifCodeConfirm: function(evtId, codeConfirm)

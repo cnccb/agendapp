@@ -182,9 +182,11 @@ Template.nouvelEvt.events({
                 flash("Probleme: " + error, 'error');
             } else
             {
-                flash(result, 'info');
+                flash(result.message, 'info');
                 $('html,body').animate({scrollTop: $('#flashMessage').offset().top}, 'slow');
-
+                if(result.type==='new'){
+                    page('/event/'+result.idEvt+"/thanks");
+                }
                 //console.log(newEvent);
             }
         });

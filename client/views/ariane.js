@@ -32,6 +32,21 @@ Template.ariane.links = function() {
                     last: true
                 });
     }
+    else if (currentView === 'thanks')
+    {
+        breadcrumb.push(
+        {
+            id: 'detaillink',
+            label: currentTitle,
+            href: '/event/' + Session.get('evtEnCours')
+        });
+        breadcrumb.push(
+        {
+            id: 'merci',
+            label: 'merci',
+            last: true
+        });
+    }
     //renvoyer le lien
     else if (currentView === 'renvoyerMailAdmin')
     {

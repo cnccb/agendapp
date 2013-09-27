@@ -63,3 +63,8 @@ evtNew = function(ctx, next){
     Session.set('evtEnCours', undefined);
     displayView('nouvelEvt');
 };
+
+evtThanks = function(ctx, next){
+    Session.set('evtEnCours', ctx.params.evt);
+    displayView('thanks');
+}

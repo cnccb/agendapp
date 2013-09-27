@@ -26,7 +26,7 @@ envoiMailAdmin = function(evt){
         //console.log("impossible d'envoyer le mail"+e.message);
         throw new Meteor.Error(500, "impossible d'envoyer le mail");
     }
-    return 'Evenement créé et mail envoyé.';
+    return {message : 'Evenement créé et mail envoyé.', type : 'new', idEvt : evt._id, code: evt.codeedition};
 };
 
 
@@ -40,15 +40,19 @@ evtTwit = function(idEvt, evt){
            access_token:         twitConfig.access_token,
            access_token_secret:  twitConfig.access_token_secret
         });
-        var newStatus = '***ceci est un test*** #agenda '+evt.nom+' : '+ SERVER_URL + 'event/' + idEvt;
+        var newStatus = '#agenda '+evt.nom+' : '+ SERVER_URL + 'event/' + idEvt;
         console.log('try to twit !', newStatus);
-        T.post('statuses/update', { status: newStatus }, function(err, reply) {
-            if(err)
-            {
-                console.log('errr',err);                                
-            }
-            else if(reply){
-                console.log('twit ok.');
-            }
-        });
+        if(SERVER_URL!="http://localhost:3000/") 
+        {
+            T.post('statuses/update', { status: newStatus }, function(err, reply) {
+                if(err)
+                {
+                    console.log('errr',err);                                
+                }
+                else if(reply){
+                    console.log('twit ok.');
+                }
+            });
+        }
+        
    }
