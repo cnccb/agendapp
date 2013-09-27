@@ -9,5 +9,6 @@ jquery
 email
 random
 standard-app-packages
-meteor-page-js
 insecure
+meteor-page-js
+meteor-twit

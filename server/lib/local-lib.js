@@ -28,3 +28,27 @@ envoiMailAdmin = function(evt){
     }
     return 'Evenement créé et mail envoyé.';
 };
+
+
+/**
+twitte l'evt sur le compte twitter @cnncb
+*/
+evtTwit = function(idEvt, evt){
+        var T = new TwitMaker({
+           consumer_key:         twitConfig.consumer_key,
+           consumer_secret:      twitConfig.consumer_secret,
+           access_token:         twitConfig.access_token,
+           access_token_secret:  twitConfig.access_token_secret
+        });
+        var newStatus = '***ceci est un test*** #agenda '+evt.nom+' : '+ SERVER_URL + 'event/' + idEvt;
+        console.log('try to twit !', newStatus);
+        T.post('statuses/update', { status: newStatus }, function(err, reply) {
+            if(err)
+            {
+                console.log('errr',err);                                
+            }
+            else if(reply){
+                console.log('twit ok.');
+            }
+        });
+   }

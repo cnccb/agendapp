@@ -10,6 +10,7 @@ if (!window.console){
   console =function(){};
   console.log = function(){};
 } 
+
 /********************/
 
 getMonthIndex = function(d)

@@ -63,4 +63,3 @@ evtNew = function(ctx, next){
     Session.set('evtEnCours', undefined);
     displayView('nouvelEvt');
 };
-

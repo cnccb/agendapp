@@ -42,18 +42,27 @@ if (Meteor.isServer) {
                         hebergement: parameters.hebergement, //Recommandations d’hébergement
                         restauration: parameters.restauration, //Recommandations restauration
                         visites: parameters.visites, //Recommandations visites
-                        valide : false
+                        valide : false,
                     };
 
             // si edition
             if (idEvt)
             {
                 //@todo: protéger contre le changement d'email (ou revalidation)
-                evt = Evenements.findOne({_id: idEvt}, {fields: {_id: 1, codeedition : 1}});
+                evt = Evenements.findOne({_id: idEvt}, {fields: {_id: 1, codeedition : 1, twitted : 1}});
                 if (parameters.codeedition === evt.codeedition)
                 {
+
                     newEvent.valide = true;
                     newEvent.codeedition = evt.codeedition;
+                    newEvent.twitted = evt.twitted
+                    Evenements.update(idEvt, newEvent);
+                    //console.log('event ',evt);
+                    if(!evt.twitted)
+                    {
+                        evtTwit(idEvt,newEvent);
+                        newEvent.twitted=true;
+                    }
                     Evenements.update(idEvt, newEvent);
 
                     //console.log('parameter dejaexistant = true => update', newEvent);
@@ -70,6 +79,7 @@ if (Meteor.isServer) {
             var secretcode = Random.hexString(12);
             //console.log('addNEwEvent : nouveau code / params :', secretcode, parameters);
             newEvent.codeedition = secretcode;
+            newEvent.twitted=false;
             var evtId = Evenements.insert(newEvent);
             var evt = Evenements.findOne(evtId);
 
