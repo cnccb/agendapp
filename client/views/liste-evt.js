@@ -5,10 +5,19 @@
  */
 Template.listeEvt.evenements = function() {
     var keywords = new RegExp(Session.get("search_keywords"), "i");
+    var yesterday = new Date();
+    yesterday.setDate( yesterday.getDate() - 1);
+    yesterday=getStringFromDate(yesterday, true);
     var conditions = {
         $and: [
             {valide: true},
             {statut: {$ne: "annule"}},
+            {$or:  [
+                    {datedeb: {$exists: false} },
+                    {datedeb: {$gte: yesterday} },
+                    {datefin: {$gte: yesterday} }
+                ]
+            },                    
             {$or: [
                     {nom: keywords},
                     {codepostal: keywords},
@@ -21,6 +30,7 @@ Template.listeEvt.evenements = function() {
             }
         ]
     };
+    alert(yesterday);
 
     var liste = Evenements.find(conditions, {sort: {"datedeb": 1}}).fetch();
     var evenements = new Array();
