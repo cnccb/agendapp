@@ -27,4 +27,4 @@ app.get('/ical', api.getIcal);
 /******** app start ***********/
 
 app.listen(env.api.port);
-console.log('mcp api server - listening on port '+env.api.port);
+console.log('agndapp api server - listening on port '+env.api.port);
