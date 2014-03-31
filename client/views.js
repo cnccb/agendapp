@@ -2,8 +2,13 @@
 * routes : fonctions de gestion des vues
 */
 
-//index : affiche la liste des événements
-index = function(ctx, next){    
+//index : redirige vers la liste
+index = function(ctx, next){
+    page("/event");
+};
+
+//affiche la liste des événements
+evtList = function(ctx, next){    
     Session.set('currentView', 'listeEvt');
     Session.set('evtEnCours', undefined);
     Session.set('titreEncours', '');
@@ -21,7 +26,7 @@ evtEdit = function(ctx, next){
         if (error)
         {
             flash("Vous ne pouvez pas modifier cet événement!", 'warning');
-            page('/');
+            page('/event');
         }
         else
         {

@@ -4,7 +4,7 @@
 
 Template.entete.events({
     'click #logotitre': function(e) {
-        page('/');
+        page('/event');
     }
 });
  

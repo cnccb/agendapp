@@ -14,7 +14,7 @@ Template.ariane.links = function() {
             {
                 id: 'accueil',
                 label: 'accueil',
-                href: '/'
+                href: '/event'
             }
     );
     // Accueil
@@ -104,7 +104,7 @@ Template.ariane.events({
     },
     'click #accueil': function(e) {
         e.preventDefault();        
-        page('/');
+        page('/event');
     }
 
 });

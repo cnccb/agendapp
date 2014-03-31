@@ -5,6 +5,8 @@ initApp = function() {
     page('/event/:evt/thanks', evtThanks);
     page('/event/new', evtNew);
     page('/event/:evt', evtShow);
+    page('/event', evtList);
     page('/', index);
+    page('*', index);
     page();
-}
+};

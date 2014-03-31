@@ -77,7 +77,7 @@ Template.nouvelEvt.evenement = function() {
 Template.nouvelEvt.events({
     'click #cancel': function(e) {
         e.preventDefault();
-        page('/');
+        page('/event');
     },
     //@todo: trouver plus élegant pour le masquage sélectif des champs optionnels
     'click #ouvrirreco': function(e) {
@@ -198,7 +198,7 @@ Template.nouvelEvt.events({
             page('/event/'+evtCourant);
         }
         else{
-            page('/');
+            page('/event');
         }
         // message de validation??        
         //return false;
