@@ -49,6 +49,14 @@ var generateIcalEvent = function(item){
   var event = new icalendar.VEvent(item._id);
   event.setSummary(item.nom);
   event.setDate(new Date(datedeb[0],datedeb[1],datedeb[2]), new Date(datefin[0],datefin[1],datefin[2]));
+  event.addProperty("COMMENT", "/event/"+item._id);
+  event.addProperty("LOCATION",item.lieu);
+  event.addProperty("CATEGORIES", [item.echelle, item.cible]);
+  event.addProperty("STATUS", item.statut);
+  event.addProperty("CONTACT", item.contact);
+  event.addProperty("URL", item.url);
+  event.setDescription(item.programme);
+  console.log('event : ', event);
   return event;
 };
 
