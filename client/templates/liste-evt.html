@@ -31,7 +31,7 @@
 
                     <tr id='{{_id}}' class='clickToDetail {{statut}} {{echelle}}}' title='Voir les détails' >
                         <td class="muted">{{jourdeb}}</td>
-                        <td><strong>{{nom}}</strong>{{#if ville}}&nbsp;-&nbsp;{{ville}} {{/if}}</td>
+                        <td><strong><a href="/event/{{_id}}"> {{nom}}</strong></a>{{#if ville}}&nbsp;-&nbsp;{{ville}} {{/if}}</td>
                         <td>{{iconify statut}} {{iconify echelle}}</td>
                     </tr>
                     {{/if}}

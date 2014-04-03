@@ -1,4 +1,5 @@
 #!/bin/sh
+rm -rf bundle
 meteor bundle agendapp.tgz
 tar -xvzf agendapp.tgz
 cd bundle/programs/server/node_modules
