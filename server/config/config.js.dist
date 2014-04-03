@@ -1,6 +1,11 @@
-twitConfig = {
-    consumer_key:         "",
-    consumer_secret:      "",
-    access_token:         "",
-    access_token_secret:  ""
+config = {
+  env : 'dev', //swith to "prod" to send twits
+  mailURL : 'smtp://youraccount%40domain.tld:password@your.smtp.server:port/',
+  twit : {
+    consumer_key:         "twit consumer key",
+    consumer_secret:      "twit consumer secret",
+    access_token:         "twit access token",
+    access_token_secret:  "twit token secret"
  }
+};
+

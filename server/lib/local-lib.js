@@ -35,14 +35,14 @@ twitte l'evt sur le compte twitter @cnncb
 */
 evtTwit = function(idEvt, evt){
         var T = new TwitMaker({
-           consumer_key:         twitConfig.consumer_key,
-           consumer_secret:      twitConfig.consumer_secret,
-           access_token:         twitConfig.access_token,
-           access_token_secret:  twitConfig.access_token_secret
+           consumer_key:         config.twit.consumer_key,
+           consumer_secret:      config.twit.consumer_secret,
+           access_token:         config.twit.access_token,
+           access_token_secret:  config.twit.access_token_secret
         });
         var newStatus = '#agenda '+evt.nom+' : '+ SERVER_URL + 'event/' + idEvt;
         console.log('try to twit !', newStatus);
-        if(SERVER_URL!="http://localhost:3000/") 
+        if(config.env==="prod") 
         {
             T.post('statuses/update', { status: newStatus }, function(err, reply) {
                 if(err)

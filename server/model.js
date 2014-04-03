@@ -3,7 +3,7 @@ if (Meteor.isServer) {
     Meteor.startup(function() {
         SERVER_URL = Meteor.absoluteUrl(); //adresse du serveur
         //if(SERVER_URL!="http://localhost:3000/") 
-        process.env.MAIL_URL = 'smtp://live.cnccb%40gmail.com:cyrano2013@smtp.gmail.com:465/'; //serveur pour l'envoi du mail de confirmation
+        process.env.MAIL_URL = config.mailURL; //serveur pour l'envoi du mail de confirmation
         console.log("app listening on ", SERVER_URL, " -- let's rock.");
 
     });
@@ -56,7 +56,7 @@ if (Meteor.isServer) {
 
                     newEvent.valide = true;
                     newEvent.codeedition = evt.codeedition;
-                    newEvent.twitted = evt.twitted
+                    newEvent.twitted = evt.twitted;
                     Evenements.update(idEvt, newEvent);
                     //console.log('event ',evt);
                     if(!evt.twitted)
@@ -69,7 +69,7 @@ if (Meteor.isServer) {
                     //console.log('parameter dejaexistant = true => update', newEvent);
                     return {message : 'Evenement mis à jour', type : 'maj'};
                 }
-                else 
+                else
                 {
                     console.error("Mauvais code d'édition !", parameters);
                     return "Erreur lors de la modification";
